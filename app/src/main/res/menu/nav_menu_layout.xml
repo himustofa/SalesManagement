@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/customers"
+            android:title="Customers"
+            android:icon="@drawable/ic_people_black_24dp" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/settings"
+                android:title="Settings"
+                android:icon="@drawable/ic_settings_black_24dp" />
+
+            <item
+                android:id="@+id/about"
+                android:title="About"
+                android:icon="@drawable/ic_info_black_24dp" />
+        </menu>
+    </item>
+</menu>
