@@ -5,20 +5,39 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/customers"
+            android:id="@+id/suppliers_id"
+            android:title="Suppliers"
+            android:icon="@drawable/ic_local_shipping_black_24dp" />
+        <item
+            android:id="@+id/products_id"
+            android:title="Products"
+            android:icon="@drawable/ic_work_black_24dp" />
+        <item
+            android:id="@+id/purchases_id"
+            android:title="Purchases"
+            android:icon="@drawable/ic_local_grocery_store_black_24dp" />
+        <item
+            android:id="@+id/customers_id"
             android:title="Customers"
             android:icon="@drawable/ic_people_black_24dp" />
+        <item
+            android:id="@+id/sales_id"
+            android:title="Sales"
+            android:icon="@drawable/ic_attach_money_black_24dp" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Admin Panel">
         <menu>
             <item
-                android:id="@+id/settings"
+                android:id="@+id/settings_id"
                 android:title="Settings"
                 android:icon="@drawable/ic_settings_black_24dp" />
-
             <item
-                android:id="@+id/about"
+                android:id="@+id/administrator_id"
+                android:title="User"
+                android:icon="@drawable/ic_people_black_24dp" />
+            <item
+                android:id="@+id/about_id"
                 android:title="About"
                 android:icon="@drawable/ic_info_black_24dp" />
         </menu>

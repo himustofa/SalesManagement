@@ -1,0 +1,21 @@
+package com.sm.demo.salesmanagement.settings;
+
+import java.sql.Timestamp;
+
+public class SettingsModel {
+
+    private String companyName;
+    private String companyEmail;
+    private String companyPhoneNumber;
+    private String companyAddress;
+    private String logoName;
+    private byte[] logoData;
+    private String timeZone;
+    private String country;
+    private String dateFormat;
+    private String currencyFormat;
+    private String createdById;
+    private String updatedById;
+    private Timestamp createdAt;
+
+}

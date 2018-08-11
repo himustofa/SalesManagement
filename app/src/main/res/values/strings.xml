@@ -2,4 +2,15 @@
     <string name="app_name">Sales Management</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+
+    <!-- Toolbar Title -->
+    <string name="home_title">Home</string>
+    <string name="sales_title">Sales</string>
+    <string name="customers_title">Customers</string>
+    <string name="purchases_title">Purchases</string>
+    <string name="products_title">Products</string>
+    <string name="suppliers_title">Suppliers</string>
+    <string name="settings_title">Settings</string>
+    <string name="administrator_title">Administrator</string>
+
 </resources>

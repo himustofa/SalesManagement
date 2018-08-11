@@ -1,15 +1,22 @@
 package com.sm.demo.salesmanagement;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +28,9 @@ public class HomeActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        navigationView = (NavigationView) findViewById(R.id.navigation_id);
+        navigationView.setNavigationItemSelectedListener(HomeActivity.this);
     }
 
     @Override
@@ -29,5 +39,53 @@ public class HomeActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        if(menuItem.getItemId()==R.id.sales_id){
+            Intent intent = new Intent(HomeActivity.this, SalesActivity.class);
+            startActivity(intent);
+        }
+        if(menuItem.getItemId()==R.id.customers_id){
+            Intent intent = new Intent(HomeActivity.this, CustomersActivity.class);
+            startActivity(intent);
+        }
+        if(menuItem.getItemId()==R.id.purchases_id){
+            Intent intent = new Intent(HomeActivity.this, PurchasesActivity.class);
+            startActivity(intent);
+        }
+        if(menuItem.getItemId()==R.id.products_id){
+            Intent intent = new Intent(HomeActivity.this, ProductsActivity.class);
+            startActivity(intent);
+        }
+        if(menuItem.getItemId()==R.id.suppliers_id){
+            Intent intent = new Intent(HomeActivity.this, SuppliersActivity.class);
+            startActivity(intent);
+        }
+        if(menuItem.getItemId()==R.id.settings_id){
+            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        }
+        if(menuItem.getItemId()==R.id.administrator_id){
+            Intent intent = new Intent(HomeActivity.this, AdministratorActivity.class);
+            startActivity(intent);
+        }
+        if(menuItem.getItemId()==R.id.about_id){
+            aboutMe();
+        }
+        return false;
+    }
+
+    public void aboutMe(){
+        new AlertDialog.Builder(HomeActivity.this)
+                .setTitle("About")
+                .setMessage("Sales Management 2018 \nVersion 1.0 \nDeveloped by Mustofa Kamal & Mohammad Hosssain")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getApplicationContext(), "Thank you", Toast.LENGTH_SHORT);
+                    }
+                }).show();
     }
 }

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sm.demo.salesmanagement">
+    package="com.sm.demo.salesmanagement"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="28" />
 
     <application
         android:allowBackup="true"
@@ -9,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" android:label="@string/home_title" />
+        <activity android:name=".SalesActivity" android:label="@string/sales_title" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".CustomersActivity" android:label="@string/customers_title" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".PurchasesActivity" android:label="@string/purchases_title" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".ProductsActivity" android:label="@string/products_title" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".SuppliersActivity" android:label="@string/suppliers_title" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".SettingsActivity" android:label="@string/settings_title" android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".AdministratorActivity" android:label="@string/administrator_title" android:parentActivityName=".HomeActivity"></activity>
     </application>
 
 </manifest>
