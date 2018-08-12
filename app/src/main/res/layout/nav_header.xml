@@ -10,7 +10,7 @@
     <ImageView
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/welcome_logo_white"
         android:layout_width="75dp"
         android:layout_height="75dp" />
 
@@ -18,7 +18,7 @@
         android:textColor="@color/white_color"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:text="Sales Management"
+        android:text="@string/developed_by"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

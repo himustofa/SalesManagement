@@ -80,11 +80,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public void aboutMe(){
         new AlertDialog.Builder(HomeActivity.this)
                 .setTitle("About")
-                .setMessage("Sales Management 2018 \nVersion 1.0 \nDeveloped by Mustofa Kamal & Mohammad Hosssain")
+                .setMessage("Sales Management 2018 \nVersion 1.0 \n" + HomeActivity.this.getString(R.string.developed_by))
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getApplicationContext(), "Thank you", Toast.LENGTH_SHORT);
+                        Toast.makeText(getApplicationContext(), "Thank You", Toast.LENGTH_SHORT);
                     }
                 }).show();
     }
