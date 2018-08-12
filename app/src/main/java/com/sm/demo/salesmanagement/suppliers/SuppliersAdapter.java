@@ -36,7 +36,7 @@ public class SuppliersAdapter extends ArrayAdapter<SuppliersModel> {
 
         if (convertView == null){
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(context).inflate(R.layout.suppliers_list_row,parent,false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.suppliers_list_row, parent,false);
             viewHolder.supplierName = convertView.findViewById(R.id.suppliers_name);
             viewHolder.supplierCompanyName = convertView.findViewById(R.id.suppliers_company_name);
             viewHolder.supplierPhoneNumber = convertView.findViewById(R.id.supplier_phone_number);
