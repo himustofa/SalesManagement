@@ -35,7 +35,8 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="fdfcff" />
-                                      <entry key="foregroundImage" value="C:\Users\himus\Desktop\logo.png" />
+                                      <entry key="foregroundImage" value="C:\Users\himus\AndroidStudioProjects\SalesManagement\app\src\main\res\drawable\logo.png" />
+                                      <entry key="foregroundLayerName" value="icon_launcher_new" />
                                     </map>
                                   </option>
                                 </PersistentState>
