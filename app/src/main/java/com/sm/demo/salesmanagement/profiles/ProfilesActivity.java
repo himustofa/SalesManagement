@@ -31,7 +31,6 @@ public class ProfilesActivity extends AppCompatActivity {
     EditText companyName, companyEmail, companyPhoneNumber, companyAddress;
 
     ProfilesService service;
-    SQLiteDatabaseHelper database;
 
     private static final int RESULT_LOAD_IMAGE = 1;
     OutputStream output;

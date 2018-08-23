@@ -21,6 +21,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
         //sqLiteDatabase.execSQL(ConstantKey.DROP_SALES_TABLE);
         sqLiteDatabase.execSQL(ConstantKey.DROP_PROFILES_TABLE);
         onCreate(sqLiteDatabase);

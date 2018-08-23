@@ -40,8 +40,9 @@ public class ProfilesService {
         return insertRow;
     }
 
+    /*
     //Getting all objects
-    /*public ArrayList<ProfilesModel> getAllData(){
+    public ArrayList<ProfilesModel> getAllData(){
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
         ArrayList<ProfilesModel> arrayList = new ArrayList<>();
         Cursor cursor = sqLiteDatabase.rawQuery(ConstantKey.SELECT_PROFILES_TABLE,null);

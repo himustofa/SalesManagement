@@ -20,10 +20,7 @@ public class ProfilesModel {
     private String updatedById;
     private Timestamp createdAt;
 
-    /*public ProfilesModel() {
-    }
-
-    public ProfilesModel(int companyId, String companyName, String companyEmail, String companyPhoneNumber, String companyAddress, String companyLogoName, String companyLogoPath, String createdById, String updatedById, Timestamp createdAt) {
+    /*public ProfilesModel(int companyId, String companyName, String companyEmail, String companyPhoneNumber, String companyAddress, String companyLogoName, String companyLogoPath, String createdById, String updatedById, Timestamp createdAt) {
         this.companyId = companyId;
         this.companyName = companyName;
         this.companyEmail = companyEmail;
