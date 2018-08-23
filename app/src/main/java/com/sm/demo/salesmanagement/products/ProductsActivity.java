@@ -1,9 +1,10 @@
-package com.sm.demo.salesmanagement;
+package com.sm.demo.salesmanagement.products;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.sm.demo.salesmanagement.R;
 import com.sm.demo.salesmanagement.products.ProductsAdapter;
 import com.sm.demo.salesmanagement.products.ProductsModel;
 

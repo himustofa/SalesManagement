@@ -29,9 +29,9 @@
     <item android:title="Admin Panel">
         <menu>
             <item
-                android:id="@+id/settings_id"
-                android:title="Settings"
-                android:icon="@drawable/ic_settings_black_24dp" />
+                android:id="@+id/profiles_id"
+                android:title="Profiles"
+                android:icon="@drawable/ic_account_box_black_24dp" />
             <item
                 android:id="@+id/administrator_id"
                 android:title="User"

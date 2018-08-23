@@ -8,6 +8,11 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="28" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,14 +29,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" android:label="@string/home_title" />
-        <activity android:name=".SalesActivity" android:label="@string/sales_title" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".CustomersActivity" android:label="@string/customers_title" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".PurchasesActivity" android:label="@string/purchases_title" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".ProductsActivity" android:label="@string/products_title" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".SuppliersActivity" android:label="@string/suppliers_title" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".SettingsActivity" android:label="@string/settings_title" android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".AdministratorActivity" android:label="@string/administrator_title" android:parentActivityName=".HomeActivity"></activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/home_title" />
+        <activity
+            android:name=".sales.SalesActivity"
+            android:label="@string/sales_title"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".customers.CustomersActivity"
+            android:label="@string/customers_title"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".purchases.PurchasesActivity"
+            android:label="@string/purchases_title"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".products.ProductsActivity"
+            android:label="@string/products_title"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".suppliers.SuppliersActivity"
+            android:label="@string/suppliers_title"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/settings_title"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".administrator.AdministratorActivity"
+            android:label="@string/administrator_title"
+            android:parentActivityName=".HomeActivity" />
+        <activity android:name=".profiles.ProfilesActivity"></activity>
     </application>
 
 </manifest>

@@ -110,22 +110,25 @@ public class ConstantKey {
     protected final static String CREATE_ADMINISTRATOR_TABLE = "CREATE TABLE " + ADMINISTRATOR_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY, " + ADMINISTRATOR_COLUMN1 + " TEXT, " + ADMINISTRATOR_COLUMN2 + " TEXT, " + ADMINISTRATOR_COLUMN3 + " TEXT, " + ADMINISTRATOR_COLUMN4 + " TEXT, " + ADMINISTRATOR_COLUMN5 + " TEXT, " + ADMINISTRATOR_COLUMN6 + " TEXT, " + ADMINISTRATOR_COLUMN7 + " TEXT, " + ADMINISTRATOR_COLUMN8 + " TEXT, " + ADMINISTRATOR_COLUMN9 + " TEXT, " + ADMINISTRATOR_COLUMN10 + " TEXT, " + ADMINISTRATOR_COLUMN11 + " TEXT, " + ADMINISTRATOR_COLUMN12 + " TEXT, " + ADMINISTRATOR_COLUMN13 + " TEXT ) ";
     protected final static String DROP_ADMINISTRATOR_TABLE = "DROP TABLE IF EXISTS " + ADMINISTRATOR_TABLE_NAME + " ";
 
-    //=======================| SettingsModel |=======================
-    protected final static String SETTINGS_TABLE_NAME = "settings_table";
-    public final static String SETTINGS_COLUMN1 = "company_name";
-    public final static String SETTINGS_COLUMN2 = "company_email";
-    public final static String SETTINGS_COLUMN3 = "company_phone_number";
-    public final static String SETTINGS_COLUMN4 = "company_address";
-    public final static String SETTINGS_COLUMN5 = "logo_name";
-    public final static String SETTINGS_COLUMN6 = "logo_data";
-    public final static String SETTINGS_COLUMN7 = "time_zone";
-    public final static String SETTINGS_COLUMN8 = "country";
-    public final static String SETTINGS_COLUMN9 = "date_format";
-    public final static String SETTINGS_COLUMN10 = "currency_format";
-    public final static String SETTINGS_COLUMN11 = "created_by_id";
-    public final static String SETTINGS_COLUMN12 = "updated_by_id";
-    public final static String SETTINGS_COLUMN13 = "created_at";
-    protected final static String CREATE_SETTINGS_TABLE = "CREATE TABLE " + SETTINGS_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY, " + SETTINGS_COLUMN1 + " TEXT, " + SETTINGS_COLUMN2 + " TEXT, " + SETTINGS_COLUMN3 + " TEXT, " + SETTINGS_COLUMN4 + " TEXT, " + SETTINGS_COLUMN5 + " TEXT, " + SETTINGS_COLUMN6 + " TEXT, " + SETTINGS_COLUMN7 + " TEXT, " + SETTINGS_COLUMN8 + " TEXT, " + SETTINGS_COLUMN9 + " TEXT, " + SETTINGS_COLUMN10 + " TEXT, " + SETTINGS_COLUMN11 + " TEXT, " + SETTINGS_COLUMN12 + " TEXT, " + SETTINGS_COLUMN13 + " TEXT ) ";
-    protected final static String DROP_SETTINGS_TABLE = "DROP TABLE IF EXISTS " + SETTINGS_TABLE_NAME + " ";
+    //=======================| ProfilesModel |=======================
+    public final static String PROFILES_TABLE_NAME = "profiles_table";
+    public final static String PROFILES_COLUMN1 = "company_name";
+    public final static String PROFILES_COLUMN2 = "company_email";
+    public final static String PROFILES_COLUMN3 = "company_phone_number";
+    public final static String PROFILES_COLUMN4 = "company_address";
+    public final static String PROFILES_COLUMN5 = "logo_name";
+    public final static String PROFILES_COLUMN6 = "logo_path";
+    public final static String PROFILES_COLUMN7 = "logo_data";
+    public final static String PROFILES_COLUMN8 = "time_zone";
+    public final static String PROFILES_COLUMN9 = "country";
+    public final static String PROFILES_COLUMN10 = "date_format";
+    public final static String PROFILES_COLUMN11 = "currency_format";
+    public final static String PROFILES_COLUMN12 = "created_by_id";
+    public final static String PROFILES_COLUMN13 = "updated_by_id";
+    public final static String PROFILES_COLUMN14 = "created_at";
+    //protected final static String CREATE_PROFILES_TABLE = "CREATE TABLE " + PROFILES_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY, " + PROFILES_COLUMN1 + " TEXT, " + PROFILES_COLUMN2 + " TEXT, " + PROFILES_COLUMN3 + " TEXT, " + PROFILES_COLUMN4 + " TEXT, " + PROFILES_COLUMN5 + " TEXT, " + PROFILES_COLUMN6 + " TEXT, " + PROFILES_COLUMN7 + " TEXT, " + PROFILES_COLUMN8 + " TEXT, " + PROFILES_COLUMN9 + " TEXT, " + PROFILES_COLUMN10 + " TEXT, " + PROFILES_COLUMN11 + " TEXT, " + PROFILES_COLUMN12 + " TEXT, " + PROFILES_COLUMN13 + " TEXT, " + PROFILES_COLUMN14 + " TEXT ) ";
+    protected final static String CREATE_PROFILES_TABLE = "CREATE TABLE " + PROFILES_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY, " + PROFILES_COLUMN1 + " TEXT, " + PROFILES_COLUMN2 + " TEXT, " + PROFILES_COLUMN3 + " TEXT, " + PROFILES_COLUMN4 + " TEXT, " + PROFILES_COLUMN5 + " TEXT, " + PROFILES_COLUMN6 + " TEXT, " + PROFILES_COLUMN12 + " TEXT, " + PROFILES_COLUMN13 + " TEXT, " + PROFILES_COLUMN14 + " TEXT ) ";
+    protected final static String DROP_PROFILES_TABLE = "DROP TABLE IF EXISTS " + PROFILES_TABLE_NAME + " ";
+    public final static String SELECT_PROFILES_TABLE = "SELECT * FROM " + PROFILES_TABLE_NAME;
 
 }

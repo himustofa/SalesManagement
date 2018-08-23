@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="15dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profiles.ProfilesActivity">
+
+    <ImageView
+        android:id="@+id/company_logo"
+        android:layout_margin="10dp"
+        android:background="@drawable/image_border"
+        android:src="@drawable/mk_logo"
+        android:layout_gravity="left"
+        android:layout_width="140dp"
+        android:layout_height="140dp" />
+    <Button
+        android:id="@+id/company_logo_upload_button"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Load Logo"
+        android:textColor="@color/blue_color"
+        android:background="@color/light_blue_color"
+        android:layout_gravity="left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/company_name"
+        android:hint="Company Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/company_email"
+        android:hint="Company E-mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/company_phone_number"
+        android:hint="Company Phone Number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/company_address"
+        android:hint="Company Address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/company_save_button"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Save"
+        android:textColor="@color/blue_color"
+        android:background="@color/light_blue_color"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

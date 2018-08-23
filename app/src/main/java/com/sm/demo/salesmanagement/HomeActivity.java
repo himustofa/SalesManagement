@@ -12,6 +12,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.sm.demo.salesmanagement.administrator.AdministratorActivity;
+import com.sm.demo.salesmanagement.customers.CustomersActivity;
+import com.sm.demo.salesmanagement.products.ProductsActivity;
+import com.sm.demo.salesmanagement.profiles.ProfilesActivity;
+import com.sm.demo.salesmanagement.purchases.PurchasesActivity;
+import com.sm.demo.salesmanagement.sales.SalesActivity;
+import com.sm.demo.salesmanagement.settings.SettingsActivity;
+import com.sm.demo.salesmanagement.suppliers.SuppliersActivity;
+
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawerLayout;
@@ -63,8 +72,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(HomeActivity.this, SuppliersActivity.class);
             startActivity(intent);
         }
-        if(menuItem.getItemId()==R.id.settings_id){
-            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+        if(menuItem.getItemId()==R.id.profiles_id){
+            Intent intent = new Intent(HomeActivity.this, ProfilesActivity.class);
             startActivity(intent);
         }
         if(menuItem.getItemId()==R.id.administrator_id){

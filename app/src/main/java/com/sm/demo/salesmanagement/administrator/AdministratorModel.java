@@ -13,6 +13,7 @@ public class AdministratorModel {
     private String password;
     private String userRole;
     private String photoName;
+    private String photoPath;
     private byte[] photoData;
     private String createdById;
     private String updatedById;
