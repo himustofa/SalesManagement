@@ -12,7 +12,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -60,7 +59,8 @@
             android:name=".administrator.AdministratorActivity"
             android:label="@string/administrator_title"
             android:parentActivityName=".HomeActivity" />
-        <activity android:name=".profiles.ProfilesActivity"></activity>
+        <activity android:name=".profiles.ProfilesActivity" />
+        <activity android:name=".login.LoginActivity"></activity>
     </application>
 
 </manifest>

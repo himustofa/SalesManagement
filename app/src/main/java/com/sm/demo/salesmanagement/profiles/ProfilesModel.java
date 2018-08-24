@@ -20,7 +20,7 @@ public class ProfilesModel {
     private String updatedById;
     private Timestamp createdAt;
 
-    /*public ProfilesModel(int companyId, String companyName, String companyEmail, String companyPhoneNumber, String companyAddress, String companyLogoName, String companyLogoPath, String createdById, String updatedById, Timestamp createdAt) {
+    public ProfilesModel(int companyId, String companyName, String companyEmail, String companyPhoneNumber, String companyAddress, String companyLogoName, String companyLogoPath) {
         this.companyId = companyId;
         this.companyName = companyName;
         this.companyEmail = companyEmail;
@@ -28,22 +28,7 @@ public class ProfilesModel {
         this.companyAddress = companyAddress;
         this.companyLogoName = companyLogoName;
         this.companyLogoPath = companyLogoPath;
-        this.createdById = createdById;
-        this.updatedById = updatedById;
-        this.createdAt = createdAt;
     }
-
-    public ProfilesModel(String companyName, String companyEmail, String companyPhoneNumber, String companyAddress, String companyLogoName, String companyLogoPath, String createdById, String updatedById, Timestamp createdAt) {
-        this.companyName = companyName;
-        this.companyEmail = companyEmail;
-        this.companyPhoneNumber = companyPhoneNumber;
-        this.companyAddress = companyAddress;
-        this.companyLogoName = companyLogoName;
-        this.companyLogoPath = companyLogoPath;
-        this.createdById = createdById;
-        this.updatedById = updatedById;
-        this.createdAt = createdAt;
-    }*/
 
     public ProfilesModel(String companyName, String companyEmail, String companyPhoneNumber, String companyAddress, String companyLogoName, String companyLogoPath) {
         this.companyName = companyName;

@@ -10,13 +10,14 @@
 
     <ImageView
         android:id="@+id/company_logo"
+        android:clickable="true"
         android:layout_margin="10dp"
         android:background="@drawable/image_border"
         android:src="@drawable/mk_logo"
         android:layout_gravity="left"
         android:layout_width="140dp"
         android:layout_height="140dp" />
-    <Button
+    <!--<Button
         android:id="@+id/company_logo_upload_button"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
@@ -27,7 +28,7 @@
         android:background="@color/light_blue_color"
         android:layout_gravity="left"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />-->
 
     <EditText
         android:id="@+id/company_name"
@@ -58,7 +59,14 @@
         android:textColor="@color/blue_color"
         android:background="@color/light_blue_color"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <ListView
+        android:id="@+id/profiles_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
 
 </LinearLayout>

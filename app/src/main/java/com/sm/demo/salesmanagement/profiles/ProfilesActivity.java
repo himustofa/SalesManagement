@@ -1,92 +1,181 @@
 package com.sm.demo.salesmanagement.profiles;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sm.demo.salesmanagement.R;
 import com.sm.demo.salesmanagement.database.SQLiteDatabaseHelper;
+import com.sm.demo.salesmanagement.login.LoginActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class ProfilesActivity extends AppCompatActivity {
 
-    ImageView companyLogo;
-    Button loadButton, saveButton;
-    EditText companyName, companyEmail, companyPhoneNumber, companyAddress;
+    //private PopupWindow window;
+    //private ListView listView;
 
-    ProfilesService service;
+    private ImageView companyLogo;
+    private Button loadButton, saveButton;
+    private EditText companyName, companyEmail, companyPhoneNumber, companyAddress;
+
+    private ProfilesService service;
 
     private static final int RESULT_LOAD_IMAGE = 1;
-    OutputStream output;
-    String imagePath;
-    String imageName;
+    private OutputStream output;
+    private String imagePath;
+    private String imageName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profiles);
 
-        companyLogo = (ImageView) findViewById(R.id.company_logo);
-        loadButton = (Button) findViewById(R.id.company_logo_upload_button);
-        saveButton = (Button) findViewById(R.id.company_save_button);
-        companyName = (EditText) findViewById(R.id.company_name);
-        companyEmail = (EditText) findViewById(R.id.company_email);
-        companyPhoneNumber = (EditText) findViewById(R.id.company_phone_number);
-        companyAddress = (EditText) findViewById(R.id.company_address);
+        this.service = new ProfilesService(this);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addData();
-            }
-        });
+        this.companyLogo = (ImageView) findViewById(R.id.company_logo);
+        //this.loadButton = (Button) findViewById(R.id.company_logo_upload_button);
+        this.saveButton = (Button) findViewById(R.id.company_save_button);
+        this.companyName = (EditText) findViewById(R.id.company_name);
+        this.companyEmail = (EditText) findViewById(R.id.company_email);
+        this.companyPhoneNumber = (EditText) findViewById(R.id.company_phone_number);
+        this.companyAddress = (EditText) findViewById(R.id.company_address);
+        //this.listView = (ListView) findViewById(R.id.profiles_listView);
+
+        this.saveButton.setOnClickListener(this.addEvent);
 
         //Load image from gallery
-        loadButton.setOnClickListener(new View.OnClickListener() {
+        companyLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
             }
         });
+
     }
 
-    private void addData() {
-        if(!companyName.getText().toString().trim().isEmpty() && !companyEmail.getText().toString().trim().isEmpty() && !companyPhoneNumber.getText().toString().trim().isEmpty()){
-            ProfilesModel model = new ProfilesModel(companyName.getText().toString(),companyEmail.getText().toString(),companyPhoneNumber.getText().toString(),companyAddress.getText().toString(),imageName,new File(getFilesDir() + "/CompanyLogo/").getAbsolutePath());
-            long data = service.addData(model);
-            //Log.e("Insert2 : ", String.valueOf(model));
-            if (data > 0){
-                //Logo save
-                Bitmap bitmap = ((BitmapDrawable)companyLogo.getDrawable()).getBitmap();
-                imagePath = saveToInternalStorage(bitmap);
-                if(imagePath != null){
-                    Toast.makeText(getApplicationContext(), "Logo saved successfully", Toast.LENGTH_SHORT).show();
-                }
-                Toast.makeText(getApplicationContext(),"Saved successfully", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getApplicationContext(),"Something went wrong!", Toast.LENGTH_SHORT).show();
+    //====================================================| Option Menu |====================================================
+
+    //Display option menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.profiles_option_menu, menu);
+        return true;
+    }
+
+    //To click option menu item
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.display_profiles_id) {
+            customAlertDialog();
+        }
+        return true;
+    }
+
+    //====================================================| Display Data using AlertDialog |====================================================
+
+    //Add data into database using popup window or modal
+    public void customAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfilesActivity.this).setTitle("All Companies");
+
+        final ArrayList<String> list = new ArrayList<String>();
+        for(ProfilesModel obj : this.service.getAllData()){ //Getting data from database
+            list.add(String.valueOf(obj.getCompanyId())+ " - " + String.valueOf(obj.getCompanyName()));
+        }
+        final CharSequence[] items = list.toArray(new CharSequence[list.size()]);
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, final int i) {
+                new AlertDialog.Builder(ProfilesActivity.this).setTitle("Are your sure?").setMessage("Do you want to delete it?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String arr[] = String.valueOf(items[i]).split(" - ");
+                        long data = ProfilesActivity.this.service.deleteDataById(arr[0]); //Deleting data from database
+                        if (data > 0){
+                            Toast.makeText(getApplicationContext(),  "Deleted successfully"+String.valueOf(items[i]), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                }).show();
             }
-        } else {
-            Toast.makeText(getApplicationContext(),"Please insert values in name, email & number", Toast.LENGTH_SHORT).show();
+        });
+        builder.show();
+    }
+
+    //====================================================| Select, Insert, Update, Delete |====================================================
+
+    //Adding data into database
+    private final View.OnClickListener addEvent = new View.OnClickListener() {
+        @Override
+        public void onClick(final View view) {
+            if(!companyName.getText().toString().trim().isEmpty() && !companyEmail.getText().toString().trim().isEmpty() && !companyPhoneNumber.getText().toString().trim().isEmpty()){
+                ProfilesModel model = new ProfilesModel(companyName.getText().toString(),companyEmail.getText().toString(),companyPhoneNumber.getText().toString(),companyAddress.getText().toString(),imageName,new File(getFilesDir() + "/CompanyLogo/").getAbsolutePath());
+                long data = ProfilesActivity.this.service.addData(model);
+                if (data > 0){
+                    //Logo save
+                    Bitmap bitmap = ((BitmapDrawable)companyLogo.getDrawable()).getBitmap();
+                    imagePath = saveToInternalStorage(bitmap);
+                    if(imagePath != null){
+                        Toast.makeText(getApplicationContext(), "Logo saved successfully", Toast.LENGTH_SHORT).show();
+                    }
+                    Toast.makeText(getApplicationContext(),"Saved successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(),"Do not saved unsuccessfully", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(),"Please insert values in name, email & number", Toast.LENGTH_LONG).show();
+            }
+        }
+    };
+
+    //Getting all data from database
+    private void getAllData() {
+        final ArrayList<ProfilesModel> arrayList = this.service.getAllData();
+        for(ProfilesModel obj : arrayList){
+            Log.d("Logo ====== : ", String.valueOf(obj.getCompanyLogoName()));
         }
     }
+
+    //====================================================| For Image |====================================================
 
     //Image set in ImageView using onActivityResult
     @Override
@@ -116,5 +205,14 @@ public class ProfilesActivity extends AppCompatActivity {
         return directory.getAbsolutePath();
     }
 
+    //====================================================| For Database Starting and Closing |====================================================
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 }

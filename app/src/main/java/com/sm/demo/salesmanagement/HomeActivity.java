@@ -14,11 +14,11 @@ import android.widget.Toast;
 
 import com.sm.demo.salesmanagement.administrator.AdministratorActivity;
 import com.sm.demo.salesmanagement.customers.CustomersActivity;
+import com.sm.demo.salesmanagement.login.LoginActivity;
 import com.sm.demo.salesmanagement.products.ProductsActivity;
 import com.sm.demo.salesmanagement.profiles.ProfilesActivity;
 import com.sm.demo.salesmanagement.purchases.PurchasesActivity;
 import com.sm.demo.salesmanagement.sales.SalesActivity;
-import com.sm.demo.salesmanagement.settings.SettingsActivity;
 import com.sm.demo.salesmanagement.suppliers.SuppliersActivity;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
