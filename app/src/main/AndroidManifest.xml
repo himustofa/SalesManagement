@@ -56,11 +56,19 @@
             android:label="@string/settings_title"
             android:parentActivityName=".HomeActivity" />
         <activity
-            android:name=".administrator.AdministratorActivity"
-            android:label="@string/administrator_title"
+            android:name=".users.UsersActivity"
+            android:label="@string/users_title"
             android:parentActivityName=".HomeActivity" />
-        <activity android:name=".profiles.ProfilesActivity" />
-        <activity android:name=".login.LoginActivity"></activity>
+        <activity
+            android:name=".profiles.ProfilesActivity"
+            android:label="@string/profiles_title"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName=".HomeActivity"/>
+        <activity
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".login.LoginActivity">
+        </activity>
     </application>
 
 </manifest>

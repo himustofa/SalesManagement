@@ -33,8 +33,12 @@
                 android:title="Profiles"
                 android:icon="@drawable/ic_account_box_black_24dp" />
             <item
-                android:id="@+id/administrator_id"
+                android:id="@+id/users_id"
                 android:title="User"
+                android:icon="@drawable/ic_people_black_24dp" />
+            <item
+                android:id="@+id/login_id"
+                android:title="Login"
                 android:icon="@drawable/ic_people_black_24dp" />
             <item
                 android:id="@+id/about_id"

@@ -1,77 +1,91 @@
 package com.sm.demo.salesmanagement.login;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sm.demo.salesmanagement.HomeActivity;
 import com.sm.demo.salesmanagement.R;
-
-import java.util.List;
+import com.sm.demo.salesmanagement.users.UsersActivity;
+import com.sm.demo.salesmanagement.users.UsersModel;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public static final String APP_TAG = "MVC_APP_TAG";
-    private ListView listView;
+    public static final String TAG = "LoginActivity";
     private Button button;
     private EditText userName, passWord;
-    private MyService service;
+    private ImageView imageView;
+    private TextView textView;
+    private LoginService loginService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        this.service = new MyService(this);
+        this.loginService = new LoginService(LoginActivity.this);
 
-        this.userName = (EditText) this.findViewById(R.id.user_name);
-        this.passWord = (EditText) this.findViewById(R.id.pass_word);
-        this.button = (Button) this.findViewById(R.id.save_button);
-        this.listView = (ListView) this.findViewById(R.id.list_view_id);
 
-        this.button.setOnClickListener(this.addEvent);
-        this.getAllData();
-    }
+        this.textView = (TextView)findViewById(R.id.for_registration);
+        this.imageView = (ImageView) this.findViewById(R.id.login_photo);
+        this.userName = (EditText) this.findViewById(R.id.login_username);
+        this.passWord = (EditText) this.findViewById(R.id.login_password);
+        this.button = (Button) this.findViewById(R.id.login_button);
 
-    //Getting all data from database
-    private void getAllData() {
-        final List<String> list = this.service.getTasks();
-        Log.d(LoginActivity.APP_TAG, String.format("%d found list ", list.size()));
-        this.listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list.toArray(new String[]{})));
-        this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            //Deleting data by item click
+        passWord.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id) {
-                Log.d(LoginActivity.APP_TAG, String.format("task id: %d and position: %d", id, position));
-                final TextView v = (TextView) view;
-                LoginActivity.this.service.deleteTask(v.getText().toString());
-                LoginActivity.this.getAllData();
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            @Override
+            public void afterTextChanged(Editable s) {
+                UsersModel data = loginService.loginByUserPass(userName.getText().toString(), passWord.getText().toString());
+                if (data != null) {
+                    try {
+                        Log.d(TAG, data.getUsername()+"/"+data.getPassword());
+                        imageView.setImageBitmap(BitmapFactory.decodeFile(data.getPhotoPath()+"/"+data.getPhotoName() ));
+                        if(data.getUsername().equals("admin")){
+                            imageView.setImageResource(getResources().getIdentifier("admin", "drawable", "com.sm.demo.salesmanagement"));
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                            Toast.makeText(getApplicationContext(), "Login successfully", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
-    }
 
-    //Adding data into database
-    private final View.OnClickListener addEvent = new View.OnClickListener() {
-        @Override
-        public void onClick(final View view) {
-            MyModel model = new MyModel(LoginActivity.this.userName.getText().toString(), LoginActivity.this.passWord.getText().toString());
-            long data = LoginActivity.this.service.addTask(model);
-            if(data > 0){
-                Toast.makeText(LoginActivity.this, "Saved successfully", Toast.LENGTH_SHORT).show();
-                LoginActivity.this.getAllData();
-            } else {
-                Toast.makeText(LoginActivity.this, "Do not saved unsuccessfully", Toast.LENGTH_LONG).show();
+        textView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View arg0, MotionEvent arg1) {
+                ProgressDialog progressBar = ProgressDialog.show(LoginActivity.this, "Title", "Be patient!");
+                progressBar.setCancelable(true);
+                Intent i = new Intent(getApplicationContext(), UsersActivity.class);
+                startActivity(i);
+                return false;
             }
-        }
-    };
+        });
+
+    }
 
     @Override
     protected void onStart() {
@@ -82,4 +96,5 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
     }
+
 }

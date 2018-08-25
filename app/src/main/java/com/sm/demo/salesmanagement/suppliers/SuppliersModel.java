@@ -52,6 +52,18 @@ public class SuppliersModel {
         this.createdAt = createdAt;
     }
 
+    public SuppliersModel(String supplierName, String supplierCompanyName, String supplierContactPerson, String supplierPhoneNumber, String supplierAddress, String supplierBankName, String supplierBankAccount, String supplierEmail, String supplierWebsite) {
+        this.supplierName = supplierName;
+        this.supplierCompanyName = supplierCompanyName;
+        this.supplierContactPerson = supplierContactPerson;
+        this.supplierPhoneNumber = supplierPhoneNumber;
+        this.supplierAddress = supplierAddress;
+        this.supplierBankName = supplierBankName;
+        this.supplierBankAccount = supplierBankAccount;
+        this.supplierEmail = supplierEmail;
+        this.supplierWebsite = supplierWebsite;
+    }
+
     public String getSupplierId() {
         return supplierId;
     }

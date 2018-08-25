@@ -3,15 +3,12 @@ package com.sm.demo.salesmanagement.profiles;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 import com.sm.demo.salesmanagement.database.ConstantKey;
 import com.sm.demo.salesmanagement.database.SQLiteDAO;
-import com.sm.demo.salesmanagement.database.SQLiteDatabaseHelper;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProfilesService {
 

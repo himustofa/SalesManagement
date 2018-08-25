@@ -11,7 +11,8 @@
     <string name="products_title">Products</string>
     <string name="suppliers_title">Suppliers</string>
     <string name="settings_title">Settings</string>
-    <string name="administrator_title">Administrator</string>
+    <string name="profiles_title">Profiles</string>
+    <string name="users_title">Users</string>
     <string name="developed_by">Developed by Kamal and Sagor</string>
 
 </resources>

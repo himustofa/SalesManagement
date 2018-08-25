@@ -12,9 +12,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.sm.demo.salesmanagement.administrator.AdministratorActivity;
-import com.sm.demo.salesmanagement.customers.CustomersActivity;
 import com.sm.demo.salesmanagement.login.LoginActivity;
+import com.sm.demo.salesmanagement.users.UsersActivity;
+import com.sm.demo.salesmanagement.customers.CustomersActivity;
 import com.sm.demo.salesmanagement.products.ProductsActivity;
 import com.sm.demo.salesmanagement.profiles.ProfilesActivity;
 import com.sm.demo.salesmanagement.purchases.PurchasesActivity;
@@ -76,8 +76,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(HomeActivity.this, ProfilesActivity.class);
             startActivity(intent);
         }
-        if(menuItem.getItemId()==R.id.administrator_id){
-            Intent intent = new Intent(HomeActivity.this, AdministratorActivity.class);
+        if(menuItem.getItemId()==R.id.users_id){
+            Intent intent = new Intent(HomeActivity.this, UsersActivity.class);
+            startActivity(intent);
+        }
+        if(menuItem.getItemId()==R.id.login_id){
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
             startActivity(intent);
         }
         if(menuItem.getItemId()==R.id.about_id){

@@ -92,23 +92,24 @@ public class ConstantKey {
     protected final static String CREATE_SALES_TABLE = "CREATE TABLE " + SALES_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + SALES_COLUMN1 + " TEXT, " + SALES_COLUMN2 + " TEXT, " + SALES_COLUMN3 + " INTEGER, " + SALES_COLUMN4 + " INTEGER, " + SALES_COLUMN5 + " TEXT, " + SALES_COLUMN6 + " TEXT, " + SALES_COLUMN7 + " TEXT, " + SALES_COLUMN8 + " REAL, " + SALES_COLUMN9 + " REAL, " + SALES_COLUMN10 + " REAL, " + SALES_COLUMN11 + " REAL, " + SALES_COLUMN12 + " REAL, " + SALES_COLUMN13 + " TEXT, " + SALES_COLUMN14 + " TEXT, " + SALES_COLUMN15 + " TEXT, " + SALES_COLUMN16 + " TEXT ) ";
     protected final static String DROP_SALES_TABLE = "DROP TABLE IF EXISTS " + SALES_TABLE_NAME + " ";
 
-    //=======================| AdministratorModel/UserModel |=======================
-    protected final static String ADMINISTRATOR_TABLE_NAME = "administrator_table";
-    public final static String ADMINISTRATOR_COLUMN1 = "full_name";
-    public final static String ADMINISTRATOR_COLUMN2 = "designation";
-    public final static String ADMINISTRATOR_COLUMN3 = "email";
-    public final static String ADMINISTRATOR_COLUMN4 = "phone_number";
-    public final static String ADMINISTRATOR_COLUMN5 = "address";
-    public final static String ADMINISTRATOR_COLUMN6 = "username";
-    public final static String ADMINISTRATOR_COLUMN7 = "password";
-    public final static String ADMINISTRATOR_COLUMN8 = "user_role";
-    public final static String ADMINISTRATOR_COLUMN9 = "photo_name";
-    public final static String ADMINISTRATOR_COLUMN10 = "photo_data";
-    public final static String ADMINISTRATOR_COLUMN11 = "created_by_id";
-    public final static String ADMINISTRATOR_COLUMN12 = "updated_by_id";
-    public final static String ADMINISTRATOR_COLUMN13 = "created_at";
-    protected final static String CREATE_ADMINISTRATOR_TABLE = "CREATE TABLE " + ADMINISTRATOR_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ADMINISTRATOR_COLUMN1 + " TEXT, " + ADMINISTRATOR_COLUMN2 + " TEXT, " + ADMINISTRATOR_COLUMN3 + " TEXT, " + ADMINISTRATOR_COLUMN4 + " TEXT, " + ADMINISTRATOR_COLUMN5 + " TEXT, " + ADMINISTRATOR_COLUMN6 + " TEXT, " + ADMINISTRATOR_COLUMN7 + " TEXT, " + ADMINISTRATOR_COLUMN8 + " TEXT, " + ADMINISTRATOR_COLUMN9 + " TEXT, " + ADMINISTRATOR_COLUMN10 + " TEXT, " + ADMINISTRATOR_COLUMN11 + " TEXT, " + ADMINISTRATOR_COLUMN12 + " TEXT, " + ADMINISTRATOR_COLUMN13 + " TEXT ) ";
-    protected final static String DROP_ADMINISTRATOR_TABLE = "DROP TABLE IF EXISTS " + ADMINISTRATOR_TABLE_NAME + " ";
+    //=======================| UsersModel/UserModel |=======================
+    public final static String USERS_TABLE_NAME = "users_table";
+    public final static String USERS_COLUMN1 = "full_name";
+    public final static String USERS_COLUMN2 = "designation";
+    public final static String USERS_COLUMN3 = "email";
+    public final static String USERS_COLUMN4 = "phone_number";
+    public final static String USERS_COLUMN5 = "address";
+    public final static String USERS_COLUMN6 = "username";
+    public final static String USERS_COLUMN7 = "password";
+    public final static String USERS_COLUMN8 = "user_role";
+    public final static String USERS_COLUMN9 = "photo_name";
+    public final static String USERS_COLUMN10 = "photo_path";
+    public final static String USERS_COLUMN11 = "created_by_id";
+    public final static String USERS_COLUMN12 = "updated_by_id";
+    public final static String USERS_COLUMN13 = "created_at";
+    protected final static String CREATE_USERS_TABLE = "CREATE TABLE " + USERS_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USERS_COLUMN1 + " TEXT, " + USERS_COLUMN2 + " TEXT, " + USERS_COLUMN3 + " TEXT, " + USERS_COLUMN4 + " TEXT, " + USERS_COLUMN5 + " TEXT, " + USERS_COLUMN6 + " TEXT, " + USERS_COLUMN7 + " TEXT, " + USERS_COLUMN8 + " TEXT, " + USERS_COLUMN9 + " TEXT, " + USERS_COLUMN10 + " TEXT, " + USERS_COLUMN11 + " TEXT, " + USERS_COLUMN12 + " TEXT, " + USERS_COLUMN13 + " TEXT ) ";
+    protected final static String DROP_USERS_TABLE = "DROP TABLE IF EXISTS " + USERS_TABLE_NAME + " ";
+    public final static String SELECT_USERS_TABLE = "SELECT * FROM " + USERS_TABLE_NAME;
 
     //=======================| ProfilesModel |=======================
     public final static String PROFILES_TABLE_NAME = "profiles_table";
@@ -133,12 +134,12 @@ public class ConstantKey {
 
 
     //=======================| LoginModel |=======================
-    public final static String TABLE_NAME = "MY_TABLE";
-    public final static String COLUMN1 = "ID";
-    public final static String COLUMN2 = "USER_NAME";
-    public final static String COLUMN3 = "PASS_WORD";
-    public final static String CREATE_TABLE_QUERY = "CREATE TABLE "+TABLE_NAME+" ("+COLUMN1+" INTEGER PRIMARY KEY AUTOINCREMENT, "+COLUMN2+" TEXT NOT NULL, "+COLUMN3+" TEXT NOT NULL);";
-    public final static String DROP_TABLE = "DROP TABLE IF EXISTS "+TABLE_NAME;
-    public final static String SELECT_TABLE = "SELECT * FROM " + TABLE_NAME;
-
+    public final static String LOGIN_TABLE_NAME = "login_table";
+    public final static String LOGIN_COLUMN1 = "username";
+    public final static String LOGIN_COLUMN2 = "password";
+    public final static String LOGIN_COLUMN3 = "login_time";
+    protected final static String CREATE_LOGIN_TABLE = "CREATE TABLE " + LOGIN_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + LOGIN_COLUMN1 + " TEXT, " + LOGIN_COLUMN2 + " TEXT, " + LOGIN_COLUMN3 + " TEXT ) ";
+    protected final static String DROP_LOGIN_TABLE = "DROP TABLE IF EXISTS " + LOGIN_TABLE_NAME + " ";
+    public final static String SELECT_LOGIN_TABLE = "SELECT * FROM " + LOGIN_TABLE_NAME;
+    public final static String INSERT_ADMIN_DATA = "INSERT INTO users_table (full_name,designation,email,phone_number,address,username,password,photo_name,photo_path,created_by_id, created_at) VALUES ('Admin', 'Programmer', 'mustofa2008@gmail.com', '+8801914141707', 'Dhaka Cantonment', 'admin', 'admin', 'admin', 'com.sm.demo.salesmanagement', 'created by kamal', '2018-08-26 00:05:30.729');";
 }

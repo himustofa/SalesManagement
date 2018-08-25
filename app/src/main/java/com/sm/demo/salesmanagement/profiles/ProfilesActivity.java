@@ -1,6 +1,5 @@
 package com.sm.demo.salesmanagement.profiles;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,45 +10,28 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sm.demo.salesmanagement.R;
-import com.sm.demo.salesmanagement.database.SQLiteDatabaseHelper;
-import com.sm.demo.salesmanagement.login.LoginActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class ProfilesActivity extends AppCompatActivity {
 
-    //private PopupWindow window;
-    //private ListView listView;
-
     private ImageView companyLogo;
-    private Button loadButton, saveButton;
+    private Button saveButton;
     private EditText companyName, companyEmail, companyPhoneNumber, companyAddress;
 
     private ProfilesService service;
@@ -67,13 +49,11 @@ public class ProfilesActivity extends AppCompatActivity {
         this.service = new ProfilesService(this);
 
         this.companyLogo = (ImageView) findViewById(R.id.company_logo);
-        //this.loadButton = (Button) findViewById(R.id.company_logo_upload_button);
         this.saveButton = (Button) findViewById(R.id.company_save_button);
         this.companyName = (EditText) findViewById(R.id.company_name);
         this.companyEmail = (EditText) findViewById(R.id.company_email);
         this.companyPhoneNumber = (EditText) findViewById(R.id.company_phone_number);
         this.companyAddress = (EditText) findViewById(R.id.company_address);
-        //this.listView = (ListView) findViewById(R.id.profiles_listView);
 
         this.saveButton.setOnClickListener(this.addEvent);
 
@@ -85,6 +65,8 @@ public class ProfilesActivity extends AppCompatActivity {
                 startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
             }
         });
+
+        //getAllData();
 
     }
 
@@ -107,6 +89,10 @@ public class ProfilesActivity extends AppCompatActivity {
         return true;
     }
 
+    //Back press disabled
+    /*@Override
+    public void onBackPressed() {}*/
+
     //====================================================| Display Data using AlertDialog |====================================================
 
     //Add data into database using popup window or modal
@@ -114,8 +100,14 @@ public class ProfilesActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfilesActivity.this).setTitle("All Companies");
 
         final ArrayList<String> list = new ArrayList<String>();
-        for(ProfilesModel obj : this.service.getAllData()){ //Getting data from database
-            list.add(String.valueOf(obj.getCompanyId())+ " - " + String.valueOf(obj.getCompanyName()));
+        ArrayList<ProfilesModel> arrayList;
+        try {
+            arrayList = this.service.getAllData(); //Getting data from database
+            for(ProfilesModel obj : arrayList){
+                list.add(String.valueOf(obj.getCompanyId())+ " - " + String.valueOf(obj.getCompanyName())+ " - " + String.valueOf(obj.getCompanyLogoName()));
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
         }
         final CharSequence[] items = list.toArray(new CharSequence[list.size()]);
         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -127,6 +119,7 @@ public class ProfilesActivity extends AppCompatActivity {
                         String arr[] = String.valueOf(items[i]).split(" - ");
                         long data = ProfilesActivity.this.service.deleteDataById(arr[0]); //Deleting data from database
                         if (data > 0){
+                            new File(new File(getFilesDir() + "/CompanyLogo/").getAbsolutePath(), arr[2]).delete(); //delete image from directory
                             Toast.makeText(getApplicationContext(),  "Deleted successfully"+String.valueOf(items[i]), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -157,6 +150,7 @@ public class ProfilesActivity extends AppCompatActivity {
                     if(imagePath != null){
                         Toast.makeText(getApplicationContext(), "Logo saved successfully", Toast.LENGTH_SHORT).show();
                     }
+                    clearFields();
                     Toast.makeText(getApplicationContext(),"Saved successfully", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(),"Do not saved unsuccessfully", Toast.LENGTH_LONG).show();
@@ -172,6 +166,7 @@ public class ProfilesActivity extends AppCompatActivity {
         final ArrayList<ProfilesModel> arrayList = this.service.getAllData();
         for(ProfilesModel obj : arrayList){
             Log.d("Logo ====== : ", String.valueOf(obj.getCompanyLogoName()));
+            Log.d("Path ====== : ", String.valueOf(obj.getCompanyLogoPath()));
         }
     }
 
@@ -203,6 +198,14 @@ public class ProfilesActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return directory.getAbsolutePath();
+    }
+
+    public void clearFields() {
+        companyName.getText().clear();
+        companyEmail.getText().clear();
+        companyPhoneNumber.getText().clear();
+        companyAddress.getText().clear();
+        companyLogo.setImageResource(0);
     }
 
     //====================================================| For Database Starting and Closing |====================================================

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/supplier_alert_dialog_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/supplier_name"
+            android:hint="Supplier Name"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/supplier_company_name"
+            android:hint="Supplier's Company Name"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/supplier_contact_person"
+            android:hint="Supplier's Contact Person"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/supplier_phone_number"
+            android:hint="Supplier's Phone Number"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/supplier_address"
+            android:hint="Supplier's Address"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/supplier_bank_name"
+            android:hint="Supplier's Bank Name"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/supplier_bank_account"
+            android:hint="Supplier's Bank Account"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/supplier_email"
+            android:hint="Supplier's Email"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/supplier_website"
+            android:hint="Supplier's Website"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/supplier_save_button"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Save"
+            android:textColor="@color/white_color"
+            android:background="@color/dark_grey_color"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>
