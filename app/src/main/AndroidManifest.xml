@@ -62,13 +62,12 @@
         <activity
             android:name=".profiles.ProfilesActivity"
             android:label="@string/profiles_title"
-            android:windowSoftInputMode="stateHidden"
-            android:parentActivityName=".HomeActivity"/>
+            android:parentActivityName=".HomeActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity
-            android:windowSoftInputMode="stateHidden"
+            android:name=".login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:name=".login.LoginActivity">
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
     </application>
 
 </manifest>

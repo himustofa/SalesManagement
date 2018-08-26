@@ -9,18 +9,41 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/navigation_id"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@color/white_color"
-        app:menu="@menu/home_nav_menu_layout"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/home_nav_header">
+    <!--Charts: Pie Chart and Bar Chart-->
+    <LinearLayout
+        android:weightSum="100"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    </android.support.design.widget.NavigationView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:orientation="vertical"
+            android:padding="15dp">
 
-    <!--<LinearLayout
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pie_chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/bar_chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--Social Media Icons-->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom|center"
@@ -28,6 +51,7 @@
         android:paddingBottom="15dp">
 
         <TextView
+            android:id="@+id/facebook_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/social_media_font"
@@ -36,6 +60,7 @@
             android:textSize="50sp" />
 
         <TextView
+            android:id="@+id/twitter_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/social_media_font"
@@ -44,6 +69,7 @@
             android:textSize="50sp" />
 
         <TextView
+            android:id="@+id/youtube_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/social_media_font"
@@ -51,6 +77,20 @@
             android:textColor="@color/dark_grey_color"
             android:textSize="50sp" />
 
-    </LinearLayout>-->
+    </LinearLayout>
+
+    <!--NavigationView Bar in left side-->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_id"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/white_color"
+        android:layout_gravity="start"
+        app:itemTextColor="@color/dark_grey_color"
+        app:itemIconTint="@color/dark_grey_color"
+        app:menu="@menu/home_nav_menu_layout"
+        app:headerLayout="@layout/home_nav_header">
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

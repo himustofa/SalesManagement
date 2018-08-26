@@ -37,8 +37,8 @@
                 android:title="User"
                 android:icon="@drawable/ic_people_black_24dp" />
             <item
-                android:id="@+id/login_id"
-                android:title="Login"
+                android:id="@+id/char_id"
+                android:title="Chart"
                 android:icon="@drawable/ic_people_black_24dp" />
             <item
                 android:id="@+id/about_id"
