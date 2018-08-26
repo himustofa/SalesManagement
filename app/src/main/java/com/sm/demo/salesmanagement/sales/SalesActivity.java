@@ -45,4 +45,9 @@ public class SalesActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Back press disabled
+    @Override
+    public void onBackPressed() {
+    }
 }

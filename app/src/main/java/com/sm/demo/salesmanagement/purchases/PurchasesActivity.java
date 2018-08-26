@@ -45,4 +45,9 @@ public class PurchasesActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Back press disabled
+    @Override
+    public void onBackPressed() {
+    }
 }

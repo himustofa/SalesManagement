@@ -44,4 +44,9 @@ public class ProductsActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Back press disabled
+    @Override
+    public void onBackPressed() {
+    }
 }

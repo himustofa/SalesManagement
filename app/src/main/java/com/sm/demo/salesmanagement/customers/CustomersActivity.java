@@ -44,4 +44,9 @@ public class CustomersActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Back press disabled
+    @Override
+    public void onBackPressed() {
+    }
 }

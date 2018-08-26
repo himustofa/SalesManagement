@@ -89,6 +89,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         barChart();
     }
 
+    //Back press disabled
+    @Override
+    public void onBackPressed() {
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(toggle.onOptionsItemSelected(item)){
