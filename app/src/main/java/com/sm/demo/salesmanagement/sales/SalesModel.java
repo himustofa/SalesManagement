@@ -20,9 +20,9 @@ public class SalesModel {
     private String salesDescription;
     private String createdById;
     private String updatedById;
-    private Timestamp createdAt;
+    private String createdAt;
 
-    public SalesModel(String salesId, String productName, String productId, int productQuantity, int purchaseProductQuantity, String customerName, String customerId, String salesDate, double salesDiscount, double salesVat, double salesAmount, double salesPayment, double salesBalance, String salesDescription, String createdById, String updatedById, Timestamp createdAt) {
+    public SalesModel(String salesId, String productName, String productId, int productQuantity, int purchaseProductQuantity, String customerName, String customerId, String salesDate, double salesDiscount, double salesVat, double salesAmount, double salesPayment, double salesBalance, String salesDescription, String createdById, String updatedById, String createdAt) {
         this.salesId = salesId;
         this.productName = productName;
         this.productId = productId;
@@ -42,13 +42,23 @@ public class SalesModel {
         this.createdAt = createdAt;
     }
 
-    public SalesModel(String productName, int purchaseProductQuantity, String customerName, String salesDate, double salesDiscount, double salesAmount) {
+    public SalesModel(String productName, String productId, int productQuantity, int purchaseProductQuantity, String customerName, String customerId, String salesDate, double salesDiscount, double salesVat, double salesAmount, double salesPayment, double salesBalance, String salesDescription, String createdById, String updatedById, String createdAt) {
         this.productName = productName;
+        this.productId = productId;
+        this.productQuantity = productQuantity;
         this.purchaseProductQuantity = purchaseProductQuantity;
         this.customerName = customerName;
+        this.customerId = customerId;
         this.salesDate = salesDate;
         this.salesDiscount = salesDiscount;
+        this.salesVat = salesVat;
         this.salesAmount = salesAmount;
+        this.salesPayment = salesPayment;
+        this.salesBalance = salesBalance;
+        this.salesDescription = salesDescription;
+        this.createdById = createdById;
+        this.updatedById = updatedById;
+        this.createdAt = createdAt;
     }
 
     public String getSalesId() {
@@ -179,11 +189,11 @@ public class SalesModel {
         this.updatedById = updatedById;
     }
 
-    public Timestamp getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 }

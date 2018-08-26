@@ -82,9 +82,9 @@ public class UsersService {
         values.put(ConstantKey.USERS_COLUMN8, "No role");
         values.put(ConstantKey.USERS_COLUMN9, model.getPhotoName());
         values.put(ConstantKey.USERS_COLUMN10, model.getPhotoPath());
-        values.put(ConstantKey.PROFILES_COLUMN11, "");
-        values.put(ConstantKey.PROFILES_COLUMN12, "updated by kamal");
-        values.put(ConstantKey.PROFILES_COLUMN13, String.valueOf(new Timestamp(System.currentTimeMillis())));
+        values.put(ConstantKey.USERS_COLUMN11, "");
+        values.put(ConstantKey.USERS_COLUMN12, "updated by kamal");
+        values.put(ConstantKey.USERS_COLUMN13, String.valueOf(new Timestamp(System.currentTimeMillis())));
 
         Log.i("updateDataById======= ", id+" "+String.valueOf(model.getFullName()+model.getDesignation()+model.getEmail()+model.getPhoneNumber()+model.getAddress()+model.getUsername()+model.getPassword()+model.getPhotoName()+model.getPhotoPath()) );
 

@@ -24,7 +24,7 @@ public class ConstantKey {
     public final static String SELECT_SUPPLIERS_TABLE = "SELECT * FROM " + SUPPLIERS_TABLE_NAME;
 
     //=======================| ProductsModel |=======================
-    protected final static String PRODUCTS_TABLE_NAME = "products_table";
+    public final static String PRODUCTS_TABLE_NAME = "products_table";
     public final static String PRODUCTS_COLUMN1 = "product_name";
     public final static String PRODUCTS_COLUMN2 = "product_code";
     public final static String PRODUCTS_COLUMN3 = "product_quantity";
@@ -36,9 +36,10 @@ public class ConstantKey {
     public final static String PRODUCTS_COLUMN9 = "created_at";
     protected final static String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + PRODUCTS_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCTS_COLUMN1 + " TEXT, " + PRODUCTS_COLUMN2 + " TEXT, " + PRODUCTS_COLUMN3 + " INTEGER, " + PRODUCTS_COLUMN4 + " REAL, " + PRODUCTS_COLUMN5 + " TEXT, " + PRODUCTS_COLUMN6 + " TEXT, " + PRODUCTS_COLUMN7 + " TEXT, " + PRODUCTS_COLUMN8 + " TEXT, " + PRODUCTS_COLUMN9 + " TEXT ) ";
     protected final static String DROP_PRODUCTS_TABLE = "DROP TABLE IF EXISTS " + PRODUCTS_TABLE_NAME + " ";
+    public final static String SELECT_PRODUCTS_TABLE = "SELECT * FROM " + PRODUCTS_TABLE_NAME;
 
     //=======================| PurchasesModel |=======================
-    protected final static String PURCHASES_TABLE_NAME = "purchases_table";
+    public final static String PURCHASES_TABLE_NAME = "purchases_table";
     public final static String PURCHASES_COLUMN1 = "product_name";
     public final static String PURCHASES_COLUMN2 = "product_id";
     public final static String PURCHASES_COLUMN3 = "supplier_name";
@@ -55,9 +56,10 @@ public class ConstantKey {
     public final static String PURCHASES_COLUMN14 = "created_at";
     protected final static String CREATE_PURCHASES_TABLE = "CREATE TABLE " + PURCHASES_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PURCHASES_COLUMN1 + " TEXT, " + PURCHASES_COLUMN2 + " TEXT, " + PURCHASES_COLUMN3 + " TEXT, " + PURCHASES_COLUMN4 + " TEXT, " + PURCHASES_COLUMN5 + " INTEGER, " + PURCHASES_COLUMN6 + " REAL, " + PURCHASES_COLUMN7 + " TEXT, " + PURCHASES_COLUMN8 + " REAL, " + PURCHASES_COLUMN9 + " REAL, " + PURCHASES_COLUMN10 + " REAL, " + PURCHASES_COLUMN11 + " TEXT, " + PURCHASES_COLUMN12 + " TEXT, " + PURCHASES_COLUMN13 + " TEXT, " + PURCHASES_COLUMN14 + " TEXT ) ";
     protected final static String DROP_PURCHASES_TABLE = "DROP TABLE IF EXISTS " + PURCHASES_TABLE_NAME + " ";
+    public final static String SELECT_PURCHASES_TABLE = "SELECT * FROM " + PURCHASES_TABLE_NAME;
 
     //=======================| CustomersModel |=======================
-    protected final static String CUSTOMERS_TABLE_NAME = "customers_table";
+    public final static String CUSTOMERS_TABLE_NAME = "customers_table";
     public final static String CUSTOMERS_COLUMN1 = "customer_name";
     public final static String CUSTOMERS_COLUMN2 = "customer_phone_number";
     public final static String CUSTOMERS_COLUMN3 = "customer_email";
@@ -70,13 +72,14 @@ public class ConstantKey {
     public final static String CUSTOMERS_COLUMN10 = "created_at";
     protected final static String CREATE_CUSTOMERS_TABLE = "CREATE TABLE " + CUSTOMERS_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + CUSTOMERS_COLUMN1 + " TEXT, " + CUSTOMERS_COLUMN2 + " TEXT, " + CUSTOMERS_COLUMN3 + " TEXT, " + CUSTOMERS_COLUMN4 + " TEXT, " + CUSTOMERS_COLUMN5 + " REAL, " + CUSTOMERS_COLUMN6 + " TEXT, " + CUSTOMERS_COLUMN7 + " TEXT, " + CUSTOMERS_COLUMN8 + " TEXT, " + CUSTOMERS_COLUMN9 + " TEXT, " + CUSTOMERS_COLUMN10 + " TEXT ) ";
     protected final static String DROP_CUSTOMERS_TABLE = "DROP TABLE IF EXISTS " + CUSTOMERS_TABLE_NAME + " ";
+    public final static String SELECT_CUSTOMERS_TABLE = "SELECT * FROM " + CUSTOMERS_TABLE_NAME;
 
     //=======================| SalesModel |=======================
-    protected final static String SALES_TABLE_NAME = "sales_table";
+    public final static String SALES_TABLE_NAME = "sales_table";
     public static final String SALES_COLUMN1 = "product_name";
     public static final String SALES_COLUMN2 = "product_id";
-    public static final String SALES_COLUMN3 = "purchase_product_quantity";
-    public static final String SALES_COLUMN4 = "product_quantity";
+    public static final String SALES_COLUMN3 = "product_quantity";
+    public static final String SALES_COLUMN4 = "purchase_product_quantity";
     public static final String SALES_COLUMN5 = "customer_name";
     public static final String SALES_COLUMN6 = "customer_id";
     public static final String SALES_COLUMN7 = "sales_date";
@@ -91,6 +94,7 @@ public class ConstantKey {
     public static final String SALES_COLUMN16 = "created_at";
     protected final static String CREATE_SALES_TABLE = "CREATE TABLE " + SALES_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + SALES_COLUMN1 + " TEXT, " + SALES_COLUMN2 + " TEXT, " + SALES_COLUMN3 + " INTEGER, " + SALES_COLUMN4 + " INTEGER, " + SALES_COLUMN5 + " TEXT, " + SALES_COLUMN6 + " TEXT, " + SALES_COLUMN7 + " TEXT, " + SALES_COLUMN8 + " REAL, " + SALES_COLUMN9 + " REAL, " + SALES_COLUMN10 + " REAL, " + SALES_COLUMN11 + " REAL, " + SALES_COLUMN12 + " REAL, " + SALES_COLUMN13 + " TEXT, " + SALES_COLUMN14 + " TEXT, " + SALES_COLUMN15 + " TEXT, " + SALES_COLUMN16 + " TEXT ) ";
     protected final static String DROP_SALES_TABLE = "DROP TABLE IF EXISTS " + SALES_TABLE_NAME + " ";
+    public final static String SELECT_SALES_TABLE = "SELECT * FROM " + SALES_TABLE_NAME;
 
     //=======================| UsersModel/UserModel |=======================
     public final static String USERS_TABLE_NAME = "users_table";

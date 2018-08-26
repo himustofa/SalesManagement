@@ -14,9 +14,9 @@ public class CustomersModel {
     private String customerDescription;
     private String createdById;
     private String updatedById;
-    private Timestamp createdAt;
+    private String createdAt;
 
-    public CustomersModel(String customerId, String customerName, String customerPhoneNumber, String customerEmail, String customerContactPerson, double customerDiscount, String customerAddress, String customerDescription, String createdById, String updatedById, Timestamp createdAt) {
+    public CustomersModel(String customerId, String customerName, String customerPhoneNumber, String customerEmail, String customerContactPerson, double customerDiscount, String customerAddress, String customerDescription, String createdById, String updatedById, String createdAt) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerPhoneNumber = customerPhoneNumber;
@@ -30,11 +30,17 @@ public class CustomersModel {
         this.createdAt = createdAt;
     }
 
-    public CustomersModel(String customerName, String customerPhoneNumber, String customerEmail, double customerDiscount) {
+    public CustomersModel(String customerName, String customerPhoneNumber, String customerEmail, String customerContactPerson, double customerDiscount, String customerAddress, String customerDescription, String createdById, String updatedById, String createdAt) {
         this.customerName = customerName;
         this.customerPhoneNumber = customerPhoneNumber;
         this.customerEmail = customerEmail;
+        this.customerContactPerson = customerContactPerson;
         this.customerDiscount = customerDiscount;
+        this.customerAddress = customerAddress;
+        this.customerDescription = customerDescription;
+        this.createdById = createdById;
+        this.updatedById = updatedById;
+        this.createdAt = createdAt;
     }
 
     public String getCustomerId() {
@@ -117,11 +123,11 @@ public class CustomersModel {
         this.updatedById = updatedById;
     }
 
-    public Timestamp getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 }
