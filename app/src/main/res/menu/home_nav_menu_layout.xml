@@ -37,13 +37,13 @@
                 android:title="User"
                 android:icon="@drawable/ic_people_black_24dp" />
             <item
-                android:id="@+id/char_id"
-                android:title="Chart"
-                android:icon="@drawable/ic_people_black_24dp" />
-            <item
                 android:id="@+id/about_id"
                 android:title="About"
                 android:icon="@drawable/ic_info_black_24dp" />
+            <item
+                android:id="@+id/log_out"
+                android:title="Log Out"
+                android:icon="@drawable/ic_exit_to_app_black_24dp" />
         </menu>
     </item>
 

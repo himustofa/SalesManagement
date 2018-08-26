@@ -84,9 +84,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         yt.setText(Html.fromHtml(y));
 
 
-        //================================================PicChart and BarChart
-        pieChart = (PieChart) findViewById(R.id.pie_chart);
-        barChart = (BarChart) findViewById(R.id.bar_chart); //Vertical chart
+        //PicChart and BarChart
         pieChart();
         barChart();
     }
@@ -129,12 +127,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(HomeActivity.this, UsersActivity.class);
             startActivity(intent);
         }
-        if(menuItem.getItemId()==R.id.char_id){
-            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-            startActivity(intent);
-        }
         if(menuItem.getItemId()==R.id.about_id){
             aboutMe();
+        }
+        if(menuItem.getItemId()==R.id.log_out){
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
         return false;
     }
@@ -153,6 +151,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     //=====================================================| Pie Chart
     public void pieChart() {
+        pieChart = (PieChart) findViewById(R.id.pie_chart);
         pieChart.setUsePercentValues(true);
         pieChart.getDescription().setEnabled(false);
         pieChart.setExtraOffsets(5,10,5,5);
@@ -189,6 +188,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     //=====================================================| Bar Chart
     public void barChart() {
+        barChart = (BarChart) findViewById(R.id.bar_chart); //Vertical chart
         barChart.setDrawBarShadow(false);
         barChart.setDrawValueAboveBar(true);
         barChart.setMaxVisibleValueCount(50);
@@ -233,14 +233,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //---------------------------------------------
 
         //Display X-axis name
-        /*String[] months = new String[] {"Jan", "Feb", "Mar", "Apr", "May", "Jun"};
+        String[] months = new String[] {"Jan", "Feb", "Mar", "Apr", "May", "Jun"};
         XAxis ax = barChart.getXAxis();
         ax.setValueFormatter(new HomeActivity.MyXAxisValueFormatter(months));
-        ax.setPosition(XAxis.XAxisPosition.BOTH_SIDED);
-
+        //ax.setPosition(XAxis.XAxisPosition.BOTH_SIDED); //For group bar
         ax.setGranularity(1);
         ax.setCenterAxisLabels(true);
-        ax.setAxisMaximum(1);*/
+        //ax.setAxisMaximum(1);
     }
 
     public class MyXAxisValueFormatter implements IAxisValueFormatter {
