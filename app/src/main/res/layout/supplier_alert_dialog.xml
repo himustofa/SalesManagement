@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/supplier_name"
+            android:id="@+id/suppliers_alert_1"
             android:hint="Supplier Name"
             android:inputType="textPersonName"
             android:layout_marginBottom="10dp"
@@ -19,14 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
-            android:id="@+id/supplier_company_name"
+            android:id="@+id/suppliers_alert_2"
             android:hint="Supplier's Company Name"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
-            android:id="@+id/supplier_contact_person"
+            android:id="@+id/suppliers_alert_3"
             android:hint="Supplier's Contact Person"
             android:inputType="textPersonName"
             android:layout_marginBottom="10dp"
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
-            android:id="@+id/supplier_phone_number"
+            android:id="@+id/suppliers_alert_4"
             android:hint="Supplier's Phone Number"
             android:layout_marginBottom="10dp"
             android:inputType="phone"
@@ -42,28 +42,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
-            android:id="@+id/supplier_address"
+            android:id="@+id/suppliers_alert_5"
             android:hint="Supplier's Address"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
-            android:id="@+id/supplier_bank_name"
+            android:id="@+id/suppliers_alert_6"
             android:hint="Supplier's Bank Name"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
-            android:id="@+id/supplier_bank_account"
+            android:id="@+id/suppliers_alert_7"
             android:hint="Supplier's Bank Account"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
-            android:id="@+id/supplier_email"
+            android:id="@+id/suppliers_alert_8"
             android:hint="Supplier's Email"
             android:inputType="textEmailAddress"
             android:layout_marginBottom="10dp"
@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
-            android:id="@+id/supplier_website"
+            android:id="@+id/suppliers_alert_9"
             android:hint="Supplier's Website"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"

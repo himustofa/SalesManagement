@@ -4,26 +4,29 @@ import android.app.AlertDialog;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.sm.demo.salesmanagement.R;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class SuppliersActivity extends AppCompatActivity {
 
-    //private EditText supplierName, supplierCompanyName, supplierContactPerson, supplierPhoneNumber, supplierAddress, supplierBankName, supplierBankAccount, supplierEmail, supplierWebsite;
+    private EditText E1, E2, E3, E4, E5, E6, E7, E8, E9;
     //private Button supplierSaveButton;
+    private ListView listView;
 
     protected static final String TAG = "SuppliersActivity";
-    private SuppliersModel suppliersModel;
+
     private SuppliersService suppliersService;
+    protected SuppliersAdapter customAdapter;
+    private ArrayList<SuppliersModel> modelArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,6 @@ public class SuppliersActivity extends AppCompatActivity {
 
         this.suppliersService = new SuppliersService(this); //To get from service
 
-        ListView listView = (ListView) findViewById(R.id.suppliers_list_view_id);
 
         FloatingActionButton fab = findViewById(R.id.supplier_add_button);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -42,17 +44,11 @@ public class SuppliersActivity extends AppCompatActivity {
             }
         });
 
-        /*ArrayList<SuppliersModel> arrayList = new ArrayList<>();
-        arrayList.add(new SuppliersModel("Abdul Haque", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
-        arrayList.add(new SuppliersModel("Abdul Karim", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
-        arrayList.add(new SuppliersModel("Abdul Rahman", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
-        arrayList.add(new SuppliersModel("Abdul Rob", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
-        arrayList.add(new SuppliersModel("Abdul Razzak", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
-        arrayList.add(new SuppliersModel("Abdul Aziz", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
-        arrayList.add(new SuppliersModel("Abdul Majid", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
-        arrayList.add(new SuppliersModel("Abdul Latif", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
-        SuppliersAdapter adapter = new SuppliersAdapter(this,arrayList);
-        listView.setAdapter(adapter);*/
+        //Get all data from database and set in list view
+        listView = listView = (ListView) findViewById(R.id.suppliers_list_view_id);
+        modelArrayList = (ArrayList) suppliersService.getAllData();
+        SuppliersAdapter customAdapter = new SuppliersAdapter(SuppliersActivity.this, modelArrayList, suppliersService);
+        listView.setAdapter(customAdapter);
 
     }
 
@@ -61,7 +57,6 @@ public class SuppliersActivity extends AppCompatActivity {
     public void onBackPressed() {
     }
 
-    //====================================================| Custom AlertDialog |====================================================
 
     //Add data into database using alert dialog
     protected void customAlertDialog() {
@@ -75,22 +70,39 @@ public class SuppliersActivity extends AppCompatActivity {
 
         final AlertDialog dialog = builder.show(); // Because only AlertDialog has cancel method.
 
-        EditText supplierName = (EditText) inflateForm.findViewById(R.id.supplier_name);
-        EditText supplierCompanyName = (EditText) inflateForm.findViewById(R.id.supplier_company_name);
-        EditText supplierContactPerson = (EditText) inflateForm.findViewById(R.id.supplier_contact_person);
-        EditText supplierPhoneNumber = (EditText) inflateForm.findViewById(R.id.supplier_phone_number);
-        EditText supplierAddress = (EditText) inflateForm.findViewById(R.id.supplier_address);
-        EditText supplierBankName = (EditText) inflateForm.findViewById(R.id.supplier_bank_name);
-        EditText supplierBankAccount = (EditText) inflateForm.findViewById(R.id.supplier_bank_account);
-        EditText supplierEmail = (EditText) inflateForm.findViewById(R.id.supplier_email);
-        EditText supplierWebsite = (EditText) inflateForm.findViewById(R.id.supplier_website);
+        this.E1 = (EditText) inflateForm.findViewById(R.id.suppliers_alert_1);
+        this.E2 = (EditText) inflateForm.findViewById(R.id.suppliers_alert_2);
+        this.E3 = (EditText) inflateForm.findViewById(R.id.suppliers_alert_3);
+        this.E4 = (EditText) inflateForm.findViewById(R.id.suppliers_alert_4);
+        this.E5 = (EditText) inflateForm.findViewById(R.id.suppliers_alert_5);
+        this.E6 = (EditText) inflateForm.findViewById(R.id.suppliers_alert_6);
+        this.E7 = (EditText) inflateForm.findViewById(R.id.suppliers_alert_7);
+        this.E8 = (EditText) inflateForm.findViewById(R.id.suppliers_alert_8);
+        this.E9 = (EditText) inflateForm.findViewById(R.id.suppliers_alert_9);
 
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.supplier_save_button);
         supplierSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    //addData(userPhoto, fullName, designation, email, phoneNumber, address, username, password, confirmPassword); //Adding data into database
+                    addData(E1,
+                            E2,
+                            E3,
+                            E4,
+                            E5,
+                            E6,
+                            E7,
+                            E8,
+                            E9); //Adding data into database
+
+                    //Displaying data from database and sets listView
+                    if(customAdapter==null) {
+                        customAdapter = customAdapter = new SuppliersAdapter(SuppliersActivity.this, modelArrayList, suppliersService);
+                        listView.setAdapter(customAdapter);
+                    }
+                    customAdapter.suppliersArrayList = (ArrayList) suppliersService.getAllData();
+                    ((BaseAdapter)listView.getAdapter()).notifyDataSetChanged(); //Refresh listView
+
                     dialog.cancel(); // Close Alert Dialog.
                 } catch(Exception ex) {
                     ex.printStackTrace();
@@ -98,6 +110,35 @@ public class SuppliersActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    //Adding data into database
+    protected void addData(EditText e1, EditText e2, EditText e3, EditText e4, EditText e5, EditText e6, EditText e7, EditText e8, EditText e9) {
+        if(!e1.getText().toString().trim().isEmpty() && !e4.getText().toString().trim().isEmpty()){
+
+            SuppliersModel model = new SuppliersModel(
+                    e1.getText().toString(),
+                    e2.getText().toString(),
+                    e3.getText().toString(),
+                    e4.getText().toString(),
+                    e5.getText().toString(),
+                    e6.getText().toString(),
+                    e7.getText().toString(),
+                    e8.getText().toString(),
+                    e9.getText().toString()
+            );
+
+            long data = SuppliersActivity.this.suppliersService.addData(model);
+            Log.d("Add Data ====== : ", String.valueOf(data));
+            if (data > 0){
+                Toast.makeText(getApplicationContext(),"Saved successfully", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(),"Do not saved unsuccessfully", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(getApplicationContext(),"Please insert the values in your mandatory fields.", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

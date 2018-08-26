@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/suppliers_name"
+                android:id="@+id/suppliers_list_1"
                 android:textColor="@color/dark_grey_color"
                 android:textStyle="bold"
                 android:textSize="15sp"
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/suppliers_company_name"
+                android:id="@+id/suppliers_list_2"
                 android:text="Company"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/supplier_phone_number"
+                android:id="@+id/suppliers_list_3"
                 android:text="Phone"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/supplier_email"
+                android:id="@+id/suppliers_list_4"
                 android:text="E-mail"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/supplier_address"
+                android:id="@+id/suppliers_list_5"
                 android:text="Address"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -109,7 +109,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/supplier_id"
+            android:id="@+id/suppliers_list_6"
             android:text="Supplier Id"
             android:visibility="gone"
             android:textColor="@color/deep_grey_color"

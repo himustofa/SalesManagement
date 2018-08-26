@@ -22,7 +22,7 @@ public class SuppliersService {
     }
 
     //Adding single object
-    protected long addUser(SuppliersModel model){
+    protected long addData(SuppliersModel model){
         final ContentValues values = new ContentValues();
         values.put(ConstantKey.SUPPLIERS_COLUMN1, model.getSupplierName());
         values.put(ConstantKey.SUPPLIERS_COLUMN2, model.getSupplierCompanyName());
@@ -42,7 +42,7 @@ public class SuppliersService {
     }
 
     //Getting all objects
-    protected ArrayList<SuppliersModel> getUsers(){
+    protected ArrayList<SuppliersModel> getAllData(){
         arrayList = new ArrayList<>();
         Cursor cursor = dao.getAllData(ConstantKey.SELECT_SUPPLIERS_TABLE);
         if(cursor.moveToFirst()){
