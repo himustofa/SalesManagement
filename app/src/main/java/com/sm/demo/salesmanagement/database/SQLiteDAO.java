@@ -23,12 +23,22 @@ public final class SQLiteDAO {
                 db.execSQL(ConstantKey.CREATE_USERS_TABLE);
                 db.execSQL(ConstantKey.CREATE_LOGIN_TABLE);
                 db.execSQL(ConstantKey.INSERT_ADMIN_DATA);
+                db.execSQL(ConstantKey.CREATE_SUPPLIERS_TABLE);
+                db.execSQL(ConstantKey.CREATE_PRODUCTS_TABLE);
+                db.execSQL(ConstantKey.CREATE_PURCHASES_TABLE);
+                db.execSQL(ConstantKey.CREATE_CUSTOMERS_TABLE);
+                db.execSQL(ConstantKey.CREATE_SALES_TABLE);
             }
             @Override
             public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
                 db.execSQL(ConstantKey.DROP_PROFILES_TABLE);
                 db.execSQL(ConstantKey.DROP_USERS_TABLE);
                 db.execSQL(ConstantKey.DROP_LOGIN_TABLE);
+                db.execSQL(ConstantKey.DROP_SUPPLIERS_TABLE);
+                db.execSQL(ConstantKey.DROP_PRODUCTS_TABLE);
+                db.execSQL(ConstantKey.DROP_PURCHASES_TABLE);
+                db.execSQL(ConstantKey.DROP_CUSTOMERS_TABLE);
+                db.execSQL(ConstantKey.DROP_SALES_TABLE);
                 this.onCreate(db);
             }
         };

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/user_popup_id"
+    android:id="@+id/product_alert_dialog_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,81 +10,70 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/reg_passport"
-            android:clickable="true"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/image_border"
-            android:src="@drawable/mk_logo"
-            android:layout_gravity="left"
-            android:layout_width="140dp"
-            android:layout_height="140dp" />
+
         <EditText
-            android:id="@+id/reg_full_name"
-            android:hint="Full Name"
+            android:id="@+id/product_name"
+            android:hint="Product Name"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
         <EditText
-            android:id="@+id/reg_designation"
-            android:hint="Designation (User Access Role)"
+            android:id="@+id/product_code"
+            android:hint="Product Code"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
         <EditText
-            android:id="@+id/reg_email"
-            android:hint="E-mail"
+            android:id="@+id/product_quantity"
+            android:hint="Product Quantity"
+            android:inputType="number"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
         <EditText
-            android:id="@+id/reg_phone_number"
-            android:hint="Phone Number"
+            android:id="@+id/product_price"
+            android:hint="Product Price"
+            android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
         <EditText
-            android:id="@+id/reg_address"
-            android:hint="Address"
+            android:id="@+id/product_expire_date"
+            android:hint="Product Expire Date"
+            android:inputType="datetime"
             android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
         <EditText
-            android:id="@+id/reg_username"
-            android:hint="Username"
+            android:id="@+id/product_description"
+            android:gravity="top"
+            android:hint="Description"
             android:layout_marginBottom="10dp"
+            android:inputType="text|textMultiLine"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:id="@+id/reg_password"
-            android:hint="Password"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:id="@+id/reg_confirm_password"
-            android:hint="Confirm Password"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="100dp"/>
+
         <Button
-            android:id="@+id/reg_save_button"
+            android:id="@+id/product_save_button"
             android:layout_marginBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
             android:text="Save"
             android:textColor="@color/white_color"
             android:background="@color/dark_grey_color"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
 </ScrollView>

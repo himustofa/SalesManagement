@@ -143,8 +143,8 @@ public class UsersAdapter extends BaseAdapter {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(parent.getContext());
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("Custom View Alert Dialog");
-        //final View inflateForm = getLayoutInflater().inflate(R.layout.users_alert_dialog, null); // Get custom login form view.
-        View inflateForm = LayoutInflater.from(context).inflate(R.layout.users_alert_dialog, (ViewGroup) context.findViewById(R.id.supplier_alert_dialog_id));
+        //final View inflateForm = getLayoutInflater().inflate(R.layout.user_alert_dialog, null); // Get custom login form view.
+        View inflateForm = LayoutInflater.from(context).inflate(R.layout.user_alert_dialog, (ViewGroup) context.findViewById(R.id.user_alert_dialog_id));
 
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);
@@ -214,9 +214,9 @@ public class UsersAdapter extends BaseAdapter {
 
     //Load image from object array
     public Bitmap loadImageToListView(int position){
-        File file = new File(arrayList.get(position).getPhotoPath(), arrayList.get(position).getPhotoName());
         Bitmap bitmap = null;
         try {
+            File file = new File(arrayList.get(position).getPhotoPath(), arrayList.get(position).getPhotoName());
             bitmap = BitmapFactory.decodeStream(new FileInputStream(file));
         } catch (FileNotFoundException e) {
             e.printStackTrace();

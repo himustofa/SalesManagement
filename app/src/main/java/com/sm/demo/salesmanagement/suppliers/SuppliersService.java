@@ -3,12 +3,10 @@ package com.sm.demo.salesmanagement.suppliers;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.sm.demo.salesmanagement.database.ConstantKey;
 import com.sm.demo.salesmanagement.database.SQLiteDAO;
-import com.sm.demo.salesmanagement.database.SQLiteDatabaseHelper;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -77,7 +75,7 @@ public class SuppliersService {
     }
 
     //Updating single object
-    public long updateDataById(SuppliersModel model, String id) {
+    protected long updateDataById(SuppliersModel model, String id) {
         ContentValues values = new ContentValues();
         values.put(ConstantKey.SUPPLIERS_COLUMN1, model.getSupplierName());
         values.put(ConstantKey.SUPPLIERS_COLUMN2, model.getSupplierCompanyName());

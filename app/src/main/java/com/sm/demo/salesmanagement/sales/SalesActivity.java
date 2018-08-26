@@ -1,7 +1,9 @@
 package com.sm.demo.salesmanagement.sales;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.sm.demo.salesmanagement.R;
@@ -23,7 +25,7 @@ public class SalesActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.sales_list_view_id);
 
-        ArrayList<SalesModel> arrayList = new ArrayList<>();
+        /*ArrayList<SalesModel> arrayList = new ArrayList<>();
         arrayList.add(new SalesModel("Soap", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
         arrayList.add(new SalesModel("Hand Wash", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
         arrayList.add(new SalesModel("Face Wash", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
@@ -33,6 +35,14 @@ public class SalesActivity extends AppCompatActivity {
         arrayList.add(new SalesModel("Mouthwash", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
         arrayList.add(new SalesModel("Shampoo", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
         SalesAdapter adapter = new SalesAdapter(this,arrayList);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
+
+        FloatingActionButton fab = findViewById(R.id.add_sale_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //customAlertDialog();
+            }
+        });
     }
 }

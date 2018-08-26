@@ -1,7 +1,9 @@
 package com.sm.demo.salesmanagement.purchases;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.sm.demo.salesmanagement.R;
@@ -23,7 +25,7 @@ public class PurchasesActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.purchases_list_view_id);
 
-        ArrayList<PurchasesModel> arrayList = new ArrayList<>();
+        /*ArrayList<PurchasesModel> arrayList = new ArrayList<>();
         arrayList.add(new PurchasesModel("Soap","Abdul Rahman",100, String.valueOf(new Timestamp(System.currentTimeMillis())), 5000.0, 3000.0, 2000.0));
         arrayList.add(new PurchasesModel("Hand Wash","Abdul Rahman",100, String.valueOf(new Timestamp(System.currentTimeMillis())), 5000.0, 3000.0, 2000.0));
         arrayList.add(new PurchasesModel("Face Wash","Abdul Rahman",100, String.valueOf(new Timestamp(System.currentTimeMillis())), 5000.0, 3000.0, 2000.0));
@@ -33,6 +35,14 @@ public class PurchasesActivity extends AppCompatActivity {
         arrayList.add(new PurchasesModel("Mouthwash","Abdul Rahman",100, String.valueOf(new Timestamp(System.currentTimeMillis())), 5000.0, 3000.0, 2000.0));
         arrayList.add(new PurchasesModel("Shampoo","Abdul Rahman",100, String.valueOf(new Timestamp(System.currentTimeMillis())), 5000.0, 3000.0, 2000.0));
         PurchasesAdapter adapter = new PurchasesAdapter(this,arrayList);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
+
+        FloatingActionButton fab = findViewById(R.id.add_purchase_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //customAlertDialog();
+            }
+        });
     }
 }

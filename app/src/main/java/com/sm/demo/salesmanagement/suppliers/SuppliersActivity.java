@@ -1,8 +1,7 @@
 package com.sm.demo.salesmanagement.suppliers;
 
 import android.app.AlertDialog;
-import android.content.Intent;
-import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,36 +9,40 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.sm.demo.salesmanagement.R;
-import com.sm.demo.salesmanagement.suppliers.SuppliersAdapter;
-import com.sm.demo.salesmanagement.suppliers.SuppliersModel;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class SuppliersActivity extends AppCompatActivity {
 
-    private ListView listView;
-    private EditText supplierName, supplierCompanyName, supplierContactPerson, supplierPhoneNumber, supplierAddress, supplierBankName, supplierBankAccount, supplierEmail, supplierWebsite;
-    private Button supplierSaveButton;
+    //private EditText supplierName, supplierCompanyName, supplierContactPerson, supplierPhoneNumber, supplierAddress, supplierBankName, supplierBankAccount, supplierEmail, supplierWebsite;
+    //private Button supplierSaveButton;
 
-    public static final String TAG = "SuppliersActivity";
-    SuppliersModel suppliersModel;
-    SuppliersService suppliersService;
+    protected static final String TAG = "SuppliersActivity";
+    private SuppliersModel suppliersModel;
+    private SuppliersService suppliersService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suppliers);
 
+        this.suppliersService = new SuppliersService(this); //To get from service
 
-        listView = (ListView) findViewById(R.id.suppliers_list_view_id);
+        ListView listView = (ListView) findViewById(R.id.suppliers_list_view_id);
 
-        ArrayList<SuppliersModel> arrayList = new ArrayList<>();
+        FloatingActionButton fab = findViewById(R.id.supplier_add_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customAlertDialog();
+            }
+        });
+
+        /*ArrayList<SuppliersModel> arrayList = new ArrayList<>();
         arrayList.add(new SuppliersModel("Abdul Haque", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
         arrayList.add(new SuppliersModel("Abdul Karim", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
         arrayList.add(new SuppliersModel("Abdul Rahman", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
@@ -49,29 +52,14 @@ public class SuppliersActivity extends AppCompatActivity {
         arrayList.add(new SuppliersModel("Abdul Majid", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
         arrayList.add(new SuppliersModel("Abdul Latif", "Haque Enterprise", "+8801910101007", "+8801914141707", "Dhaka Cantonment, Dhaka", "Uttara Bank", "UB-0000001", "abdulhaque@haqueenterprise.com", "www.haque.com", "Nothing to say", "001", "", String.valueOf(new Timestamp(System.currentTimeMillis()))));
         SuppliersAdapter adapter = new SuppliersAdapter(this,arrayList);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
 
-    }
-
-    //Display option menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.suppliers_option_menu, menu);
-        return true;
-    }
-
-    //To click option menu item
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.add_supplier) {
-        }
-        return true;
     }
 
     //Back press disabled
-    /*@Override
+    @Override
     public void onBackPressed() {
-    }*/
+    }
 
     //====================================================| Custom AlertDialog |====================================================
 
@@ -79,25 +67,25 @@ public class SuppliersActivity extends AppCompatActivity {
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SuppliersActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Custom View Alert Dialog");
-        final View inflateForm = getLayoutInflater().inflate(R.layout.users_alert_dialog, null); // Get custom login form view.
+        builder.setTitle("Add Supplier Alert Dialog");
+        final View inflateForm = getLayoutInflater().inflate(R.layout.supplier_alert_dialog, null); // Get custom login form view.
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);
         builder.create();
 
         final AlertDialog dialog = builder.show(); // Because only AlertDialog has cancel method.
 
-        supplierName = (EditText) findViewById(R.id.supplier_name);
-        supplierCompanyName = (EditText) findViewById(R.id.supplier_company_name);
-        supplierContactPerson = (EditText) findViewById(R.id.supplier_contact_person);
-        supplierPhoneNumber = (EditText) findViewById(R.id.supplier_phone_number);
-        supplierAddress = (EditText) findViewById(R.id.supplier_address);
-        supplierBankName = (EditText) findViewById(R.id.supplier_bank_name);
-        supplierBankAccount = (EditText) findViewById(R.id.supplier_bank_account);
-        supplierEmail = (EditText) findViewById(R.id.supplier_email);
-        supplierWebsite = (EditText) findViewById(R.id.supplier_website);
+        EditText supplierName = (EditText) inflateForm.findViewById(R.id.supplier_name);
+        EditText supplierCompanyName = (EditText) inflateForm.findViewById(R.id.supplier_company_name);
+        EditText supplierContactPerson = (EditText) inflateForm.findViewById(R.id.supplier_contact_person);
+        EditText supplierPhoneNumber = (EditText) inflateForm.findViewById(R.id.supplier_phone_number);
+        EditText supplierAddress = (EditText) inflateForm.findViewById(R.id.supplier_address);
+        EditText supplierBankName = (EditText) inflateForm.findViewById(R.id.supplier_bank_name);
+        EditText supplierBankAccount = (EditText) inflateForm.findViewById(R.id.supplier_bank_account);
+        EditText supplierEmail = (EditText) inflateForm.findViewById(R.id.supplier_email);
+        EditText supplierWebsite = (EditText) inflateForm.findViewById(R.id.supplier_website);
 
-        supplierSaveButton = (Button) findViewById(R.id.supplier_save_button);
+        Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.supplier_save_button);
         supplierSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

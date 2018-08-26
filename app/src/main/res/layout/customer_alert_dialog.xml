@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/customer_alert_dialog_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+            android:id="@+id/customer_name"
+            android:hint="Customer Name"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/customer_phone_number"
+            android:hint="Customer Phone Number"
+            android:inputType="phone"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/customer_email"
+            android:hint="Customer Email"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/customer_contact_person"
+            android:hint="Customer Contact Person"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/customer_discount"
+            android:hint="Customer Discount"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/customer_address"
+            android:hint="Customer Address"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/customer_description"
+            android:gravity="top"
+            android:hint="Description"
+            android:layout_marginBottom="10dp"
+            android:inputType="text|textMultiLine"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+        <Button
+            android:id="@+id/customer_save_button"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="Save"
+            android:textColor="@color/white_color"
+            android:background="@color/dark_grey_color"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

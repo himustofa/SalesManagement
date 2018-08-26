@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sale_alert_dialog_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!--add product_id-->
+        <Spinner
+            android:id="@+id/product_name"
+            android:background="@drawable/edit_text_border"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+
+        <!--for display quantity store-->
+        <LinearLayout
+            android:weightSum="100"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="70">
+                <EditText
+                    android:id="@+id/product_quantity"
+                    android:hint="Product Quantity"
+                    android:inputType="number"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edit_text_border"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="30">
+                <EditText
+                    android:id="@+id/purchase_product_quantity"
+                    android:text="250"
+                    android:layout_marginLeft="15dp"
+                    android:editable="false"
+                    android:background="@drawable/edit_text_border"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--add customer_id-->
+        <Spinner
+            android:id="@+id/customer_name"
+            android:hint="Customer Name"
+            android:background="@drawable/edit_text_border"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"/>
+
+        <EditText
+            android:id="@+id/sales_date"
+            android:hint="Sales Date"
+            android:inputType="datetime"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/sales_discount"
+            android:hint="Sales Discount"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/sales_vat"
+            android:hint="Sales Vat"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/sales_amount"
+            android:hint="Total Amount"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/sales_payment"
+            android:hint="Total Payment"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/sales_balance"
+            android:hint="Total Balance"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/sales_description"
+            android:gravity="top"
+            android:hint="Description"
+            android:layout_marginBottom="10dp"
+            android:inputType="text|textMultiLine"
+            android:background="@drawable/edit_text_border"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+        <Button
+            android:id="@+id/sale_save_button"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="Save"
+            android:textColor="@color/white_color"
+            android:background="@color/dark_grey_color"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

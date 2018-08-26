@@ -1,7 +1,9 @@
 package com.sm.demo.salesmanagement.customers;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.sm.demo.salesmanagement.R;
@@ -23,7 +25,7 @@ public class CustomersActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.customers_list_view_id);
 
-        ArrayList<CustomersModel> arrayList = new ArrayList<>();
+        /*ArrayList<CustomersModel> arrayList = new ArrayList<>();
         arrayList.add(new CustomersModel("Mr. Munir","+8801914141707","mustofa2008@gmail.com", 10.0));
         arrayList.add(new CustomersModel("Mr. Mamun","+8801914141707","mustofa2008@gmail.com", 10.0));
         arrayList.add(new CustomersModel("Mr. Mustofa","+8801914141707","mustofa2008@gmail.com", 10.0));
@@ -32,6 +34,14 @@ public class CustomersActivity extends AppCompatActivity {
         arrayList.add(new CustomersModel("Mr. Manik","+8801914141707","mustofa2008@gmail.com", 10.0));
         arrayList.add(new CustomersModel("Mr. Munna","+8801914141707","mustofa2008@gmail.com", 10.0));
         CustomersAdapter adapter = new CustomersAdapter(this,arrayList);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
+
+        FloatingActionButton fab = findViewById(R.id.add_customer_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //customAlertDialog();
+            }
+        });
     }
 }

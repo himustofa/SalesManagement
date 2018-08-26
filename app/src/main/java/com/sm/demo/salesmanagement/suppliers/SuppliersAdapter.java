@@ -18,13 +18,13 @@ public class SuppliersAdapter extends ArrayAdapter<SuppliersModel> {
     private Context context;
     ArrayList<SuppliersModel> suppliers;
 
-    public SuppliersAdapter(@NonNull Context context, ArrayList<SuppliersModel> suppliers) {
+    protected SuppliersAdapter(@NonNull Context context, ArrayList<SuppliersModel> suppliers) {
         super(context, R.layout.suppliers_list_row , suppliers);
         this.context = context;
         this.suppliers = suppliers;
     }
 
-    public static class ViewHolder{
+    protected static class ViewHolder{
         TextView supplierName, supplierCompanyName, supplierPhoneNumber, supplierEmail, supplierAddress;
     }
 

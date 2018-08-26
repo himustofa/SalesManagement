@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,6 +55,14 @@ public class UsersActivity extends AppCompatActivity {
 
         this.usersService = new UsersService(this);
 
+        FloatingActionButton fab = findViewById(R.id.add_user_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customAlertDialog();
+            }
+        });
+
         //Id field disable
         try {
             //TextView userId = (TextView) findViewById(R.id.reg_id);
@@ -72,27 +81,9 @@ public class UsersActivity extends AppCompatActivity {
 
     }
 
-    //====================================================| Option Menu |====================================================
-
-    //Display option menu
+    //====================================================| Back press disabled |====================================================
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.users_option_menu, menu);
-        return true;
-    }
-
-    //To click option menu item
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.add_user) {
-            this.customAlertDialog(); //Custom alertDialog
-        }
-        return true;
-    }
-
-    //Back press disabled
-    /*@Override
-    public void onBackPressed() {}*/
+    public void onBackPressed() {}
 
     //====================================================| Custom AlertDialog |====================================================
 
@@ -101,7 +92,7 @@ public class UsersActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(UsersActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle("Custom View Alert Dialog");
-        final View inflateForm = getLayoutInflater().inflate(R.layout.users_alert_dialog, null); // Get custom login form view.
+        final View inflateForm = getLayoutInflater().inflate(R.layout.user_alert_dialog, null); // Get custom login form view.
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);
         builder.create();

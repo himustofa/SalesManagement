@@ -1,7 +1,9 @@
 package com.sm.demo.salesmanagement.products;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.sm.demo.salesmanagement.R;
@@ -21,7 +23,7 @@ public class ProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
-        listView = (ListView) findViewById(R.id.products_list_view_id);
+        /*listView = (ListView) findViewById(R.id.products_list_view_id);
         ArrayList<ProductsModel> arrayList = new ArrayList<>();
         arrayList.add(new ProductsModel("Soap","SP001",100,50.0,String.valueOf(new Timestamp(System.currentTimeMillis())),"Nothing to say..","001","",String.valueOf(new Timestamp(System.currentTimeMillis()))));
         arrayList.add(new ProductsModel("Hand Wash","SP001",100,50.0,String.valueOf(new Timestamp(System.currentTimeMillis())),"Nothing to say..","001","",String.valueOf(new Timestamp(System.currentTimeMillis()))));
@@ -32,6 +34,14 @@ public class ProductsActivity extends AppCompatActivity {
         arrayList.add(new ProductsModel("Mouthwash","SP001",100,50.0,String.valueOf(new Timestamp(System.currentTimeMillis())),"Nothing to say..","001","",String.valueOf(new Timestamp(System.currentTimeMillis()))));
         arrayList.add(new ProductsModel("Shampoo","SP001",100,50.0,String.valueOf(new Timestamp(System.currentTimeMillis())),"Nothing to say..","001","",String.valueOf(new Timestamp(System.currentTimeMillis()))));
         ProductsAdapter adapter = new ProductsAdapter(this,arrayList);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
+
+        FloatingActionButton fab = findViewById(R.id.add_product_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //customAlertDialog();
+            }
+        });
     }
 }
