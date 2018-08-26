@@ -2,57 +2,116 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/suppliers_list_item_id"
-    android:layout_marginBottom="10dp"
-    android:foreground="?android:attr/selectableItemBackground"
+    android:background="@color/white_color"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:padding="15dp"
-        android:background="@color/white_color"
         android:orientation="vertical"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/suppliers_name"
-            android:text="Supplier Name"
-            android:textColor="@color/dark_grey_color"
-            android:textStyle="bold"
-            android:textSize="15sp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/suppliers_company_name"
-            android:text="Company"
-            android:textColor="@color/deep_grey_color"
-            android:textSize="11sp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Supplier's Name : "
+                android:textColor="@color/dark_grey_color"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/suppliers_name"
+                android:textColor="@color/dark_grey_color"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/supplier_phone_number"
-            android:text="Phone"
-            android:textColor="@color/deep_grey_color"
-            android:textSize="11sp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Company : "
+                android:textColor="@color/dark_grey_color"
+                android:textSize="11sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/suppliers_company_name"
+                android:text="Company"
+                android:textColor="@color/deep_grey_color"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/supplier_email"
-            android:text="E-mail"
-            android:textColor="@color/deep_grey_color"
-            android:textSize="11sp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Phone Number : "
+                android:textColor="@color/dark_grey_color"
+                android:textSize="11sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/supplier_phone_number"
+                android:text="Phone"
+                android:textColor="@color/deep_grey_color"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/supplier_address"
-            android:text="Address"
-            android:textColor="@color/deep_grey_color"
-            android:textSize="11sp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Email : "
+                android:textColor="@color/dark_grey_color"
+                android:textSize="11sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/supplier_email"
+                android:text="E-mail"
+                android:textColor="@color/deep_grey_color"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Address : "
+                android:textColor="@color/dark_grey_color"
+                android:textSize="11sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/supplier_address"
+                android:text="Address"
+                android:textColor="@color/deep_grey_color"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
         <TextView
             android:id="@+id/supplier_id"
             android:text="Supplier Id"
+            android:visibility="gone"
             android:textColor="@color/deep_grey_color"
             android:textSize="11sp"
             android:layout_width="match_parent"

@@ -1,77 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/customers_list_item_id"
     android:background="@color/white_color"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="100">
+    android:layout_height="wrap_content">
+
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="80"
-        android:background="@color/white_color"
+        android:padding="15dp"
         android:orientation="vertical"
-        android:gravity="center"
-        android:padding="15dp">
-        <TextView
-            android:id="@+id/customer_name"
-            android:text="Customer Name"
-            android:textColor="@color/dark_grey_color"
-            android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <View
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/medium_grey_color"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Customer Name : "
+                android:textColor="@color/dark_grey_color"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/customer_name"
+                android:text="Customer Name"
+                android:textColor="@color/dark_grey_color"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="1dp"/>
-        <TextView
-            android:id="@+id/customer_phone_number"
-            android:text="Customer's Phone Number"
-            android:textColor="@color/deep_grey_color"
-            android:textSize="11sp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Customer's Phone Number : "
+                android:textColor="@color/dark_grey_color"
+                android:textSize="11sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/customer_phone_number"
+                android:text="Customer's Phone Number"
+                android:textColor="@color/deep_grey_color"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/customer_email"
-            android:text="Customer's E-mail"
-            android:textColor="@color/deep_grey_color"
-            android:textSize="11sp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Customer's E-mail : "
+                android:textColor="@color/dark_grey_color"
+                android:textSize="11sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/customer_email"
+                android:text="Customer's E-mail"
+                android:textColor="@color/deep_grey_color"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Customer Discount : "
+                android:textColor="@color/dark_grey_color"
+                android:textSize="11sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/customer_discount"
+                android:text="Customer Discount"
+                android:textColor="@color/deep_grey_color"
+                android:textSize="11sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
         <TextView
-            android:id="@+id/customer_discount"
-            android:text="Customer Discount"
+            android:id="@+id/customer_id"
+            android:text="Customer Id"
+            android:visibility="gone"
             android:textColor="@color/deep_grey_color"
             android:textSize="11sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="20"
-        android:gravity="center"
-        android:orientation="vertical">
-        <Button
-            android:layout_margin="5dp"
-            android:text="Edit"
-            android:background="@color/light_green_color"
-            android:textColor="@color/green_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Button
-            android:layout_margin="5dp"
-            android:text="Delete"
-            android:background="@color/light_red_color"
-            android:textColor="@color/red_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-</LinearLayout>
+</android.support.v7.widget.CardView>
