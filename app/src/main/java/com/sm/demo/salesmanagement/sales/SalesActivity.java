@@ -34,17 +34,17 @@ public class SalesActivity extends AppCompatActivity {
     private DatePicker picker;
 
 
-    //private SalesModel model;
-    private SalesService sService;
-    private SalesAdapter sAdapter;
-    private ArrayList<SalesModel> sArrayList;
+    private SalesModel salModel;
+    private SalesService salService;
+    private SalesAdapter salAdapter;
+    private ArrayList<SalesModel> salArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sales);
 
-        this.sService = new SalesService(this); //To get from service
+        this.salService = new SalesService(this); //Important: To get from service
 
         //===============================================| FloatingActionButton Add Button |=========================================
         FloatingActionButton fab = findViewById(R.id.add_sale_button);
@@ -56,12 +56,15 @@ public class SalesActivity extends AppCompatActivity {
         });
 
         //===============================================| Getting All Data in ListView |=========================================
-        //Get all data from database and set in list view
         salesListView = (ListView) findViewById(R.id.sales_list_view_id);
-        sArrayList = (ArrayList) sService.getAllData();
-        //Log.d("SalesActivity, Get", String.valueOf(sArrayList.get(0).getCustomerName()));
-        sAdapter = new SalesAdapter(SalesActivity.this, sArrayList, sService);
-        salesListView.setAdapter(sAdapter);
+        try {
+            salArrayList = (ArrayList) salService.getAllData(); //Get all data from database and set in list view
+            salAdapter = new SalesAdapter(SalesActivity.this, salArrayList, salService);
+            salesListView.setAdapter(salAdapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         //===============================================| SearchView |=========================================
         //Search Bar
@@ -87,15 +90,15 @@ public class SalesActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 int textlength = cs.length();
                 ArrayList<SalesModel> tempArrayList = new ArrayList<SalesModel>();
-                for(SalesModel c: sArrayList){
+                for(SalesModel c: salArrayList){
                     if (textlength <= c.getProductName().length()) {
                         if (c.getProductName().toLowerCase().contains(cs.toString().toLowerCase())) {
                             tempArrayList.add(c);
                         }
                     }
                 }
-                sAdapter = new SalesAdapter(SalesActivity.this, tempArrayList, sService);
-                salesListView.setAdapter(sAdapter);
+                salAdapter = new SalesAdapter(SalesActivity.this, tempArrayList, salService);
+                salesListView.setAdapter(salAdapter);
             }
             @Override
             public void afterTextChanged(Editable s) {}
@@ -131,7 +134,7 @@ public class SalesActivity extends AppCompatActivity {
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SalesActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Add Sale Alert Dialog");
+        builder.setTitle("Add Sale");
         final View inflateForm = getLayoutInflater().inflate(R.layout.sales_alert_dialog, null); // Get custom login form view.
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);
@@ -173,8 +176,8 @@ public class SalesActivity extends AppCompatActivity {
             }
         });*/
 
-        Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.sale_save_button);
-        supplierSaveButton.setOnClickListener(new View.OnClickListener() {
+        Button saveButton = (Button) inflateForm.findViewById(R.id.sale_save_button);
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
@@ -193,11 +196,11 @@ public class SalesActivity extends AppCompatActivity {
                             E9); //Adding data into database
 
                     //Displaying data from database and sets listView
-                    if(sAdapter==null) {
-                        sAdapter = new SalesAdapter(SalesActivity.this, sArrayList, sService);
-                        salesListView.setAdapter(sAdapter);
+                    if(salAdapter==null) {
+                        salAdapter = new SalesAdapter(SalesActivity.this, salArrayList, salService);
+                        salesListView.setAdapter(salAdapter);
                     }
-                    sAdapter.salesArrayList = (ArrayList) sService.getAllData();
+                    salAdapter.salesModelArrayList = (ArrayList) salService.getAllData();
                     ((BaseAdapter)salesListView.getAdapter()).notifyDataSetChanged(); //Refresh listView
 
                     dialog.cancel(); // Close Alert Dialog.
@@ -218,7 +221,7 @@ public class SalesActivity extends AppCompatActivity {
         DatePickerDialog pickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                E3.setText(dayOfMonth+"/"+(month+1)+"/"+year+"/");
+                E3.setText(dayOfMonth+"/"+(month+1)+"/"+year);
             }
         }, curYear, curMonth, curDayOfMonth);
         pickerDialog.show();
@@ -227,7 +230,7 @@ public class SalesActivity extends AppCompatActivity {
 
     //====================================================| Select, Insert, Update, Delete |====================================================
     //Adding data into database
-    protected void addData(
+    private void addData(
             Spinner s1,
             TextView t1,
             EditText e1,
@@ -241,7 +244,6 @@ public class SalesActivity extends AppCompatActivity {
             EditText e7,
             EditText e8,
             EditText e9) {
-
         try {
 
             //Need exception handle because without value do not parse
@@ -259,11 +261,24 @@ public class SalesActivity extends AppCompatActivity {
             double salE8 = Double.parseDouble(e8.getText().toString());
             String salE9 = e9.getText().toString();
 
-            SalesModel model = new SalesModel(salS1,salT1,salE1,salE2,salS2,salT2,salE3,salE4,salE5,salE6,salE7,salE8,salE9);
+            SalesModel model = new SalesModel(
+                    salS1,
+                    salT1,
+                    salE1,
+                    salE2,
+                    salS2,
+                    salT2,
+                    salE3,
+                    salE4,
+                    salE5,
+                    salE6,
+                    salE7,
+                    salE8,
+                    salE9);
 
             if(!e1.getText().toString().trim().isEmpty() && !e3.toString().trim().isEmpty() && !e6.getText().toString().trim().isEmpty()){
 
-                long data = SalesActivity.this.sService.addAdd(model);
+                long data = SalesActivity.this.salService.addAdd(model);
                 Log.d("Add Data ====== : ", String.valueOf(data));
 
                 if (data > 0){
@@ -276,12 +291,11 @@ public class SalesActivity extends AppCompatActivity {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
-        }
 
+        }
     }
 
-    //====================================================| For Activity Starting and Closing |====================================================
+    //====================================================| For Database Starting and Closing |====================================================
     @Override
     protected void onStart() {
         super.onStart();

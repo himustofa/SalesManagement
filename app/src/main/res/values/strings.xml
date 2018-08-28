@@ -13,11 +13,11 @@
     <string name="settings_title">Settings</string>
     <string name="profiles_title">Profiles</string>
     <string name="users_title">Users</string>
-    <string name="developed_by">Developed by Kamal</string>
+    <string name="developed_by">Developed by Kamal and Sagor</string>
 
     <!--Social media-->
-    <string name="facebook"><a href='http://www.facebook.com'>f</a></string>
-    <string name="twitter"><a href='http://www.twitter.com'>t</a></string>
+    <string name="facebook"><a href='http://www.facebook.com/hikamal'>f</a></string>
+    <string name="twitter"><a href='http://www.twitter.com/himustofa'>t</a></string>
     <string name="youtube"><a href='http://www.youtube.com'>f</a></string>
 
     <!--dummy data-->
