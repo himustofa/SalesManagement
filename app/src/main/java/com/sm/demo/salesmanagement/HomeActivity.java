@@ -81,20 +81,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         TextView fb =(TextView)findViewById(R.id.facebook_link);
         fb.setClickable(true);
         fb.setMovementMethod(LinkMovementMethod.getInstance());
-        String f = "<a href='http://www.facebook.com'>f</a>";
-        fb.setText(Html.fromHtml(f));
+        fb.setText(Html.fromHtml(HomeActivity.this.getString(R.string.facebook)));
 
         TextView twitter =(TextView)findViewById(R.id.twitter_link);
         twitter.setClickable(true);
         twitter.setMovementMethod(LinkMovementMethod.getInstance());
-        String t = "<a href='http://www.twitter.com'>t</a>";
-        twitter.setText(Html.fromHtml(t));
+        twitter.setText(Html.fromHtml(HomeActivity.this.getString(R.string.twitter)));
 
         TextView yt =(TextView)findViewById(R.id.youtube_link);
         yt.setClickable(true);
         yt.setMovementMethod(LinkMovementMethod.getInstance());
-        String y = "<a href='http://www.youtube.com'>y</a>";
-        yt.setText(Html.fromHtml(y));
+        yt.setText(Html.fromHtml(HomeActivity.this.getString(R.string.youtube)));
 
         //====================================================| PieChart & BarChart |====================================================
         //PicChart and BarChart
