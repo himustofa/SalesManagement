@@ -3,7 +3,7 @@
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
 
-    <!-- Toolbar Title -->
+    <!-- Toolbar/ActionBar Title -->
     <string name="home_title">Home</string>
     <string name="sales_title">Sales</string>
     <string name="customers_title">Customers</string>
@@ -15,6 +15,7 @@
     <string name="users_title">Users</string>
     <string name="developed_by">Developed by Kamal and Sagor</string>
 
+    <!--dummy data-->
     <string-array name="product_name_array">
         <item>Select Product Name</item>
         <item>Soap</item>

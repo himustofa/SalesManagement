@@ -66,6 +66,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //getActionBar().setDisplayShowTitleEnabled(false);
         //actionbar.hide();
 
+        //====================================================| To Display Navigation Bar Icon and Back |====================================================
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_id);
         toggle = new ActionBarDrawerToggle(HomeActivity.this, drawerLayout, R.string.nav_open, R.string.nav_close);
         drawerLayout.addDrawerListener(toggle);
@@ -75,6 +76,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView = (NavigationView) findViewById(R.id.navigation_id);
         navigationView.setNavigationItemSelectedListener(HomeActivity.this);
 
+        //====================================================| Social Media Icon Hyperlink |====================================================
         //Hyperlink
         TextView fb =(TextView)findViewById(R.id.facebook_link);
         fb.setClickable(true);
@@ -94,7 +96,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         String y = "<a href='http://www.youtube.com'>y</a>";
         yt.setText(Html.fromHtml(y));
 
-
+        //====================================================| PieChart & BarChart |====================================================
         //PicChart and BarChart
         pieChart();
         barChart();
@@ -110,6 +112,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    //====================================================| OptionsMenu and Back press disabled |====================================================
     //Back press disabled
     @Override
     public void onBackPressed() {
@@ -123,6 +126,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
+    //====================================================| Navigation |====================================================
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         if(menuItem.getItemId()==R.id.sales_id){
@@ -170,6 +174,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
+    //====================================================| About |====================================================
     public void aboutMe(){
         new AlertDialog.Builder(HomeActivity.this)
                 .setTitle("About")

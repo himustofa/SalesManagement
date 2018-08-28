@@ -104,11 +104,7 @@ public class LoginActivity extends AppCompatActivity {
 
         }
 
-
-
-
-
-
+        //====================================================| To Registration/User |====================================================
         //Need to registration in text-view then display progress bar
         textView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -123,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    //====================================================| For Activity Starting and Closing |====================================================
     @Override
     protected void onStart() {
         super.onStart();
