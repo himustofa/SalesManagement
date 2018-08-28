@@ -37,6 +37,7 @@ public class UsersAdapter extends BaseAdapter {
         this.service = service;
     }
 
+    //====================================================| ViewHolder |====================================================
     //To scroll smoothly from big data
     public static class ViewHolder {
         TextView userFullName, userDesignation, userUsername, userPhoneNumber, userId;
@@ -59,6 +60,7 @@ public class UsersAdapter extends BaseAdapter {
         return position;
     }
 
+    //====================================================| To view all data in ListView |====================================================
     @Override
     public View getView(int position, View viewRow, final ViewGroup parent) {
         ViewHolder holder;
@@ -92,21 +94,11 @@ public class UsersAdapter extends BaseAdapter {
             e.getStackTrace();
         }
 
-        //Long click to edit
+        //====================================================| Delete item from ListView by Single Clicking |====================================================
         final int positionWindow = position;
         viewRow.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                editListItem(positionWindow, parent);
-                //Toast.makeText(parent.getContext(), "view clicked: " + dataModel.getFullName(), Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-
-        //Single click to delete
-        viewRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
                 //AlertDialog window to delete data and image
                 new AlertDialog.Builder(parent.getContext()).setTitle("Are your sure?").setMessage("Do you want to delete it?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -131,6 +123,17 @@ public class UsersAdapter extends BaseAdapter {
                     }
                 }).show();
                 //Toast.makeText(parent.getContext(), "view clicked: " + dataModel.getFullName(), Toast.LENGTH_SHORT).show();
+
+                return false;
+            }
+        });
+
+        //====================================================| Edit item from ListView by Long Clicking |====================================================
+        viewRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editListItem(positionWindow, parent);
+                //Toast.makeText(parent.getContext(), "view clicked: " + dataModel.getFullName(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -138,6 +141,7 @@ public class UsersAdapter extends BaseAdapter {
     }
 
 
+    //====================================================| Edit data by Custom AlertDialog |====================================================
     //To display popup modal window by clicking edit button
     public void editListItem(final int positionPopup, ViewGroup parent) {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(parent.getContext());
@@ -198,6 +202,7 @@ public class UsersAdapter extends BaseAdapter {
             }
         });
 
+        //====================================================| Load image from gallery |====================================================
         //Load image from gallery
         userPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,6 +217,7 @@ public class UsersAdapter extends BaseAdapter {
         });
     }
 
+    //====================================================| Image path and name load from array |====================================================
     //Load image from object array
     public Bitmap loadImageToListView(int position){
         Bitmap bitmap = null;
