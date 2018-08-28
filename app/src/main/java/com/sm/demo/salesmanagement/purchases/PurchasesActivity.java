@@ -187,7 +187,7 @@ public class PurchasesActivity extends AppCompatActivity {
                 e9.getText().toString());
 
         long data = PurchasesActivity.this.purService.addPurchase(model);
-        Log.d("Add Data ====== : ", String.valueOf(data));
+        Log.d("ddd", String.valueOf(data));
         if (data > 0){
             Toast.makeText(getApplicationContext(),"Saved successfully", Toast.LENGTH_SHORT).show();
         } else {
