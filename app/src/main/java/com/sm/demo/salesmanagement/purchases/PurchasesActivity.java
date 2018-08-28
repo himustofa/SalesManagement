@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -41,6 +43,7 @@ public class PurchasesActivity extends AppCompatActivity {
 
         this.purService = new PurchasesService(this); //To get from service
 
+        //===============================================| Getting All Data in ListView |=========================================
         purListView = (ListView) findViewById(R.id.purchases_list_view_id);
         try {
             purArrayList = (ArrayList) purService.getPurchases();
@@ -50,6 +53,7 @@ public class PurchasesActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //===============================================| FloatingActionButton Add Button |=========================================
         FloatingActionButton fab = findViewById(R.id.add_purchase_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,15 +85,34 @@ public class PurchasesActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
-        //====================================================================================================================
+    }
+
+    //====================================================| OptionsMenu and Back press disabled |====================================================
+    //Display option menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.purchase_option_menu, menu);
+        return true;
+    }
+
+    //To click option menu item
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_purchase_option_menu:
+                customAlertDialog(); //Add method
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     //Back press disabled
     @Override
-    public void onBackPressed() {
-    }
+    public void onBackPressed() {}
 
 
+    //====================================================| Custom AlertDialog |====================================================
     //Add data into database using alert dialog
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(PurchasesActivity.this);
@@ -148,6 +171,7 @@ public class PurchasesActivity extends AppCompatActivity {
         });
     }
 
+    //====================================================| Select, Insert |====================================================
     private void addData(Spinner e1, TextView e1d, Spinner e2, TextView e2d, EditText e3, EditText e4, EditText e5, EditText e6, EditText e7, EditText e8, EditText e9) {
         model = new PurchasesModel(
                 e1.getSelectedItem().toString(),
@@ -169,6 +193,17 @@ public class PurchasesActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(),"Do not saved unsuccessfully", Toast.LENGTH_LONG).show();
         }
+    }
+
+    //====================================================| For Activity Starting and Closing |====================================================
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
 

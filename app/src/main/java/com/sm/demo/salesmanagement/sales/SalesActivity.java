@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -44,6 +46,7 @@ public class SalesActivity extends AppCompatActivity {
 
         this.sService = new SalesService(this); //To get from service
 
+        //===============================================| FloatingActionButton Add Button |=========================================
         FloatingActionButton fab = findViewById(R.id.add_sale_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +55,7 @@ public class SalesActivity extends AppCompatActivity {
             }
         });
 
+        //===============================================| Getting All Data in ListView |=========================================
         //Get all data from database and set in list view
         salesListView = (ListView) findViewById(R.id.sales_list_view_id);
         sArrayList = (ArrayList) sService.getAllData();
@@ -59,6 +63,7 @@ public class SalesActivity extends AppCompatActivity {
         sAdapter = new SalesAdapter(SalesActivity.this, sArrayList, sService);
         salesListView.setAdapter(sAdapter);
 
+        //===============================================| SearchView |=========================================
         //Search Bar
         /*saleSearchView = (SearchView) findViewById(R.id.sale_search);
         saleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -95,14 +100,33 @@ public class SalesActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
-        //====================================================================================================================
+    }
+
+    //====================================================| OptionsMenu and Back press disabled |====================================================
+    //Display option menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.sales_option_menu, menu);
+        return true;
+    }
+
+    //To click option menu item
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_sale_option_menu:
+                customAlertDialog(); //Add method
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     //Back press disabled
     @Override
-    public void onBackPressed() {
-    }
+    public void onBackPressed() {}
 
+    //====================================================| Custom AlertDialog |====================================================
     //Add data into database using alert dialog
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SalesActivity.this);
@@ -201,6 +225,7 @@ public class SalesActivity extends AppCompatActivity {
     }
 
 
+    //====================================================| Select, Insert, Update, Delete |====================================================
     //Adding data into database
     protected void addData(
             Spinner s1,
@@ -254,6 +279,17 @@ public class SalesActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    //====================================================| For Activity Starting and Closing |====================================================
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
 

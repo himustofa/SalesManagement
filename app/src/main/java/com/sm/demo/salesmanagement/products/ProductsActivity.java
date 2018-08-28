@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -38,6 +40,7 @@ public class ProductsActivity extends AppCompatActivity {
 
         this.pServie = new ProductsService(this); //To get from service
 
+        //===============================================| FloatingActionButton Add Button |=========================================
         FloatingActionButton fab = findViewById(R.id.add_product_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +50,7 @@ public class ProductsActivity extends AppCompatActivity {
         });
 
 
+        //===============================================| Getting All Data in ListView |=========================================
         productsListView = (ListView) findViewById(R.id.products_list_view_id);
         try {
             pArrayList = (ArrayList) pServie.getAllProducts();
@@ -55,7 +59,6 @@ public class ProductsActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         //===============================================| Custom adapter search |=========================================
         E7 = (EditText) findViewById(R.id.product_search);
@@ -79,20 +82,33 @@ public class ProductsActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
-        //====================================================================================================================
+    }
 
+    //====================================================| OptionsMenu and Back press disabled |====================================================
+    //Display option menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.products_option_menu, menu);
+        return true;
+    }
 
+    //To click option menu item
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_product_option_menu:
+                customAlertDialog(); //Add method
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     //Back press disabled
     @Override
-    public void onBackPressed() {
-    }
+    public void onBackPressed() {}
 
-
-
-
-
+    //====================================================| Custom AlertDialog |====================================================
     //Add data into database using alert dialog
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ProductsActivity.this);
@@ -144,6 +160,7 @@ public class ProductsActivity extends AppCompatActivity {
 
     }
 
+    //====================================================| Select, Insert |====================================================
     private void addData(EditText e1, EditText e2, EditText e3, EditText e4, EditText e5, EditText e6) {
         model = new ProductsModel(e1.getText().toString(),e2.getText().toString(),Integer.parseInt(e3.getText().toString()),Double.parseDouble(e4.getText().toString()),e5.getText().toString(),e6.getText().toString());
 
@@ -154,6 +171,17 @@ public class ProductsActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(),"Do not saved unsuccessfully", Toast.LENGTH_LONG).show();
         }
+    }
+
+    //====================================================| For Activity Starting and Closing |====================================================
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
 }

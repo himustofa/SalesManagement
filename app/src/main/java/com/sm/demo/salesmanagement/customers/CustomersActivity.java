@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -37,6 +39,7 @@ public class CustomersActivity extends AppCompatActivity {
 
         this.cServie = new CustomersService(this); //To get from service
 
+        //===============================================| FloatingActionButton Add Button |=========================================
         FloatingActionButton fab = findViewById(R.id.add_customer_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +48,7 @@ public class CustomersActivity extends AppCompatActivity {
             }
         });
 
+        //===============================================| Getting All Data in ListView |=========================================
         custListView = (ListView) findViewById(R.id.customers_list_view_id);
         try {
             custArrayList = (ArrayList) cServie.getAllCustomers();
@@ -76,15 +80,34 @@ public class CustomersActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
-        //====================================================================================================================
 
+    }
+
+    //====================================================| OptionsMenu and Back press disabled |====================================================
+    //Display option menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.cutomers_option_menu, menu);
+        return true;
+    }
+
+    //To click option menu item
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_customer_option_menu:
+                customAlertDialog(); //Add method
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     //Back press disabled
     @Override
-    public void onBackPressed() {
-    }
+    public void onBackPressed() {}
 
+    //====================================================| Custom AlertDialog |====================================================
     //Add data into database using alert dialog
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(CustomersActivity.this);
@@ -138,6 +161,7 @@ public class CustomersActivity extends AppCompatActivity {
 
     }
 
+    //====================================================| Select, Insert |====================================================
     private void addData(EditText e1, EditText e2, EditText e3, EditText e4, EditText e5, EditText e6, EditText e7) {
         custModel = new CustomersModel(e1.getText().toString(),e2.getText().toString(),e3.getText().toString(),e4.getText().toString(),Double.parseDouble(e5.getText().toString()),e6.getText().toString(),e7.getText().toString());
 
@@ -148,6 +172,17 @@ public class CustomersActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(),"Do not saved unsuccessfully", Toast.LENGTH_LONG).show();
         }
+    }
+
+    //====================================================| For Activity Starting and Closing |====================================================
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
 

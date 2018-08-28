@@ -57,24 +57,16 @@ public class UsersActivity extends AppCompatActivity {
 
         this.usersService = new UsersService(this);
 
+        //===============================================| FloatingActionButton Add Button |=========================================
         FloatingActionButton fab = findViewById(R.id.add_user_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                customAlertDialog();
+                customAlertDialog();  //Add method
             }
         });
 
-        //Id field disable
-        try {
-            //TextView userId = (TextView) findViewById(R.id.reg_id);
-            //userId.setVisibility(View.GONE);
-            //userId.setVisibility(View.INVISIBLE);
-            //userId.setVisibility(View.VISIBLE);
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
+        //===============================================| Getting All Data in ListView |=========================================
         //Get all data from database and set in list view
         listView = (ListView) findViewById(R.id.users_list_view_id);
         arrayList = (ArrayList) usersService.getUsers();
@@ -103,11 +95,30 @@ public class UsersActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
-        //====================================================================================================================
 
     }
 
-    //====================================================| Back press disabled |====================================================
+    //====================================================| OptionsMenu and Back press disabled |====================================================
+    //Display option menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.users_option_menu, menu);
+        return true;
+    }
+
+    //To click option menu item
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_user_option_menu:
+                customAlertDialog(); //Add method
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    //Back press disabled
     @Override
     public void onBackPressed() {}
 
@@ -117,7 +128,7 @@ public class UsersActivity extends AppCompatActivity {
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UsersActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Custom View Alert Dialog");
+        builder.setTitle("Custom User Alert Dialog");
         final View inflateForm = getLayoutInflater().inflate(R.layout.user_alert_dialog, null); // Get custom login form view.
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);
@@ -241,7 +252,7 @@ public class UsersActivity extends AppCompatActivity {
         return directory.getAbsolutePath();
     }
 
-    //====================================================| For Database Starting and Closing |====================================================
+    //====================================================| For Activity Starting and Closing |====================================================
     @Override
     protected void onStart() {
         super.onStart();

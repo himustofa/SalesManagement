@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -57,6 +58,7 @@ public class ProfilesActivity extends AppCompatActivity {
 
         this.saveButton.setOnClickListener(this.addEvent);
 
+        //====================================================| To Image Gallery Load |====================================================
         //Load image from gallery
         companyLogo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,32 +68,29 @@ public class ProfilesActivity extends AppCompatActivity {
             }
         });
 
-        //getAllData();
-
     }
 
-    //====================================================| Option Menu |====================================================
-
+    //====================================================| OptionsMenu and Back press disabled |====================================================
     //Display option menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.profiles_option_menu, menu);
         return true;
     }
-
     //To click option menu item
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.display_profiles_id) {
-            customAlertDialog();
+        switch (item.getItemId()) {
+            case R.id.display_profiles_id:
+                customAlertDialog();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return true;
     }
-
     //Back press disabled
-    /*@Override
-    public void onBackPressed() {}*/
+    @Override
+    public void onBackPressed() {}
 
     //====================================================| Display Data using AlertDialog |====================================================
 
@@ -208,7 +207,7 @@ public class ProfilesActivity extends AppCompatActivity {
         companyLogo.setImageResource(0);
     }
 
-    //====================================================| For Database Starting and Closing |====================================================
+    //====================================================| For Activity Starting and Closing |====================================================
     @Override
     protected void onStart() {
         super.onStart();

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -38,7 +40,7 @@ public class SuppliersActivity extends AppCompatActivity {
 
         this.suppliersService = new SuppliersService(this); //To get from service
 
-
+        //===============================================| FloatingActionButton Add Button |=========================================
         FloatingActionButton fab = findViewById(R.id.supplier_add_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,12 +49,14 @@ public class SuppliersActivity extends AppCompatActivity {
             }
         });
 
+        //===============================================| Getting All Suppliers in ListView |=========================================
         //Get all data from database and set in list view
         listView = (ListView) findViewById(R.id.suppliers_list_view_id);
         modelArrayList = (ArrayList) suppliersService.getAllData();
         customAdapter = new SuppliersAdapter(SuppliersActivity.this, modelArrayList, suppliersService);
         listView.setAdapter(customAdapter);
 
+        //===============================================| SearchView |=========================================
         //Search Bar
         /*searchView = (SearchView) findViewById(R.id.supplier_search);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -89,16 +93,34 @@ public class SuppliersActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
-        //====================================================================================================================
 
+    }
+
+    //====================================================| OptionsMenu and Back press disabled |====================================================
+    //Display option menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.suppliers_option_menu, menu);
+        return true;
+    }
+
+    //To click option menu item
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_supplier_option_menu:
+                customAlertDialog(); //Add method
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     //Back press disabled
     @Override
-    public void onBackPressed() {
-    }
+    public void onBackPressed() {}
 
-
+    //====================================================| Custom AlertDialog |====================================================
     //Add data into database using alert dialog
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SuppliersActivity.this);
@@ -153,7 +175,7 @@ public class SuppliersActivity extends AppCompatActivity {
 
     }
 
-
+    //====================================================| Insert, Select  |====================================================
     //Adding data into database
     protected void addData(EditText e1, EditText e2, EditText e3, EditText e4, EditText e5, EditText e6, EditText e7, EditText e8, EditText e9) {
         if(!e1.getText().toString().trim().isEmpty() && !e4.getText().toString().trim().isEmpty()){
@@ -180,6 +202,17 @@ public class SuppliersActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(),"Please insert the values in your mandatory fields.", Toast.LENGTH_LONG).show();
         }
+    }
+
+    //====================================================| For Activity Starting and Closing |====================================================
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
 }
