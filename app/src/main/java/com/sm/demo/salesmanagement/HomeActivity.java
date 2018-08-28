@@ -201,7 +201,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         entries.add(new PieEntry(40, "Rajshahi"));
 
         Description d = new Description();
-        d.setText("This is the simple pie charts");
+        //d.setText("This is the simple pie charts");
         d.setTextSize(15);
         pieChart.setDescription(d);
 

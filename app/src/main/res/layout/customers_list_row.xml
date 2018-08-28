@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/customer_name"
+                android:id="@+id/customer_name_cust"
                 android:text="Customer Name"
                 android:textColor="@color/dark_grey_color"
                 android:textStyle="bold"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/customer_phone_number"
+                android:id="@+id/customer_phone_number_cust"
                 android:text="Customer's Phone Number"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/customer_email"
+                android:id="@+id/customer_email_cust"
                 android:text="Customer's E-mail"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/customer_discount"
+                android:id="@+id/customer_discount_cust"
                 android:text="Customer Discount"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -92,7 +92,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/customer_id"
+            android:id="@+id/customer_id_cust"
             android:text="Customer Id"
             android:visibility="gone"
             android:textColor="@color/deep_grey_color"

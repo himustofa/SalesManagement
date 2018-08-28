@@ -22,7 +22,7 @@ public class CustomersService {
     }
 
     //Adding single object
-    protected long addUser(CustomersModel model){
+    protected long addCustomer(CustomersModel model){
         final ContentValues values = new ContentValues();
         values.put(ConstantKey.CUSTOMERS_COLUMN1, model.getCustomerName());
         values.put(ConstantKey.CUSTOMERS_COLUMN2, model.getCustomerPhoneNumber());
@@ -39,7 +39,7 @@ public class CustomersService {
     }
 
     //Getting all objects
-    protected ArrayList<CustomersModel> getUsers(){
+    protected ArrayList<CustomersModel> getAllCustomers(){
         arrayList = new ArrayList<>();
         Cursor cursor = dao.getAllData(ConstantKey.SELECT_CUSTOMERS_TABLE);
         if(cursor.moveToFirst()){
@@ -64,12 +64,12 @@ public class CustomersService {
     }
 
     //Deleting single object
-    protected long deleteDataById(String id) {
+    protected long deleteCustomerById(String id) {
         return dao.deleteDataById(ConstantKey.CUSTOMERS_TABLE_NAME, id);
     }
 
     //Updating single object
-    public long updateDataById(CustomersModel model, String id) {
+    public long updateCustomerById(CustomersModel model, String id) {
         ContentValues values = new ContentValues();
         values.put(ConstantKey.CUSTOMERS_COLUMN1, model.getCustomerName());
         values.put(ConstantKey.CUSTOMERS_COLUMN2, model.getCustomerPhoneNumber());

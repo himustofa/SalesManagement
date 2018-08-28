@@ -43,6 +43,16 @@ public class CustomersModel {
         this.createdAt = createdAt;
     }
 
+    public CustomersModel(String customerName, String customerPhoneNumber, String customerEmail, String customerContactPerson, double customerDiscount, String customerAddress, String customerDescription) {
+        this.customerName = customerName;
+        this.customerPhoneNumber = customerPhoneNumber;
+        this.customerEmail = customerEmail;
+        this.customerContactPerson = customerContactPerson;
+        this.customerDiscount = customerDiscount;
+        this.customerAddress = customerAddress;
+        this.customerDescription = customerDescription;
+    }
+
     public String getCustomerId() {
         return customerId;
     }
