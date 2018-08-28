@@ -61,6 +61,22 @@ public class SalesModel {
         this.createdAt = createdAt;
     }
 
+    public SalesModel(String productName, String productId, int productQuantity, int purchaseProductQuantity, String customerName, String customerId, String salesDate, double salesDiscount, double salesVat, double salesAmount, double salesPayment, double salesBalance, String salesDescription) {
+        this.productName = productName;
+        this.productId = productId;
+        this.productQuantity = productQuantity;
+        this.purchaseProductQuantity = purchaseProductQuantity;
+        this.customerName = customerName;
+        this.customerId = customerId;
+        this.salesDate = salesDate;
+        this.salesDiscount = salesDiscount;
+        this.salesVat = salesVat;
+        this.salesAmount = salesAmount;
+        this.salesPayment = salesPayment;
+        this.salesBalance = salesBalance;
+        this.salesDescription = salesDescription;
+    }
+
     public String getSalesId() {
         return salesId;
     }

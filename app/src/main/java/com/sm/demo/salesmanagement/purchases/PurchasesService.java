@@ -22,7 +22,7 @@ public class PurchasesService {
     }
 
     //Adding single object
-    protected long addUser(PurchasesModel model){
+    protected long addPurchase(PurchasesModel model){
         final ContentValues values = new ContentValues();
         values.put(ConstantKey.PURCHASES_COLUMN1, model.getSupplierName());
         values.put(ConstantKey.PURCHASES_COLUMN2, model.getProductId());
@@ -43,7 +43,7 @@ public class PurchasesService {
     }
 
     //Getting all objects
-    protected ArrayList<PurchasesModel> getUsers(){
+    protected ArrayList<PurchasesModel> getPurchases(){
         arrayList = new ArrayList<>();
         Cursor cursor = dao.getAllData(ConstantKey.SELECT_PURCHASES_TABLE);
         if(cursor.moveToFirst()){
@@ -72,12 +72,12 @@ public class PurchasesService {
     }
 
     //Deleting single object
-    protected long deleteDataById(String id) {
+    protected long deletePurchaseById(String id) {
         return dao.deleteDataById(ConstantKey.PURCHASES_TABLE_NAME, id);
     }
 
     //Updating single object
-    public long updateDataById(PurchasesModel model, String id) {
+    public long updatePurchaseById(PurchasesModel model, String id) {
         ContentValues values = new ContentValues();
         values.put(ConstantKey.PURCHASES_COLUMN1, model.getSupplierName());
         values.put(ConstantKey.PURCHASES_COLUMN2, model.getProductId());

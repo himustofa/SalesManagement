@@ -29,6 +29,7 @@
         android:id="@+id/login_password"
         android:textAlignment="center"
         android:hint="Password"
+        android:inputType="textPassword"
         android:layout_marginBottom="15dp"
         android:background="@drawable/edit_text_border"
         android:layout_width="match_parent"

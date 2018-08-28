@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/product_name"
+                android:id="@+id/sale_list_1"
                 android:textStyle="bold"
                 android:textColor="@color/dark_grey_color"
                 android:textSize="15sp"
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/purchase_product_quantity"
+                android:id="@+id/sale_list_2"
                 android:text="Purchase Product Quantity"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/sales_date"
+                android:id="@+id/sale_list_3"
                 android:text="Sales Date"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/customer_name"
+                android:id="@+id/sale_list_4"
                 android:text="Customer Name"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -100,13 +100,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/sales_discount"
+                android:id="@+id/sale_list_5"
                 android:text="Sales Discount"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
+        </LinearLayout>-->
 
         <LinearLayout
             android:orientation="horizontal"
@@ -119,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/sales_amount"
+                android:id="@+id/sale_list_4"
                 android:text="Sales Amount"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -128,7 +128,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/sale_id"
+            android:id="@+id/sale_list_5"
             android:text="Sales Id"
             android:visibility="gone"
             android:textColor="@color/deep_grey_color"

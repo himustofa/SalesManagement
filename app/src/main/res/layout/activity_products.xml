@@ -8,6 +8,21 @@
     android:layout_height="match_parent"
     tools:context=".products.ProductsActivity">
 
+    <EditText
+        android:id="@+id/product_search"
+        android:fontFamily="@font/font_awesome_font"
+        android:hint=""
+        android:textColor="@color/dark_grey_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--<SearchView
+        android:id="@+id/product_search"
+        android:queryHint="Search your item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </SearchView>-->
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_product_button"
         android:layout_alignParentBottom="true"
@@ -25,6 +40,7 @@
         android:focusableInTouchMode="false"
         android:clickable="false"
         android:focusable="false"
+        android:layout_below="@+id/product_search_by_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>

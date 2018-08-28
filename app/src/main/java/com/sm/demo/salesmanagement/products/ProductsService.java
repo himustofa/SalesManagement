@@ -22,7 +22,7 @@ public class ProductsService {
     }
 
     //Adding single object
-    protected long addUser(ProductsModel model){
+    protected long addProduct(ProductsModel model){
         final ContentValues values = new ContentValues();
         values.put(ConstantKey.PRODUCTS_COLUMN1, model.getProductName());
         values.put(ConstantKey.PRODUCTS_COLUMN2, model.getProductCode());
@@ -38,7 +38,7 @@ public class ProductsService {
     }
 
     //Getting all objects
-    protected ArrayList<ProductsModel> getUsers(){
+    protected ArrayList<ProductsModel> getAllProducts(){
         arrayList = new ArrayList<>();
         Cursor cursor = dao.getAllData(ConstantKey.SELECT_PRODUCTS_TABLE);
         if(cursor.moveToFirst()){
@@ -63,7 +63,7 @@ public class ProductsService {
 
     //Deleting single object
     protected long deleteDataById(String id) {
-        return dao.deleteDataById(ConstantKey.SUPPLIERS_TABLE_NAME, id);
+        return dao.deleteDataById(ConstantKey.PRODUCTS_TABLE_NAME, id);
     }
 
     //Updating single object

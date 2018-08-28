@@ -8,6 +8,13 @@
     android:layout_height="match_parent"
     tools:context=".purchases.PurchasesActivity">
 
+    <SearchView
+        android:id="@+id/purchase_search"
+        android:queryHint="Search your item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </SearchView>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_purchase_button"
         android:layout_alignParentBottom="true"
@@ -25,6 +32,7 @@
         android:focusableInTouchMode="false"
         android:clickable="false"
         android:focusable="false"
+        android:layout_below="@+id/purchase_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>

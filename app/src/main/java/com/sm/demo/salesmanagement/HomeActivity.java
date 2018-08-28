@@ -1,7 +1,9 @@
 package com.sm.demo.salesmanagement;
 
+import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -50,10 +52,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     PieChart pieChart;
     BarChart barChart;
 
+    //For checking SharedPreferences
+    SharedPreferences preferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //ActionBar actionbar = getActionBar();
+        //actionbar.setTitle("My Title");
+        //actionbar.setSubtitle("sub-title");
+        //getActionBar().setDisplayShowTitleEnabled(false);
+        //actionbar.hide();
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_id);
         toggle = new ActionBarDrawerToggle(HomeActivity.this, drawerLayout, R.string.nav_open, R.string.nav_close);
@@ -87,6 +98,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //PicChart and BarChart
         pieChart();
         barChart();
+
+        //===============================================| Getting SharedPreferences |===========================================
+        //for checking have any sharedPreferences
+        preferences = getSharedPreferences("loginInfo", MODE_PRIVATE);
+        boolean isLoggedIn = preferences.getBoolean("isLoggedIn", false);
+        String name = preferences.getString("userName", "Data not found");
+        Toast.makeText(this, "SharedPreferences is "+isLoggedIn +" for "+name, Toast.LENGTH_SHORT).show();
+        //========================================================================================================================
+
+
     }
 
     //Back press disabled
@@ -136,6 +157,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             aboutMe();
         }
         if(menuItem.getItemId()==R.id.log_out){
+
+            //===============================================| Remove SharedPreferences |===========================================
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear(); //Remove from login.xml file
+            editor.commit();
+            //======================================================================================================================
+
             Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
             startActivity(intent);
         }

@@ -22,7 +22,7 @@ public class SalesService {
     }
 
     //Adding single object
-    protected long addUser(SalesModel model){
+    protected long addAdd(SalesModel model){
         final ContentValues values = new ContentValues();
         values.put(ConstantKey.SALES_COLUMN1, model.getProductName());
         values.put(ConstantKey.SALES_COLUMN2, model.getProductId());
@@ -45,7 +45,7 @@ public class SalesService {
     }
 
     //Getting all objects
-    protected ArrayList<SalesModel> getUsers(){
+    protected ArrayList<SalesModel> getAllData(){
         arrayList = new ArrayList<>();
         Cursor cursor = dao.getAllData(ConstantKey.SELECT_SALES_TABLE);
         if(cursor.moveToFirst()){

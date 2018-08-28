@@ -15,4 +15,27 @@
     <string name="users_title">Users</string>
     <string name="developed_by">Developed by Kamal and Sagor</string>
 
+    <string-array name="product_name_array">
+        <item>Select Product Name</item>
+        <item>Soap</item>
+        <item>Detergent</item>
+        <item>Toothpaste</item>
+        <item>Brush</item>
+        <item>Mouthwash</item>
+        <item>Shampoo</item>
+        <item>Face Wash</item>
+        <item>Hand Wash</item>
+    </string-array>
+
+    <string-array name="customer_name_array">
+        <item>Select Customer</item>
+        <item>Mr. Munir</item>
+        <item>Mr. Mamun</item>
+        <item>Mr. Mustofa</item>
+        <item>Mr. Musharoof</item>
+        <item>Mr. Masud</item>
+        <item>Mr. Manik</item>
+        <item>Mr. Munna</item>
+    </string-array>
+
 </resources>

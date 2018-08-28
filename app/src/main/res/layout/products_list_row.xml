@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/product_name"
+                android:id="@+id/product_name_list_row"
                 android:text="Product Name"
                 android:textColor="@color/dark_grey_color"
                 android:textStyle="bold"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/product_code"
+                android:id="@+id/product_code_list_row"
                 android:text="Code"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/product_quantity"
+                android:id="@+id/product_quantity_list_row"
                 android:text="Quantity"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/product_price"
+                android:id="@+id/product_price_list_row"
                 android:text="Price"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -102,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/product_expire_date"
+                android:id="@+id/product_expire_date_list_row"
                 android:text="Expire Date"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -111,7 +111,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/product_id"
+            android:id="@+id/product_id_list_row"
             android:text="Product Id"
             android:visibility="gone"
             android:textColor="@color/deep_grey_color"

@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.sm.demo.salesmanagement.R;
@@ -19,8 +20,8 @@ import java.util.ArrayList;
 public class SuppliersActivity extends AppCompatActivity {
 
     private EditText E1, E2, E3, E4, E5, E6, E7, E8, E9;
-    //private Button supplierSaveButton;
     private ListView listView;
+    private SearchView searchView;
 
     protected static final String TAG = "SuppliersActivity";
 
@@ -47,8 +48,22 @@ public class SuppliersActivity extends AppCompatActivity {
         //Get all data from database and set in list view
         listView = listView = (ListView) findViewById(R.id.suppliers_list_view_id);
         modelArrayList = (ArrayList) suppliersService.getAllData();
-        SuppliersAdapter customAdapter = new SuppliersAdapter(SuppliersActivity.this, modelArrayList, suppliersService);
+        customAdapter = new SuppliersAdapter(SuppliersActivity.this, modelArrayList, suppliersService);
         listView.setAdapter(customAdapter);
+
+        //Search Bar
+        searchView = (SearchView) findViewById(R.id.supplier_search);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //customAdapter.getItem()
+                return false;
+            }
+        });
 
     }
 

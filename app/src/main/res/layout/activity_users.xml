@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".users.UsersActivity">
 
+    <SearchView
+        android:id="@+id/user_search"
+        android:queryHint="Search your item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </SearchView>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_user_button"
         android:layout_alignParentBottom="true"
@@ -24,6 +31,7 @@
         android:focusableInTouchMode="false"
         android:clickable="false"
         android:focusable="false"
+        android:layout_below="@+id/user_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>

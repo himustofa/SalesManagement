@@ -11,13 +11,18 @@
         android:layout_height="match_parent">
 
 
-        <!--add product_id-->
         <Spinner
-            android:id="@+id/product_name"
-            android:background="@drawable/edit_text_border"
+            android:id="@+id/sl_product_name"
+            android:entries="@array/product_name_array"
+            android:background="@drawable/edit_text_border_red"
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="45dp"/>
+        <TextView
+            android:id="@+id/s1_product_id"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <!--for display quantity store-->
         <LinearLayout
@@ -30,11 +35,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="70">
                 <EditText
-                    android:id="@+id/product_quantity"
+                    android:id="@+id/sl_product_quantity"
                     android:hint="Product Quantity"
                     android:inputType="number"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/edit_text_border"
+                    android:background="@drawable/edit_text_border_red"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -43,10 +48,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="30">
                 <EditText
-                    android:id="@+id/purchase_product_quantity"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+
+                    android:id="@+id/sl_purchase_product_quantity"
                     android:text="250"
                     android:layout_marginLeft="15dp"
-                    android:editable="false"
                     android:background="@drawable/edit_text_border"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -55,24 +64,32 @@
 
         <!--add customer_id-->
         <Spinner
-            android:id="@+id/customer_name"
+            android:id="@+id/sl_customer_name"
             android:hint="Customer Name"
             android:background="@drawable/edit_text_border"
+            android:entries="@array/customer_name_array"
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="45dp"/>
+        <TextView
+            android:id="@+id/sl_customer_id"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/sales_date"
+            android:id="@+id/sl_sales_date"
             android:hint="Sales Date"
-            android:inputType="datetime"
+            android:ems="10"
+            android:inputType="date"
+            android:clickable="true"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/edit_text_border_red"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/sales_discount"
+            android:id="@+id/sl_sales_discount"
             android:hint="Sales Discount"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
@@ -81,7 +98,7 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/sales_vat"
+            android:id="@+id/sl_sales_vat"
             android:hint="Sales Vat"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
@@ -90,16 +107,16 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/sales_amount"
+            android:id="@+id/sl_sales_amount"
             android:hint="Total Amount"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/edit_text_border_red"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/sales_payment"
+            android:id="@+id/sl_sales_payment"
             android:hint="Total Payment"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
@@ -108,7 +125,7 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/sales_balance"
+            android:id="@+id/sl_sales_balance"
             android:hint="Total Balance"
             android:inputType="numberDecimal"
             android:layout_marginBottom="10dp"
@@ -117,11 +134,11 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/sales_description"
+            android:id="@+id/sl_sales_description"
             android:gravity="top"
             android:hint="Description"
             android:layout_marginBottom="10dp"
-            android:inputType="text|textMultiLine"
+            android:inputType="textCapSentences|textAutoCorrect|text|textMultiLine"
             android:background="@drawable/edit_text_border"
             android:layout_width="match_parent"
             android:layout_height="100dp"/>

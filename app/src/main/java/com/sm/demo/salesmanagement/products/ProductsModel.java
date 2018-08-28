@@ -40,6 +40,15 @@ public class ProductsModel {
         this.createdAt = createdAt;
     }
 
+    public ProductsModel(String productName, String productCode, int productQuantity, double productPrice, String productExpireDate, String productDescription) {
+        this.productName = productName;
+        this.productCode = productCode;
+        this.productQuantity = productQuantity;
+        this.productPrice = productPrice;
+        this.productExpireDate = productExpireDate;
+        this.productDescription = productDescription;
+    }
+
     public String getProductId() {
         return productId;
     }
