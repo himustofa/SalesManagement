@@ -28,9 +28,9 @@ public class PurchasesService {
         values.put(ConstantKey.PURCHASES_COLUMN2, model.getProductId());
         values.put(ConstantKey.PURCHASES_COLUMN3, model.getSupplierName());
         values.put(ConstantKey.PURCHASES_COLUMN4, model.getSupplierId());
-        values.put(ConstantKey.PURCHASES_COLUMN5, model.getPurchaseProductQuantity());
-        values.put(ConstantKey.PURCHASES_COLUMN6, model.getPurchaseProductPrice());
-        values.put(ConstantKey.PURCHASES_COLUMN7, model.getPurchaseDate());
+        values.put(ConstantKey.PURCHASES_COLUMN5, model.getPurchaseDate());
+        values.put(ConstantKey.PURCHASES_COLUMN6, model.getPurchaseProductQuantity());
+        values.put(ConstantKey.PURCHASES_COLUMN7, model.getPurchaseProductPrice());
         values.put(ConstantKey.PURCHASES_COLUMN8, model.getPurchaseAmount());
         values.put(ConstantKey.PURCHASES_COLUMN9, model.getPurchasePayment());
         values.put(ConstantKey.PURCHASES_COLUMN10, model.getPurchaseBalance());
@@ -53,9 +53,9 @@ public class PurchasesService {
                 String productId = cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN2));
                 String supplierName = cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN3));
                 String supplierId = cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN4));
-                int purchaseProductQuantity = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN5)));
-                double purchaseProductPrice = Double.parseDouble(cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN6)));
-                String purchaseDate = cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN7));
+                String purchaseDate = cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN5));
+                int purchaseProductQuantity = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN6)));
+                double purchaseProductPrice = Double.parseDouble(cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN7)));
                 double purchaseAmount = Double.parseDouble(cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN8)));
                 double purchasePayment = Double.parseDouble(cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN9)));
                 double purchaseBalance = Double.parseDouble(cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN10)));
@@ -64,7 +64,7 @@ public class PurchasesService {
                 String updatedById = cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN13));
                 String createdAt = cursor.getString(cursor.getColumnIndex(ConstantKey.PURCHASES_COLUMN14));
 
-                PurchasesModel model = new PurchasesModel(purchaseId, productName,productId,supplierName,supplierId,purchaseProductQuantity,purchaseProductPrice,purchaseDate,purchaseAmount,purchasePayment,purchaseBalance,purchaseDescription,createdById,updatedById,createdAt);
+                PurchasesModel model = new PurchasesModel(purchaseId, productName,productId,supplierName,supplierId,purchaseDate,purchaseProductQuantity,purchaseProductPrice,purchaseAmount,purchasePayment,purchaseBalance,purchaseDescription,createdById,updatedById,createdAt);
                 arrayList.add(model);
             }while(cursor.moveToNext());
         }
@@ -83,9 +83,9 @@ public class PurchasesService {
         values.put(ConstantKey.PURCHASES_COLUMN2, model.getProductId());
         values.put(ConstantKey.PURCHASES_COLUMN3, model.getSupplierName());
         values.put(ConstantKey.PURCHASES_COLUMN4, model.getSupplierId());
-        values.put(ConstantKey.PURCHASES_COLUMN5, model.getPurchaseProductQuantity());
-        values.put(ConstantKey.PURCHASES_COLUMN6, model.getPurchaseProductPrice());
-        values.put(ConstantKey.PURCHASES_COLUMN7, model.getPurchaseDate());
+        values.put(ConstantKey.PURCHASES_COLUMN5, model.getPurchaseDate());
+        values.put(ConstantKey.PURCHASES_COLUMN6, model.getPurchaseProductQuantity());
+        values.put(ConstantKey.PURCHASES_COLUMN7, model.getPurchaseProductPrice());
         values.put(ConstantKey.PURCHASES_COLUMN8, model.getPurchaseAmount());
         values.put(ConstantKey.PURCHASES_COLUMN9, model.getPurchasePayment());
         values.put(ConstantKey.PURCHASES_COLUMN10, model.getPurchaseBalance());
