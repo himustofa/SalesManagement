@@ -8,12 +8,20 @@
     android:layout_height="match_parent"
     tools:context=".suppliers.SuppliersActivity">
 
-    <SearchView
+    <EditText
+        android:id="@+id/supplier_search"
+        android:fontFamily="@font/font_awesome_font"
+        android:hint=""
+        android:textColor="@color/dark_grey_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--<SearchView
         android:id="@+id/supplier_search"
         android:queryHint="Search your item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </SearchView>
+    </SearchView>-->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/supplier_add_button"

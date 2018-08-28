@@ -5,6 +5,8 @@ import android.app.DatePickerDialog;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -23,8 +25,7 @@ import java.util.ArrayList;
 
 public class SalesActivity extends AppCompatActivity {
 
-    private EditText E1, E2, E3, E4, E5, E6, E7, E8, E9;
-    private SearchView saleSearchView;
+    private EditText E1, E2, E3, E4, E5, E6, E7, E8, E9, saleSearchView;
     private ListView salesListView;
     private Spinner S1, S2;
     private TextView T1, T2;
@@ -43,19 +44,6 @@ public class SalesActivity extends AppCompatActivity {
 
         this.sService = new SalesService(this); //To get from service
 
-
-        /*ArrayList<SalesModel> arrayList = new ArrayList<>();
-        arrayList.add(new SalesModel("Soap", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
-        arrayList.add(new SalesModel("Hand Wash", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
-        arrayList.add(new SalesModel("Face Wash", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
-        arrayList.add(new SalesModel("Detergent", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
-        arrayList.add(new SalesModel("Toothpaste", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
-        arrayList.add(new SalesModel("Brush", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
-        arrayList.add(new SalesModel("Mouthwash", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
-        arrayList.add(new SalesModel("Shampoo", 2, String.valueOf(new Timestamp(System.currentTimeMillis())), "Mr. Munir", 0.0, 100.0));
-        SalesAdapter adapter = new SalesAdapter(this,arrayList);
-        listView.setAdapter(adapter);*/
-
         FloatingActionButton fab = findViewById(R.id.add_sale_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +60,7 @@ public class SalesActivity extends AppCompatActivity {
         salesListView.setAdapter(sAdapter);
 
         //Search Bar
-        saleSearchView = (SearchView) findViewById(R.id.sale_search);
+        /*saleSearchView = (SearchView) findViewById(R.id.sale_search);
         saleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -83,7 +71,31 @@ public class SalesActivity extends AppCompatActivity {
                 //customAdapter.getItem()
                 return false;
             }
+        });*/
+
+        //===============================================| Custom adapter search |=========================================
+        saleSearchView = (EditText) findViewById(R.id.sale_search);
+        saleSearchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                int textlength = cs.length();
+                ArrayList<SalesModel> tempArrayList = new ArrayList<SalesModel>();
+                for(SalesModel c: sArrayList){
+                    if (textlength <= c.getProductName().length()) {
+                        if (c.getProductName().toLowerCase().contains(cs.toString().toLowerCase())) {
+                            tempArrayList.add(c);
+                        }
+                    }
+                }
+                sAdapter = new SalesAdapter(SalesActivity.this, tempArrayList, sService);
+                salesListView.setAdapter(sAdapter);
+            }
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
+        //====================================================================================================================
     }
 
     //Back press disabled

@@ -14,19 +14,31 @@
         <!--add product_id-->
         <Spinner
             android:id="@+id/product_name"
+            android:entries="@array/product_name_array"
             android:background="@drawable/edit_text_border"
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="45dp"/>
+        <TextView
+            android:id="@+id/product_id"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <!--add customer_id-->
         <Spinner
             android:id="@+id/supplier_name"
             android:hint="Supplier Name"
+            android:entries="@array/supplier_name_array"
             android:background="@drawable/edit_text_border"
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="45dp"/>
+        <TextView
+            android:id="@+id/supplier_id"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/purchase_date"

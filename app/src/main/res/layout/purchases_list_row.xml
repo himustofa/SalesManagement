@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/product_name"
+                android:id="@+id/product_name_pur"
                 android:text="Product Name"
                 android:textColor="@color/dark_grey_color"
                 android:textStyle="bold"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/supplier_name"
+                android:id="@+id/supplier_name_pur"
                 android:text="Supplier Name"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/purchase_date"
+                android:id="@+id/purchase_date_pur"
                 android:text="Purchase Date"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/purchase_product_quantity"
+                android:id="@+id/purchase_product_quantity_pur"
                 android:text="Purchase Product Quantity"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -102,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/purchase_amount"
+                android:id="@+id/purchase_amount_pur"
                 android:text="Purchase Amount"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/purchase_payment"
+                android:id="@+id/purchase_payment_pur"
                 android:text="Purchase Payment"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -140,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/purchase_balance"
+                android:id="@+id/purchase_balance_pur"
                 android:text="Purchase Balance"
                 android:textColor="@color/deep_grey_color"
                 android:textSize="11sp"
@@ -149,7 +149,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/purchase_id"
+            android:id="@+id/purchase_id_pur"
             android:text="Purchase Id"
             android:visibility="gone"
             android:textColor="@color/deep_grey_color"

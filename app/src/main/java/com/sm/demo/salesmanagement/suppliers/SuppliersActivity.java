@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 
 public class SuppliersActivity extends AppCompatActivity {
 
-    private EditText E1, E2, E3, E4, E5, E6, E7, E8, E9;
+    private EditText E1, E2, E3, E4, E5, E6, E7, E8, E9, E10;
     private ListView listView;
     private SearchView searchView;
 
@@ -46,13 +48,13 @@ public class SuppliersActivity extends AppCompatActivity {
         });
 
         //Get all data from database and set in list view
-        listView = listView = (ListView) findViewById(R.id.suppliers_list_view_id);
+        listView = (ListView) findViewById(R.id.suppliers_list_view_id);
         modelArrayList = (ArrayList) suppliersService.getAllData();
         customAdapter = new SuppliersAdapter(SuppliersActivity.this, modelArrayList, suppliersService);
         listView.setAdapter(customAdapter);
 
         //Search Bar
-        searchView = (SearchView) findViewById(R.id.supplier_search);
+        /*searchView = (SearchView) findViewById(R.id.supplier_search);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -63,7 +65,31 @@ public class SuppliersActivity extends AppCompatActivity {
                 //customAdapter.getItem()
                 return false;
             }
+        });*/
+
+        //===============================================| Custom adapter search |=========================================
+        E10 = (EditText) findViewById(R.id.supplier_search);
+        E10.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                int textlength = cs.length();
+                ArrayList<SuppliersModel> tempArrayList = new ArrayList<SuppliersModel>();
+                for(SuppliersModel c: modelArrayList){
+                    if (textlength <= c.getSupplierName().length()) {
+                        if (c.getSupplierName().toLowerCase().contains(cs.toString().toLowerCase())) {
+                            tempArrayList.add(c);
+                        }
+                    }
+                }
+                customAdapter = new SuppliersAdapter(SuppliersActivity.this, tempArrayList, suppliersService);
+                listView.setAdapter(customAdapter);
+            }
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
+        //====================================================================================================================
 
     }
 
@@ -112,7 +138,7 @@ public class SuppliersActivity extends AppCompatActivity {
 
                     //Displaying data from database and sets listView
                     if(customAdapter==null) {
-                        customAdapter = customAdapter = new SuppliersAdapter(SuppliersActivity.this, modelArrayList, suppliersService);
+                        customAdapter = new SuppliersAdapter(SuppliersActivity.this, modelArrayList, suppliersService);
                         listView.setAdapter(customAdapter);
                     }
                     customAdapter.suppliersArrayList = (ArrayList) suppliersService.getAllData();

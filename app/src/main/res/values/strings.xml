@@ -38,4 +38,14 @@
         <item>Mr. Munna</item>
     </string-array>
 
+    <string-array name="supplier_name_array">
+        <item>Select Supplier</item>
+        <item>Abdul Haque</item>
+        <item>Abdul Rab</item>
+        <item>Abdul Karim</item>
+        <item>Abdul Razzak</item>
+        <item>Abdul Jabbar</item>
+        <item>Abdul Latif</item>
+    </string-array>
+
 </resources>

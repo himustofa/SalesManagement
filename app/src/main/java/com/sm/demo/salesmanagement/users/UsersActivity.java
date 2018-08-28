@@ -9,6 +9,8 @@ import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,7 +46,7 @@ public class UsersActivity extends AppCompatActivity {
 
     ArrayList<UsersModel> arrayList;
     private ImageView userPhoto;
-    private EditText fullName, designation, email, phoneNumber, address, username, password, confirmPassword;
+    private EditText fullName, designation, email, phoneNumber, address, username, password, confirmPassword, search;
     private TextView userId;
     private ListView listView;
 
@@ -76,8 +78,32 @@ public class UsersActivity extends AppCompatActivity {
         //Get all data from database and set in list view
         listView = (ListView) findViewById(R.id.users_list_view_id);
         arrayList = (ArrayList) usersService.getUsers();
-        UsersAdapter customAdapter = new UsersAdapter(UsersActivity.this, arrayList, usersService);
+        customAdapter = new UsersAdapter(UsersActivity.this, arrayList, usersService);
         listView.setAdapter(customAdapter);
+
+        //===============================================| Custom adapter search |=========================================
+        search = (EditText) findViewById(R.id.user_search);
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                int textlength = cs.length();
+                ArrayList<UsersModel> tempArrayList = new ArrayList<UsersModel>();
+                for(UsersModel c: arrayList){
+                    if (textlength <= c.getUsername().length()) {
+                        if (c.getUsername().toLowerCase().contains(cs.toString().toLowerCase())) {
+                            tempArrayList.add(c);
+                        }
+                    }
+                }
+                customAdapter = new UsersAdapter(UsersActivity.this, tempArrayList, usersService);
+                listView.setAdapter(customAdapter);
+            }
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+        //====================================================================================================================
 
     }
 

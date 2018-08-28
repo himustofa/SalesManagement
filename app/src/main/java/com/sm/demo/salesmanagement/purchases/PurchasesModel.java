@@ -55,6 +55,20 @@ public class PurchasesModel {
         this.createdAt = createdAt;
     }
 
+    public PurchasesModel(String productName, String productId, String supplierName, String supplierId, int purchaseProductQuantity, double purchaseProductPrice, String purchaseDate, double purchaseAmount, double purchasePayment, double purchaseBalance, String purchaseDescription) {
+        this.productName = productName;
+        this.productId = productId;
+        this.supplierName = supplierName;
+        this.supplierId = supplierId;
+        this.purchaseProductQuantity = purchaseProductQuantity;
+        this.purchaseProductPrice = purchaseProductPrice;
+        this.purchaseDate = purchaseDate;
+        this.purchaseAmount = purchaseAmount;
+        this.purchasePayment = purchasePayment;
+        this.purchaseBalance = purchaseBalance;
+        this.purchaseDescription = purchaseDescription;
+    }
+
     public String getPurchaseId() {
         return purchaseId;
     }
