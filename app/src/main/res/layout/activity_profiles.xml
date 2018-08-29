@@ -21,6 +21,7 @@
     <EditText
         android:id="@+id/company_name"
         android:hint="Company Name"
+        android:inputType="textAutoCorrect"
         android:layout_marginBottom="10dp"
         android:background="@drawable/edit_text_border"
         android:layout_width="match_parent"
@@ -28,6 +29,7 @@
     <EditText
         android:id="@+id/company_email"
         android:hint="Company E-mail"
+        android:inputType="textWebEmailAddress"
         android:layout_marginBottom="10dp"
         android:background="@drawable/edit_text_border"
         android:layout_width="match_parent"
@@ -35,6 +37,7 @@
     <EditText
         android:id="@+id/company_phone_number"
         android:hint="Company Phone Number"
+        android:inputType="phone"
         android:layout_marginBottom="10dp"
         android:background="@drawable/edit_text_border"
         android:layout_width="match_parent"
@@ -42,6 +45,7 @@
     <EditText
         android:id="@+id/company_address"
         android:hint="Company Address"
+        android:inputType="textAutoCorrect"
         android:layout_marginBottom="10dp"
         android:background="@drawable/edit_text_border"
         android:layout_width="match_parent"

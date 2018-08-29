@@ -13,6 +13,7 @@
         android:fontFamily="@font/font_awesome_font"
         android:hint=""
         android:textColor="@color/dark_grey_color"
+        android:background="@drawable/edit_text_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

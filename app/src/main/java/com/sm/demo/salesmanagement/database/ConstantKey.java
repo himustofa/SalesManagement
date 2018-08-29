@@ -61,9 +61,9 @@ public class ConstantKey {
     public final static String PURCHASES_COLUMN2 = "product_id";
     public final static String PURCHASES_COLUMN3 = "supplier_name";
     public final static String PURCHASES_COLUMN4 = "supplier_id";
-    public final static String PURCHASES_COLUMN5 = "purchase_product_quantity";
-    public final static String PURCHASES_COLUMN6 = "purchase_product_price";
-    public final static String PURCHASES_COLUMN7 = "purchase_date";
+    public final static String PURCHASES_COLUMN5 = "purchase_date";
+    public final static String PURCHASES_COLUMN6 = "purchase_product_quantity";
+    public final static String PURCHASES_COLUMN7 = "purchase_product_price";
     public final static String PURCHASES_COLUMN8 = "purchase_amount";
     public final static String PURCHASES_COLUMN9 = "purchase_payment";
     public final static String PURCHASES_COLUMN10 = "purchase_balance";
@@ -72,7 +72,7 @@ public class ConstantKey {
     public final static String PURCHASES_COLUMN13 = "updated_by_id";
     public final static String PURCHASES_COLUMN14 = "created_at";
 
-    protected final static String CREATE_PURCHASES_TABLE = "CREATE TABLE " + PURCHASES_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PURCHASES_COLUMN1 + " TEXT, " + PURCHASES_COLUMN2 + " TEXT, " + PURCHASES_COLUMN3 + " TEXT, " + PURCHASES_COLUMN4 + " TEXT, " + PURCHASES_COLUMN5 + " INTEGER, " + PURCHASES_COLUMN6 + " REAL, " + PURCHASES_COLUMN7 + " TEXT, " + PURCHASES_COLUMN8 + " REAL, " + PURCHASES_COLUMN9 + " REAL, " + PURCHASES_COLUMN10 + " REAL, " + PURCHASES_COLUMN11 + " TEXT, " + PURCHASES_COLUMN12 + " TEXT, " + PURCHASES_COLUMN13 + " TEXT, " + PURCHASES_COLUMN14 + " TEXT ) ";
+    protected final static String CREATE_PURCHASES_TABLE = "CREATE TABLE " + PURCHASES_TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PURCHASES_COLUMN1 + " TEXT, " + PURCHASES_COLUMN2 + " TEXT, " + PURCHASES_COLUMN3 + " TEXT, " + PURCHASES_COLUMN4 + " TEXT, " + PURCHASES_COLUMN5 + "  TEXT, " + PURCHASES_COLUMN6 + " INTEGER, " + PURCHASES_COLUMN7 + " REAL, " + PURCHASES_COLUMN8 + " REAL, " + PURCHASES_COLUMN9 + " REAL, " + PURCHASES_COLUMN10 + " REAL, " + PURCHASES_COLUMN11 + " TEXT, " + PURCHASES_COLUMN12 + " TEXT, " + PURCHASES_COLUMN13 + " TEXT, " + PURCHASES_COLUMN14 + " TEXT ) ";
     protected final static String DROP_PURCHASES_TABLE = "DROP TABLE IF EXISTS " + PURCHASES_TABLE_NAME + " ";
     public final static String SELECT_PURCHASES_TABLE = "SELECT * FROM " + PURCHASES_TABLE_NAME;
 
