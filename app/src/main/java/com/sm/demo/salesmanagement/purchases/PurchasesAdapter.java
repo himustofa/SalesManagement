@@ -82,15 +82,6 @@ public class PurchasesAdapter extends BaseAdapter {
         viewRow.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(parent.getContext(), "view clicked: " + dataModel.getProductName(), Toast.LENGTH_SHORT).show();
-                editListItem(positionWindow, parent);
-                return false;
-            }
-        });
-
-        viewRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 new AlertDialog.Builder(parent.getContext()).setTitle("Are your sure?").setMessage("Do you want to delete it?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -107,6 +98,15 @@ public class PurchasesAdapter extends BaseAdapter {
                         dialog.cancel();
                     }
                 }).show();
+                return false;
+            }
+        });
+
+        viewRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(parent.getContext(), "view clicked: " + dataModel.getProductName(), Toast.LENGTH_SHORT).show();
+                editListItem(positionWindow, parent);
             }
         });
 

@@ -83,16 +83,6 @@ public class SuppliersAdapter extends BaseAdapter {
         viewRow.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                //Toast.makeText(parent.getContext(), "view clicked: " + dataModel.getSupplierName(), Toast.LENGTH_SHORT).show();
-                editListItem(positionWindow, dataModel, parent);
-                return false;
-            }
-        });
-
-        //Single click to delete
-        viewRow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
                 //AlertDialog window to delete data and image
                 new AlertDialog.Builder(parent.getContext()).setTitle("Are your sure?").setMessage("Do you want to delete it?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -112,6 +102,16 @@ public class SuppliersAdapter extends BaseAdapter {
                     }
                 }).show();
                 //Toast.makeText(parent.getContext(), "view clicked: " + dataModel.getSupplierName(), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
+        //Single click to delete
+        viewRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(parent.getContext(), "view clicked: " + dataModel.getSupplierName(), Toast.LENGTH_SHORT).show();
+                editListItem(positionWindow, dataModel, parent);
             }
         });
 
