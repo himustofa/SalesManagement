@@ -10,7 +10,7 @@ import android.util.Log;
 public final class SQLiteDAO {
 
     private static final String DATABASE_NAME = "sales_management";
-    private static final int DATABASE_VERSION = 1; //After table creating and column adding then must be increment database version
+    private static final int DATABASE_VERSION = 2; //After table creating and column adding then must be increment database version
 
     private final SQLiteDatabase database;
     private final SQLiteOpenHelper helper;
@@ -22,12 +22,44 @@ public final class SQLiteDAO {
                 db.execSQL(ConstantKey.CREATE_PROFILES_TABLE);
                 db.execSQL(ConstantKey.CREATE_USERS_TABLE);
                 db.execSQL(ConstantKey.CREATE_LOGIN_TABLE);
-                db.execSQL(ConstantKey.INSERT_ADMIN_DATA);
                 db.execSQL(ConstantKey.CREATE_SUPPLIERS_TABLE);
                 db.execSQL(ConstantKey.CREATE_PRODUCTS_TABLE);
                 db.execSQL(ConstantKey.CREATE_PURCHASES_TABLE);
                 db.execSQL(ConstantKey.CREATE_CUSTOMERS_TABLE);
                 db.execSQL(ConstantKey.CREATE_SALES_TABLE);
+
+                db.execSQL(ConstantKey.INSERT_ADMIN_DATA);
+                db.execSQL(ConstantKey.INSERT_PROFILE_DATA);
+
+                db.execSQL(ConstantKey.INSERT_SUPPLIER_DATA1);
+                db.execSQL(ConstantKey.INSERT_SUPPLIER_DATA2);
+                db.execSQL(ConstantKey.INSERT_SUPPLIER_DATA3);
+                db.execSQL(ConstantKey.INSERT_SUPPLIER_DATA4);
+                db.execSQL(ConstantKey.INSERT_SUPPLIER_DATA5);
+
+                db.execSQL(ConstantKey.INSERT_PRODUCT_DATA1);
+                db.execSQL(ConstantKey.INSERT_PRODUCT_DATA2);
+                db.execSQL(ConstantKey.INSERT_PRODUCT_DATA3);
+                db.execSQL(ConstantKey.INSERT_PRODUCT_DATA4);
+                db.execSQL(ConstantKey.INSERT_PRODUCT_DATA5);
+                db.execSQL(ConstantKey.INSERT_PRODUCT_DATA6);
+
+                db.execSQL(ConstantKey.INSERT_PURCHASE_DATA1);
+                db.execSQL(ConstantKey.INSERT_PURCHASE_DATA2);
+                db.execSQL(ConstantKey.INSERT_PURCHASE_DATA3);
+                db.execSQL(ConstantKey.INSERT_PURCHASE_DATA4);
+                db.execSQL(ConstantKey.INSERT_PURCHASE_DATA5);
+
+                db.execSQL(ConstantKey.INSERT_CUSTOMER_DATA1);
+                db.execSQL(ConstantKey.INSERT_CUSTOMER_DATA2);
+                db.execSQL(ConstantKey.INSERT_CUSTOMER_DATA3);
+                db.execSQL(ConstantKey.INSERT_CUSTOMER_DATA4);
+                db.execSQL(ConstantKey.INSERT_CUSTOMER_DATA5);
+
+                db.execSQL(ConstantKey.INSERT_SALE_DATA1);
+                db.execSQL(ConstantKey.INSERT_SALE_DATA2);
+                db.execSQL(ConstantKey.INSERT_SALE_DATA3);
+
             }
             @Override
             public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {

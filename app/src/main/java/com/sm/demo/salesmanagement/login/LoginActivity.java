@@ -1,10 +1,14 @@
 package com.sm.demo.salesmanagement.login;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,6 +26,13 @@ import com.sm.demo.salesmanagement.HomeActivity;
 import com.sm.demo.salesmanagement.R;
 import com.sm.demo.salesmanagement.users.UsersActivity;
 import com.sm.demo.salesmanagement.users.UsersModel;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -71,11 +82,12 @@ public class LoginActivity extends AppCompatActivity {
                     UsersModel data = loginService.loginByUserPass(userName.getText().toString(), passWord.getText().toString());
                     if (data != null) {
                         try {
-                            Log.d(TAG, data.getUsername()+"/"+data.getPassword());
+                            Log.d(TAG, data.getPhotoPath()+"/"+data.getPhotoName());
+                            Log.d(TAG, new File(getFilesDir() + "/UsersPhoto/").getAbsolutePath());
                             imageView.setImageBitmap(BitmapFactory.decodeFile(data.getPhotoPath()+"/"+data.getPhotoName() ));
-                            if(data.getUsername().equals("admin")){
+                            /*if(data.getUsername().equals("admin")){
                                 imageView.setImageResource(getResources().getIdentifier("admin", "drawable", "com.sm.demo.salesmanagement"));
-                            }
+                            }*/
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -106,16 +118,17 @@ public class LoginActivity extends AppCompatActivity {
 
         //====================================================| To Registration/User |====================================================
         //Need to registration in text-view then display progress bar
-        textView.setOnTouchListener(new View.OnTouchListener() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View arg0, MotionEvent arg1) {
-                ProgressDialog progressBar = ProgressDialog.show(LoginActivity.this, "Title", "Be patient!");
+            public void onClick(View v) {
+                ProgressDialog progressBar = ProgressDialog.show(LoginActivity.this, "Registration", "Please wait to create a new account");
                 progressBar.setCancelable(true);
                 Intent i = new Intent(getApplicationContext(), UsersActivity.class);
                 startActivity(i);
-                return false;
             }
         });
+
+        saveAdminImageToInternalStorage();
 
     }
 
@@ -148,5 +161,24 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this, "is xml file created? "+isLoggedIn, Toast.LENGTH_SHORT).show();
         login();
     }*/
+
+
+
+    //=================================================| Save admin image to internal storage
+    protected String saveAdminImageToInternalStorage(){
+        File directory = new File(getFilesDir() + "/UsersPhoto/");
+        directory.mkdir();
+        File file = new File(directory, "img_admin.png");
+        try {
+            OutputStream output = new FileOutputStream(file);
+            Bitmap b = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.admin);
+            b.compress(Bitmap.CompressFormat.PNG, 100, output);
+            output.flush();
+            output.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return directory.getAbsolutePath();
+    }
 
 }

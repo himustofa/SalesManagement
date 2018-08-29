@@ -168,7 +168,7 @@ public class UsersActivity extends AppCompatActivity {
             }
         });
 
-        //Load image from gallery
+        //1. Load image from gallery
         userPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -201,7 +201,7 @@ public class UsersActivity extends AppCompatActivity {
             if (data > 0){
                 //Logo save
                 Bitmap bitmap = ((BitmapDrawable)userPhoto.getDrawable()).getBitmap();
-                imagePath = saveToInternalStorage(bitmap);
+                imagePath = saveToInternalStorage(bitmap); //3.
                 if(imagePath != null){
                     Toast.makeText(getApplicationContext(), "Logo saved successfully", Toast.LENGTH_SHORT).show();
                 }
@@ -225,7 +225,7 @@ public class UsersActivity extends AppCompatActivity {
 
     //====================================================| For Image |====================================================
 
-    //Image set in ImageView using onActivityResult
+    //2. Image set in ImageView using onActivityResult
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -236,7 +236,7 @@ public class UsersActivity extends AppCompatActivity {
         }
     }
 
-    //Save image internal storage
+    //3. Save image internal storage
     protected String saveToInternalStorage(Bitmap bitmapImage){
         File directory = new File(getFilesDir() + "/UsersPhoto/");
         directory.mkdir(); //Create imageDir
