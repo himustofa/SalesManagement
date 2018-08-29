@@ -188,4 +188,5 @@ public class ConstantKey {
     public final static String SELECT_LOGIN_TABLE = "SELECT * FROM " + LOGIN_TABLE_NAME;
     //public final static String INSERT_ADMIN_DATA = "INSERT INTO users_table (full_name,designation,email,phone_number,address,username,password,photo_name,photo_path,created_by_id, created_at) VALUES ('Admin', 'Programmer', 'mustofa2008@gmail.com', '+8801914141707', 'Dhaka Cantonment', 'admin', 'admin', 'admin.jpg', 'com.sm.demo.salesmanagement/SalesManagement/app/src/main/res/drawable', 'created by kamal', '2018-08-26 00:05:30.729');";
     public final static String INSERT_ADMIN_DATA = "INSERT INTO users_table (full_name,designation,email,phone_number,address,username,password,photo_name,photo_path,created_by_id, created_at) VALUES ('Admin', 'Programmer', 'mustofa2008@gmail.com', '+8801914141707', 'Dhaka Cantonment', 'admin', 'admin', 'img_admin.png', '/data/user/0/com.sm.demo.salesmanagement/files/UsersPhoto', 'created by kamal', '2018-08-26 00:05:30.729');";
+
 }
