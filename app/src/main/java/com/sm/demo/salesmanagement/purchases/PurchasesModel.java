@@ -20,15 +20,15 @@ public class PurchasesModel {
     private String updatedById;
     private String createdAt;
 
-    public PurchasesModel(String purchaseId, String productName, String productId, String supplierName, String supplierId, int purchaseProductQuantity, double purchaseProductPrice, String purchaseDate, double purchaseAmount, double purchasePayment, double purchaseBalance, String purchaseDescription, String createdById, String updatedById, String createdAt) {
+    public PurchasesModel(String purchaseId, String productName, String productId, String supplierName, String supplierId, String purchaseDate, int purchaseProductQuantity, double purchaseProductPrice, double purchaseAmount, double purchasePayment, double purchaseBalance, String purchaseDescription, String createdById, String updatedById, String createdAt) {
         this.purchaseId = purchaseId;
         this.productName = productName;
         this.productId = productId;
         this.supplierName = supplierName;
         this.supplierId = supplierId;
+        this.purchaseDate = purchaseDate;
         this.purchaseProductQuantity = purchaseProductQuantity;
         this.purchaseProductPrice = purchaseProductPrice;
-        this.purchaseDate = purchaseDate;
         this.purchaseAmount = purchaseAmount;
         this.purchasePayment = purchasePayment;
         this.purchaseBalance = purchaseBalance;
@@ -38,14 +38,14 @@ public class PurchasesModel {
         this.createdAt = createdAt;
     }
 
-    public PurchasesModel(String productName, String productId, String supplierName, String supplierId, int purchaseProductQuantity, double purchaseProductPrice, String purchaseDate, double purchaseAmount, double purchasePayment, double purchaseBalance, String purchaseDescription, String createdById, String updatedById, String createdAt) {
+    public PurchasesModel(String productName, String productId, String supplierName, String supplierId, String purchaseDate, int purchaseProductQuantity, double purchaseProductPrice, double purchaseAmount, double purchasePayment, double purchaseBalance, String purchaseDescription, String createdById, String updatedById, String createdAt) {
         this.productName = productName;
         this.productId = productId;
         this.supplierName = supplierName;
         this.supplierId = supplierId;
+        this.purchaseDate = purchaseDate;
         this.purchaseProductQuantity = purchaseProductQuantity;
         this.purchaseProductPrice = purchaseProductPrice;
-        this.purchaseDate = purchaseDate;
         this.purchaseAmount = purchaseAmount;
         this.purchasePayment = purchasePayment;
         this.purchaseBalance = purchaseBalance;
@@ -55,14 +55,14 @@ public class PurchasesModel {
         this.createdAt = createdAt;
     }
 
-    public PurchasesModel(String productName, String productId, String supplierName, String supplierId, int purchaseProductQuantity, double purchaseProductPrice, String purchaseDate, double purchaseAmount, double purchasePayment, double purchaseBalance, String purchaseDescription) {
+    public PurchasesModel(String productName, String productId, String supplierName, String supplierId, String purchaseDate, int purchaseProductQuantity, double purchaseProductPrice, double purchaseAmount, double purchasePayment, double purchaseBalance, String purchaseDescription) {
         this.productName = productName;
         this.productId = productId;
         this.supplierName = supplierName;
         this.supplierId = supplierId;
+        this.purchaseDate = purchaseDate;
         this.purchaseProductQuantity = purchaseProductQuantity;
         this.purchaseProductPrice = purchaseProductPrice;
-        this.purchaseDate = purchaseDate;
         this.purchaseAmount = purchaseAmount;
         this.purchasePayment = purchasePayment;
         this.purchaseBalance = purchaseBalance;

@@ -178,16 +178,15 @@ public class PurchasesActivity extends AppCompatActivity {
                 e1d.getText().toString(),
                 e2.getSelectedItem().toString(),
                 e2d.getText().toString(),
-                Integer.parseInt(e3.getText().toString()),
-                Double.parseDouble(e4.getText().toString()),
-                e5.getText().toString(),
+                e3.getText().toString(),
+                Integer.parseInt(e4.getText().toString()),
+                Double.parseDouble(e5.getText().toString()),
                 Double.parseDouble(e6.getText().toString()),
                 Double.parseDouble(e7.getText().toString()),
                 Double.parseDouble(e8.getText().toString()),
                 e9.getText().toString());
 
         long data = PurchasesActivity.this.purService.addPurchase(model);
-        Log.d("Add Data ====== : ", String.valueOf(data));
         if (data > 0){
             Toast.makeText(getApplicationContext(),"Saved successfully", Toast.LENGTH_SHORT).show();
         } else {
