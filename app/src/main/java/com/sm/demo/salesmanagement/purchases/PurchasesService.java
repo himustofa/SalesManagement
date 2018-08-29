@@ -24,7 +24,7 @@ public class PurchasesService {
     //Adding single object
     protected long addPurchase(PurchasesModel model){
         final ContentValues values = new ContentValues();
-        values.put(ConstantKey.PURCHASES_COLUMN1, model.getSupplierName());
+        values.put(ConstantKey.PURCHASES_COLUMN1, model.getProductName());
         values.put(ConstantKey.PURCHASES_COLUMN2, model.getProductId());
         values.put(ConstantKey.PURCHASES_COLUMN3, model.getSupplierName());
         values.put(ConstantKey.PURCHASES_COLUMN4, model.getSupplierId());

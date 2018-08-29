@@ -16,13 +16,13 @@ public class SuppliersService {
     private SQLiteDAO dao;
     private ArrayList<SuppliersModel> arrayList;
 
-    protected SuppliersService(Context context) {
+    public SuppliersService(Context context) {
         arrayList = new ArrayList<>();
         dao = new SQLiteDAO(context);
     }
 
     //Adding single object
-    protected long addData(SuppliersModel model){
+    public long addData(SuppliersModel model){
         final ContentValues values = new ContentValues();
         values.put(ConstantKey.SUPPLIERS_COLUMN1, model.getSupplierName());
         values.put(ConstantKey.SUPPLIERS_COLUMN2, model.getSupplierCompanyName());
@@ -42,7 +42,7 @@ public class SuppliersService {
     }
 
     //Getting all objects
-    protected ArrayList<SuppliersModel> getAllData(){
+    public ArrayList<SuppliersModel> getAllData(){
         arrayList = new ArrayList<>();
         Cursor cursor = dao.getAllData(ConstantKey.SELECT_SUPPLIERS_TABLE);
         if(cursor.moveToFirst()){
@@ -70,12 +70,12 @@ public class SuppliersService {
     }
 
     //Deleting single object
-    protected long deleteDataById(String id) {
+    public long deleteDataById(String id) {
         return dao.deleteDataById(ConstantKey.SUPPLIERS_TABLE_NAME, id);
     }
 
     //Updating single object
-    protected long updateDataById(SuppliersModel model, String id) {
+    public long updateDataById(SuppliersModel model, String id) {
         ContentValues values = new ContentValues();
         values.put(ConstantKey.SUPPLIERS_COLUMN1, model.getSupplierName());
         values.put(ConstantKey.SUPPLIERS_COLUMN2, model.getSupplierCompanyName());

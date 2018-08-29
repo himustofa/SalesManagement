@@ -2,31 +2,64 @@ package com.sm.demo.salesmanagement.purchases;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sm.demo.salesmanagement.R;
+import com.sm.demo.salesmanagement.products.ProductsModel;
+import com.sm.demo.salesmanagement.products.ProductsService;
+import com.sm.demo.salesmanagement.suppliers.SuppliersModel;
+import com.sm.demo.salesmanagement.suppliers.SuppliersService;
 
 import java.util.ArrayList;
 
 public class PurchasesAdapter extends BaseAdapter {
 
+    private Spinner ed1, ed2;
+    private TextView e1d, e2d;
+    private EditText ed3, ed4, ed5, ed6, ed7, ed8, ed9;
+    private DatePicker picker;
+
     private Activity context;
     ArrayList<PurchasesModel> purchasesModelArrayList;
     PurchasesService purchasesService;
 
-    public PurchasesAdapter(Activity context, ArrayList<PurchasesModel> arrayList, PurchasesService service) {
+    //Product
+    ArrayList<ProductsModel> productsModelArrayList;
+    ProductsService productsService;
+
+    //Supplier
+    ArrayList<SuppliersModel> suppliersModelArrayList;
+    SuppliersService suppliersService;
+
+    public PurchasesAdapter(Activity context, ArrayList<PurchasesModel> arrayList, PurchasesService service, ArrayList<ProductsModel> proArrayList, ProductsService proService, ArrayList<SuppliersModel> suArrayList, SuppliersService suService) {
         this.context = context;
         this.purchasesModelArrayList = arrayList;
         this.purchasesService = service;
+
+        this.productsModelArrayList = proArrayList;
+        this.productsService = proService;
+
+        this.suppliersModelArrayList = suArrayList;
+        this.suppliersService = suService;
+
+        Log.d("Purchase adapter", String.valueOf(purchasesModelArrayList.size()));
+        Log.d("Product adapter", String.valueOf(productsModelArrayList.size()));
     }
 
     public static class ViewHolder{
@@ -124,29 +157,95 @@ public class PurchasesAdapter extends BaseAdapter {
 
         final android.app.AlertDialog dialog = builder.show(); // Because only AlertDialog has cancel method.
 
-        final Spinner ed1 = (Spinner) layout.findViewById(R.id.product_name);
-        //ed1.setText(purchasesModelArrayList.get(positionPopup).getProductName());
-        final TextView e1d = (TextView) layout.findViewById(R.id.product_id);
-        e1d.setText(purchasesModelArrayList.get(positionPopup).getProductId());
-        final Spinner ed2 = (Spinner) layout.findViewById(R.id.supplier_name);
-        //ed2.setText(purchasesModelArrayList.get(positionPopup).getSupplierName());
-        final TextView e2d = (TextView) layout.findViewById(R.id.supplier_id);
-        e2d.setText(purchasesModelArrayList.get(positionPopup).getSupplierId());
-        final EditText ed3 = (EditText) layout.findViewById(R.id.purchase_date);
+        //------------------------------------------------------| Spinner |------------------------------------------------------
+        this.ed1 = (Spinner) layout.findViewById(R.id.product_name);
+        ArrayAdapter<String> pro = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1);
+        for(ProductsModel obj : productsModelArrayList){
+            pro.add(obj.getProductName());
+        }
+        ed1.setAdapter(pro);
+        this.e1d = (TextView) layout.findViewById(R.id.product_id);
+        ed1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                e1d.setText(productsModelArrayList.get(position).getProductId());
+                ed5.setText(String.valueOf(productsModelArrayList.get(position).getProductPrice()));
+                Log.d("Product: ", String.valueOf(productsModelArrayList.get(position).getProductCode()));
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+        //---------------------------------
+        this.ed2 = (Spinner) layout.findViewById(R.id.supplier_name);
+        ArrayAdapter<String> sup = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1);
+        for(SuppliersModel obj : suppliersModelArrayList){
+            sup.add(obj.getSupplierName());
+        }
+        ed2.setAdapter(sup);
+        this.e2d = (TextView) layout.findViewById(R.id.supplier_id);
+        ed2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                e2d.setText(suppliersModelArrayList.get(position).getSupplierId());
+                Log.d("Supplier: ", String.valueOf(suppliersModelArrayList.get(position).getSupplierName()));
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+        //------------------------------------------------------| End Spinner |------------------------------------------------------
+        this.ed3 = (EditText) layout.findViewById(R.id.purchase_date);
         ed3.setText(purchasesModelArrayList.get(positionPopup).getPurchaseDate());
-        final EditText ed4 = (EditText) layout.findViewById(R.id.purchase_product_quantity);
+        ed3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                purchaseDate();
+            }
+        });
+        //----------------------------------
+        this.ed4 = (EditText) layout.findViewById(R.id.purchase_product_quantity);
         ed4.setText(String.valueOf(purchasesModelArrayList.get(positionPopup).getPurchaseProductQuantity()));
-        final EditText ed5 = (EditText) layout.findViewById(R.id.purchase_product_price);
+        ed4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    ed6.setText(String.valueOf(Double.parseDouble(ed4.getText().toString())*Double.parseDouble(ed5.getText().toString())));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        //-----------------------------------
+        this.ed5 = (EditText) layout.findViewById(R.id.purchase_product_price);
         ed5.setText(String.valueOf(purchasesModelArrayList.get(positionPopup).getPurchaseProductPrice()));
-        final EditText ed6 = (EditText) layout.findViewById(R.id.purchase_amount);
+        this.ed6 = (EditText) layout.findViewById(R.id.purchase_amount);
         ed6.setText(String.valueOf(purchasesModelArrayList.get(positionPopup).getPurchaseAmount()));
-        final EditText ed7 = (EditText) layout.findViewById(R.id.purchase_payment);
+        //----------------------------------
+        this.ed7 = (EditText) layout.findViewById(R.id.purchase_payment);
         ed7.setText(String.valueOf(purchasesModelArrayList.get(positionPopup).getPurchasePayment()));
-        final EditText ed8 = (EditText) layout.findViewById(R.id.purchase_balance);
+        ed7.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    ed8.setText(String.valueOf(Double.parseDouble(ed6.getText().toString()) - Double.parseDouble(ed7.getText().toString())));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        //----------------------------------
+        this.ed8 = (EditText) layout.findViewById(R.id.purchase_balance);
         ed8.setText(String.valueOf(purchasesModelArrayList.get(positionPopup).getPurchaseBalance()));
-        final EditText ed9 = (EditText) layout.findViewById(R.id.purchase_description);
+        this.ed9 = (EditText) layout.findViewById(R.id.purchase_description);
         ed9.setText(purchasesModelArrayList.get(positionPopup).getPurchaseDescription());
-
+        //---------------------------------------------------------------------------------------------------------------------------
 
         final Button saveButton = (Button) layout.findViewById(R.id.purchase_save_button);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -177,6 +276,21 @@ public class PurchasesAdapter extends BaseAdapter {
                 }
             }
         });
+    }
+
+    //DatePicker
+    private void purchaseDate() {
+        picker = new DatePicker(context);
+        int curYear = picker.getYear();
+        int curMonth = picker.getMonth()+1;
+        int curDayOfMonth = picker.getDayOfMonth();
+        DatePickerDialog pickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                ed3.setText(dayOfMonth+"/"+(month+1)+"/"+year);
+            }
+        }, curYear, curMonth, curDayOfMonth);
+        pickerDialog.show();
     }
 
 }

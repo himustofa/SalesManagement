@@ -16,13 +16,13 @@ public class ProductsService {
     private SQLiteDAO dao;
     private ArrayList<ProductsModel> arrayList;
 
-    protected ProductsService(Context context) {
+    public ProductsService(Context context) {
         arrayList = new ArrayList<>();
         dao = new SQLiteDAO(context);
     }
 
     //Adding single object
-    protected long addProduct(ProductsModel model){
+    public long addProduct(ProductsModel model){
         final ContentValues values = new ContentValues();
         values.put(ConstantKey.PRODUCTS_COLUMN1, model.getProductName());
         values.put(ConstantKey.PRODUCTS_COLUMN2, model.getProductCode());
@@ -38,7 +38,7 @@ public class ProductsService {
     }
 
     //Getting all objects
-    protected ArrayList<ProductsModel> getAllProducts(){
+    public ArrayList<ProductsModel> getAllProducts(){
         arrayList = new ArrayList<>();
         Cursor cursor = dao.getAllData(ConstantKey.SELECT_PRODUCTS_TABLE);
         if(cursor.moveToFirst()){
@@ -62,7 +62,7 @@ public class ProductsService {
     }
 
     //Deleting single object
-    protected long deleteDataById(String id) {
+    public long deleteDataById(String id) {
         return dao.deleteDataById(ConstantKey.PRODUCTS_TABLE_NAME, id);
     }
 

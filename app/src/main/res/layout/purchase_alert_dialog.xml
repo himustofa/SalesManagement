@@ -11,10 +11,9 @@
         android:layout_height="match_parent">
 
 
-        <!--add product_id-->
+        <!--add product_id | android:entries="@array/product_name_array" -->
         <Spinner
             android:id="@+id/product_name"
-            android:entries="@array/product_name_array"
             android:background="@drawable/edit_text_border"
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
@@ -25,11 +24,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <!--add customer_id-->
+        <!--add customer_id | android:entries="@array/supplier_name_array" -->
         <Spinner
             android:id="@+id/supplier_name"
             android:hint="Supplier Name"
-            android:entries="@array/supplier_name_array"
             android:background="@drawable/edit_text_border"
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"

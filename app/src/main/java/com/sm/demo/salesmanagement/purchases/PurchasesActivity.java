@@ -1,6 +1,7 @@
 package com.sm.demo.salesmanagement.purchases;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,8 +11,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -19,6 +23,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sm.demo.salesmanagement.R;
+import com.sm.demo.salesmanagement.products.ProductsModel;
+import com.sm.demo.salesmanagement.products.ProductsService;
+import com.sm.demo.salesmanagement.suppliers.SuppliersModel;
+import com.sm.demo.salesmanagement.suppliers.SuppliersService;
 
 import java.util.ArrayList;
 
@@ -28,6 +36,7 @@ public class PurchasesActivity extends AppCompatActivity {
     private ListView purListView;
     private TextView E1d, E2d;
     private Spinner E1, E2;
+    private DatePicker picker;
 
     protected static final String TAG = "PurchasesActivity";
 
@@ -36,18 +45,28 @@ public class PurchasesActivity extends AppCompatActivity {
     protected PurchasesAdapter purAdapter;
     private ArrayList<PurchasesModel> purArrayList;
 
+    private ProductsService pServie;
+    private ArrayList<ProductsModel> pArrayList;
+
+    private SuppliersService supService;
+    private ArrayList<SuppliersModel> supArrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchases);
 
         this.purService = new PurchasesService(this); //To get from service
+        this.pServie = new ProductsService(this); //To get from product service
+        this.supService = new SuppliersService(this); //To get from supplier service
 
         //===============================================| Getting All Data in ListView |=========================================
         purListView = (ListView) findViewById(R.id.purchases_list_view_id);
         try {
+            pArrayList = (ArrayList) pServie.getAllProducts(); //Product table
+            supArrayList = (ArrayList) supService.getAllData(); //Supplier table
             purArrayList = (ArrayList) purService.getPurchases();
-            purAdapter = new PurchasesAdapter(PurchasesActivity.this, purArrayList, purService);
+            purAdapter = new PurchasesAdapter(PurchasesActivity.this, purArrayList, purService, pArrayList, pServie, supArrayList, supService);
             purListView.setAdapter(purAdapter);
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,7 +98,7 @@ public class PurchasesActivity extends AppCompatActivity {
                         }
                     }
                 }
-                purAdapter = new PurchasesAdapter(PurchasesActivity.this, tempArrayList, purService);
+                purAdapter = new PurchasesAdapter(PurchasesActivity.this, tempArrayList, purService, pArrayList, pServie, supArrayList, supService);
                 purListView.setAdapter(purAdapter);
             }
             @Override
@@ -125,17 +144,88 @@ public class PurchasesActivity extends AppCompatActivity {
 
         final AlertDialog dialog = builder.show(); // Because only AlertDialog has cancel method.
 
+        //------------------------------------------------------| Spinner |------------------------------------------------------
         this.E1 = (Spinner) inflateForm.findViewById(R.id.product_name);
+        ArrayAdapter<String> pro = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1);
+        for(ProductsModel obj : pArrayList){
+            pro.add(obj.getProductName());
+        }
+        E1.setAdapter(pro);
         this.E1d = (TextView) inflateForm.findViewById(R.id.product_id);
+        E1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                E1d.setText(pArrayList.get(position).getProductId());
+                E5.setText(String.valueOf(pArrayList.get(position).getProductPrice()));
+                Log.d("Product: ", String.valueOf(pArrayList.get(position).getProductCode()));
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+        //---------------------------------
         this.E2 = (Spinner) inflateForm.findViewById(R.id.supplier_name);
+        ArrayAdapter<String> sup = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1);
+        for(SuppliersModel obj : supArrayList){
+            sup.add(obj.getSupplierName());
+        }
+        E2.setAdapter(sup);
         this.E2d = (TextView) inflateForm.findViewById(R.id.supplier_id);
+        E2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                E2d.setText(supArrayList.get(position).getSupplierId());
+                Log.d("Supplier: ", String.valueOf(supArrayList.get(position).getSupplierName()));
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+        //---------------------------------
         this.E3 = (EditText) inflateForm.findViewById(R.id.purchase_date);
+        E3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                purchaseDate();
+            }
+        });
+        //---------------------------------
         this.E4 = (EditText) inflateForm.findViewById(R.id.purchase_product_quantity);
+        E4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    E6.setText(String.valueOf(Double.parseDouble(E4.getText().toString())*Double.parseDouble(E5.getText().toString())));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        //----------------------------------
         this.E5 = (EditText) inflateForm.findViewById(R.id.purchase_product_price);
         this.E6 = (EditText) inflateForm.findViewById(R.id.purchase_amount);
         this.E7 = (EditText) inflateForm.findViewById(R.id.purchase_payment);
+        //----------------------------------
+        E7.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                try {
+                    E8.setText(String.valueOf(Double.parseDouble(E6.getText().toString()) - Double.parseDouble(E7.getText().toString())));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        //----------------------------------
         this.E8 = (EditText) inflateForm.findViewById(R.id.purchase_balance);
         this.E9 = (EditText) inflateForm.findViewById(R.id.purchase_description);
+        //---------------------------------------------------------------------------------------------------------------------------
 
         Button supplierSaveButton = (Button) inflateForm.findViewById(R.id.purchase_save_button);
         supplierSaveButton.setOnClickListener(new View.OnClickListener() {
@@ -153,7 +243,7 @@ public class PurchasesActivity extends AppCompatActivity {
                             E9);
 
                     if(purAdapter==null) {
-                        purAdapter = new PurchasesAdapter(PurchasesActivity.this, purArrayList, purService);
+                        purAdapter = new PurchasesAdapter(PurchasesActivity.this, purArrayList, purService, pArrayList, pServie, supArrayList, supService);
                         purListView.setAdapter(purAdapter);
                     }
                     try {
@@ -169,6 +259,21 @@ public class PurchasesActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    //DatePicker
+    private void purchaseDate() {
+        picker = new DatePicker(this);
+        int curYear = picker.getYear();
+        int curMonth = picker.getMonth()+1;
+        int curDayOfMonth = picker.getDayOfMonth();
+        DatePickerDialog pickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                E3.setText(dayOfMonth+"/"+(month+1)+"/"+year);
+            }
+        }, curYear, curMonth, curDayOfMonth);
+        pickerDialog.show();
     }
 
     //====================================================| Select, Insert |====================================================

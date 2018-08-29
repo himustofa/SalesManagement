@@ -31,26 +31,32 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/home_title" />
+        <!-- At disable keyboard : android:windowSoftInputMode="stateHidden" -->
         <activity
             android:name=".sales.SalesActivity"
             android:label="@string/sales_title"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".customers.CustomersActivity"
             android:label="@string/customers_title"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".purchases.PurchasesActivity"
             android:label="@string/purchases_title"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".products.ProductsActivity"
             android:label="@string/products_title"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".suppliers.SuppliersActivity"
             android:label="@string/suppliers_title"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".settings.SettingsActivity"
             android:label="@string/settings_title"
@@ -58,7 +64,8 @@
         <activity
             android:name=".users.UsersActivity"
             android:label="@string/users_title"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".profiles.ProfilesActivity"
             android:label="@string/profiles_title"

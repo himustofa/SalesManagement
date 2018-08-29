@@ -129,6 +129,12 @@ public class ConstantKey {
     protected final static String DROP_SALES_TABLE = "DROP TABLE IF EXISTS " + SALES_TABLE_NAME + " ";
     public final static String SELECT_SALES_TABLE = "SELECT * FROM " + SALES_TABLE_NAME;
 
+    /*
+    Product rate: 10*50 = 500 (Qty*Amount)
+    5% = 475 (5% discount)
+    15 = 490 (15tk vat) : sales_amount
+    **/
+
     //=======================| UsersModel/UserModel |=======================
     public final static String USERS_TABLE_NAME = "users_table";
     public final static String USERS_COLUMN1 = "full_name";
