@@ -137,19 +137,19 @@ public class SuppliersAdapter extends BaseAdapter {
         final EditText b = (EditText) layout.findViewById(R.id.suppliers_alert_2);
         b.setText(suppliersArrayList.get(positionPopup).getSupplierCompanyName());
         final EditText c = (EditText) layout.findViewById(R.id.suppliers_alert_3);
-        c.setText(suppliersArrayList.get(positionPopup).getSupplierPhoneNumber());
+        c.setText(suppliersArrayList.get(positionPopup).getSupplierContactPerson());
         final EditText d = (EditText) layout.findViewById(R.id.suppliers_alert_4);
-        d.setText(suppliersArrayList.get(positionPopup).getSupplierEmail());
+        d.setText(suppliersArrayList.get(positionPopup).getSupplierPhoneNumber());
         final EditText e = (EditText) layout.findViewById(R.id.suppliers_alert_5);
         e.setText(suppliersArrayList.get(positionPopup).getSupplierAddress());
         final EditText f = (EditText) layout.findViewById(R.id.suppliers_alert_6);
-        f.setText(suppliersArrayList.get(positionPopup).getSupplierAddress());
+        f.setText(suppliersArrayList.get(positionPopup).getSupplierBankName());
         final EditText g = (EditText) layout.findViewById(R.id.suppliers_alert_7);
-        g.setText(suppliersArrayList.get(positionPopup).getSupplierAddress());
+        g.setText(suppliersArrayList.get(positionPopup).getSupplierBankAccount());
         final EditText h = (EditText) layout.findViewById(R.id.suppliers_alert_8);
-        h.setText(suppliersArrayList.get(positionPopup).getSupplierAddress());
+        h.setText(suppliersArrayList.get(positionPopup).getSupplierEmail());
         final EditText i = (EditText) layout.findViewById(R.id.suppliers_alert_9);
-        i.setText(suppliersArrayList.get(positionPopup).getSupplierAddress());
+        i.setText(suppliersArrayList.get(positionPopup).getSupplierWebsite());
 
         final Button saveButton = (Button) layout.findViewById(R.id.supplier_save_button);
         saveButton.setOnClickListener(new View.OnClickListener() {
