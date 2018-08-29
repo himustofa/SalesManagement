@@ -125,7 +125,7 @@ public class SuppliersActivity extends AppCompatActivity {
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SuppliersActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Add Supplier Alert Dialog");
+        builder.setTitle("Add Supplier");
         final View inflateForm = getLayoutInflater().inflate(R.layout.supplier_alert_dialog, null); // Get custom login form view.
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);

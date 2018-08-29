@@ -123,7 +123,7 @@ public class SuppliersAdapter extends BaseAdapter {
     public void editListItem(final int positionPopup, SuppliersModel model, ViewGroup parent) {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(parent.getContext());
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Edit Supplier Alert Dialog");
+        builder.setTitle("Edit Supplier");
         View layout = LayoutInflater.from(context).inflate(R.layout.supplier_alert_dialog, (ViewGroup) context.findViewById(R.id.supplier_alert_dialog_id));
 
         builder.setView(layout); // Set above view in alert dialog.

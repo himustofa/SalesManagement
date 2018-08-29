@@ -116,7 +116,7 @@ public class PurchasesAdapter extends BaseAdapter {
     public void editListItem(final int positionPopup, ViewGroup parent) {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(parent.getContext());
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Edit Purchase Alert Dialog");
+        builder.setTitle("Edit Purchase");
         View layout = LayoutInflater.from(context).inflate(R.layout.purchase_alert_dialog, (ViewGroup) context.findViewById(R.id.purchase_alert_dialog_id));
         builder.setView(layout); // Set above view in alert dialog.
         builder.setCancelable(true);

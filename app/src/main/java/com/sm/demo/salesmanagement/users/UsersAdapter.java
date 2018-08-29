@@ -146,7 +146,7 @@ public class UsersAdapter extends BaseAdapter {
     public void editListItem(final int positionPopup, ViewGroup parent) {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(parent.getContext());
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Edit User View Alert Dialog");
+        builder.setTitle("Edit User");
         //final View inflateForm = getLayoutInflater().inflate(R.layout.user_alert_dialog, null); // Get custom login form view.
         View inflateForm = LayoutInflater.from(context).inflate(R.layout.user_alert_dialog, (ViewGroup) context.findViewById(R.id.user_alert_dialog_id));
 

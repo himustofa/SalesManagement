@@ -113,7 +113,7 @@ public class ProductsActivity extends AppCompatActivity {
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ProductsActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Add Product Alert Dialog");
+        builder.setTitle("Add Product");
         final View inflateForm = getLayoutInflater().inflate(R.layout.product_alert_dialog, null); // Get custom login form view.
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);

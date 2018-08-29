@@ -30,7 +30,7 @@
         <menu>
             <item
                 android:id="@+id/profiles_id"
-                android:title="Profiles"
+                android:title="Company Profiles"
                 android:icon="@drawable/ic_account_box_black_24dp" />
             <item
                 android:id="@+id/users_id"

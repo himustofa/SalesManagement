@@ -112,7 +112,7 @@ public class CustomersActivity extends AppCompatActivity {
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(CustomersActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Add Customer Alert Dialog");
+        builder.setTitle("Add Customer");
         final View inflateForm = getLayoutInflater().inflate(R.layout.customer_alert_dialog, null); // Get custom login form view.
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);

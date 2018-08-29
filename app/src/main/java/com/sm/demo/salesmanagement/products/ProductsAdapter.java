@@ -112,7 +112,7 @@ public class ProductsAdapter extends BaseAdapter {
     public void editListItem(final int positionPopup, ViewGroup parent) {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(parent.getContext());
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Edit Product Alert Dialog");
+        builder.setTitle("Edit Product");
         View layout = LayoutInflater.from(context).inflate(R.layout.product_alert_dialog, (ViewGroup) context.findViewById(R.id.product_alert_dialog_id));
         builder.setView(layout); // Set above view in alert dialog.
         builder.setCancelable(true);

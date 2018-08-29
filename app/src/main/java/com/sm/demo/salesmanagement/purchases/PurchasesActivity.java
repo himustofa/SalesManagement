@@ -117,7 +117,7 @@ public class PurchasesActivity extends AppCompatActivity {
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(PurchasesActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Add Purchase Alert Dialog");
+        builder.setTitle("Add Purchase");
         final View inflateForm = getLayoutInflater().inflate(R.layout.purchase_alert_dialog, null); // Get custom login form view.
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);

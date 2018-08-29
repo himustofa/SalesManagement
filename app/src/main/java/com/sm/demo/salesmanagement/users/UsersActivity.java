@@ -128,7 +128,7 @@ public class UsersActivity extends AppCompatActivity {
     protected void customAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UsersActivity.this);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setTitle("Custom User Alert Dialog");
+        builder.setTitle("Add User");
         final View inflateForm = getLayoutInflater().inflate(R.layout.user_alert_dialog, null); // Get custom login form view.
         builder.setView(inflateForm); // Set above view in alert dialog.
         builder.setCancelable(true);
