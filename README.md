@@ -1,6 +1,21 @@
 # SalesManagement
 Android mobile application for the sole trader ship business. Including user, company profile, suppliers, products, purchases, customers and sales.
 
+Necessary Components:
+=====================
+SQLite
+SharedPreferences
+MPAndroidChart
+Custom Adapter
+Custom Search
+Gallery Access & Save to Directory
+Custom Alert Dialog
+Validation
+Exception Handling
+MVC Design Pattern
+
+Objective
+=========
 ![1](https://user-images.githubusercontent.com/26080779/46303601-1caf8580-c5ce-11e8-9629-5d9c83e0d380.jpg)
 ![2](https://user-images.githubusercontent.com/26080779/46303796-b119e800-c5ce-11e8-8a7a-c94d811c1e26.jpg)
 ![3](https://user-images.githubusercontent.com/26080779/46303603-1caf8580-c5ce-11e8-8091-095da61ab69e.jpg)
